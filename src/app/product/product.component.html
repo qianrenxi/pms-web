@@ -1,0 +1,13 @@
+<div class="product-topbar bg-faded py-2 px-3 clearfix">
+  <select name="product" id="sel-product" class="custom-select">
+    <option value="">请选择一个产品</option>
+  </select>
+  <div class="actions pull-right">
+    <button class="btn btn-outline-primary" [routerLink]="['/product/list']"><i class="fa fa-cubes"></i> 所有产品</button>
+    <button class="btn btn-outline-primary" [routerLink]="['/product/add']"><i class="fa fa-plus"></i> 添加产品</button>
+    <button class="btn btn-outline-primary" [routerLink]="['/product/home']"><i class="fa fa-home"></i> 产品主页</button>
+  </div>
+</div>
+<div class="container-fluid my-3">
+  <router-outlet></router-outlet>
+</div>
