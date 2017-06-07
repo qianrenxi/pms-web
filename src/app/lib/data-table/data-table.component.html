@@ -1,0 +1,36 @@
+<ng-content select='.table-before'></ng-content>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngIf="!!selectType" style="width: 40px;">
+        <input type="{{selectType}}" name="toggleSelect" value="" [checked]="isSelectAll" (change)="selectAll()"/>
+      </th>
+      <th *ngFor="let col of columns">{{col.title | uppercase}}</th>
+      <th *ngIf="!!rowActions" class="text-xs-right tb-nowrap">ACTIONS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngIf="!!selectType">
+        <input type="{{selectType}}" name="ids" value="{{row['id']}}" #ids [checked]="isSelectAll" (change)="selectItem(row['id'], ids.checked)"/>
+      </td>
+      <td *ngFor="let col of columns">
+        <div *ngIf="!!col.prop">{{row[col.prop]}}</div>
+      </td>
+      <td class="text-xs-righ tb-nowrap" *ngIf="!!rowActions">
+        <template [ngTemplateOutlet]="rowActions" [ngOutletContext]="{row: row}"></template>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td *ngIf="!!selectType">
+        <input type="{{selectType}}" name="toggleSelect" value="" [checked]="isSelectAll" (change)="selectAll()"/>
+      </td>
+      <td [attr.colspan]='columns.length + (!!rowActions ? 1 : 0)' style="vertical-align: middle;">
+        <ng-content select=".action-group"></ng-content>
+        <cui-pagination class="pull-right datatables-pagination" *ngIf="pagination" [pagination]="pagination" (goto)="fireReload()"></cui-pagination>
+      </td>
+    </tr>
+  </tfoot>
+</table>

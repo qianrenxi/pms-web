@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <div class="d-inline">
+      <a href="#" class="btn btn-link">全部产品</a>
+      <a href="#" class="btn btn-link">未关闭</a>
+      <a href="#" class="btn btn-link">已关闭</a>
+    </div>
+    <div class="actions pull-right">
+      <button class="btn btn-outline-primary" [routerLink]="['/product/add']"><i class="fa fa-plus"></i> 添加产品</button>
+    </div>
+  </div>
+  <div class="card-block">
+    <cui-data-table [columns]="columns" [data]="datas" [pagination]="pagination" selectType="checkbox">
+      <ng-template #rowActions let-row="row">
+        <a href="#" class="text-primary">编辑</a>
+        <span>|</span>
+        <a href="#" class="text-danger">删除</a>
+      </ng-template>
+    </cui-data-table>
+  </div>
+</div>

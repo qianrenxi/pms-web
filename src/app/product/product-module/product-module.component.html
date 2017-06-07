@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header">
+    <span class="font-weight-bold">模块维护</span>
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            [product.name]::模块维护
+          </div>
+          <div class="card-block">
+            <div class="">
+              <button class="btn btn-sm btn-primary" (click)="add(moduleTree.treeModel.getFocusedNode())">添加</button>
+              <button class="btn btn-sm btn-info" (click)="edit(moduleTree.treeModel.getFocusedNode())">编辑</button>
+              <button class="btn btn-sm btn-danger" (click)="delete(moduleTree.treeModel.getFocusedNode())">删除</button>
+            </div>
+            <tree-root #moduleTree [nodes]="nodes">
+              <ng-template #treeNodeTemplate let-node let-index="index">
+                <!-- <div class="pull-right">
+                  <a (click)="edit(node, $event)">编辑</a>
+                  <a (click)="delete($event)">删除</a>
+                </div> -->
+
+                <span *ngIf="!node.data.editing">{{node.data.name}}</span>
+                <input *ngIf="node.data.editing" type="text" [(ngModel)]="editingNode.name" (keydown)="catchEnter($event)">
+              </ng-template>
+            </tree-root>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

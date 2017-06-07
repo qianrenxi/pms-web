@@ -21,7 +21,7 @@ export class AppComponent {
       {name: '联系人', route: ''},
       {name: '日志', route: ''},
     ]},
-    {name: '产品', children: [
+    {name: '产品', route: 'product', children: [
       {name: '需求', route: 'demand'},
       {name: '动态', route: ''},
       {name: '计划', route: ''},
