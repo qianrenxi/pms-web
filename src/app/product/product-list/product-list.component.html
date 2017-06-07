@@ -10,26 +10,12 @@
     </div>
   </div>
   <div class="card-block">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>产品名称</th>
-          <th>产品负责人</th>
-          <th>激活需求</th>
-          <th>已变更需求</th>
-          <th>草稿需求</th>
-          <th>计划数</th>
-          <th>发布数</th>
-          <th>相关Bug</th>
-          <th>未解决Bug</th>
-          <th>未指派Bug</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
+    <cui-data-table [columns]="columns" [data]="datas" [pagination]="pagination" selectType="checkbox">
+      <ng-template #rowActions let-row="row">
+        <a href="#" class="text-primary">编辑</a>
+        <span>|</span>
+        <a href="#" class="text-danger">删除</a>
+      </ng-template>
+    </cui-data-table>
   </div>
 </div>

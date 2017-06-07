@@ -59,3 +59,30 @@ html, body {
     }
 }
 
+.with-side {
+    display: flex;
+
+    > .side {
+        flex: 0 0 15rem;
+    }
+
+    > .main {
+        flex: 1;
+    }
+
+    &.side-hide {
+        > .side {
+            flex: 0;
+            
+            .side-handle {
+                position: absolute;
+                left: 15px;
+            }
+
+            .side-body {
+                display: none;
+            }
+        }
+    }
+}
+

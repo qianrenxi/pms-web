@@ -73,7 +73,7 @@
       "check-else",
       "check-whitespace"
     ],
-    "prefer-const": true,
+    "prefer-const": false,
     "quotemark": [
       true,
       "single"
@@ -83,7 +83,7 @@
       "always"
     ],
     "triple-equals": [
-      true,
+      false,
       "allow-null-check"
     ],
     "typedef-whitespace": [
@@ -110,13 +110,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "pms",
+      "pms|cui",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "pms",
+      "pms|cui",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
