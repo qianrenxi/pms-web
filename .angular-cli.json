@@ -22,6 +22,7 @@
         "styles/bootstrap/bootstrap.scss",
         "styles/consoleui/consoleui.scss",
         "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/angular2-layer/css/dialog.css",
         "styles.scss"
       ],
       "scripts": [
