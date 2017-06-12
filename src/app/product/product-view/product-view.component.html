@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header">
+    <span class="font-weight-bold d-inline-block mt-2">
+      <span>{{product.id}}</span>
+      <span>{{product.name}}</span>
+    </span>
+
+    <div class="actions pull-right">
+      <button class="btn btn-outline-danger"><i class="fa fa-power-off"></i> 关闭</button>
+      <button class="btn btn-outline-primary" [routerLink]="['/product', product.id, 'edit']"><i class="fa fa-pencil"></i> 编辑</button>
+      <button class="btn btn-outline-secondary">返回 <i class="fa fa-level-up"></i></button>
+    </div>
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-8">
+        <fieldset>
+          <legend>产品描述</legend>
+          <div>{{product.description}}</div>
+        </fieldset>
+        <fieldset>
+          <legend>历史记录</legend>
+          <div></div>
+        </fieldset>
+      </div>
+      <div class="col-4">
+        <fieldset>
+          <legend>基本信息</legend>
+          <div>
+            <table>
+              <tr>
+                <th>产品名称</th>
+                <td>{{product.name}}</td>
+              </tr>
+              <tr>
+                <th>产品代号</th>
+                <td>{{product.code}}</td>
+              </tr>
+              <tr>
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>其他信息</legend>
+          <div>
+            <table>
+              <tr>
+                <th></th>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

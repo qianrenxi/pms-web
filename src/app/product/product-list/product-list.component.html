@@ -10,9 +10,14 @@
     </div>
   </div>
   <div class="card-block">
+    <div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
     <cui-data-table [columns]="columns" [data]="datas" [pagination]="pagination" selectType="checkbox">
+      <ng-template pmsColTpl="pName" let-row="row">
+        <a [routerLink]="['/product', row.id, 'view']"> {{row.name}}</a>
+      </ng-template>
+
       <ng-template #rowActions let-row="row">
-        <a href="#" class="text-primary">编辑</a>
+        <a href="javascript:;" class="text-primary" (click)="edit(row.id)">编辑</a>
         <span>|</span>
         <a href="#" class="text-danger">删除</a>
       </ng-template>

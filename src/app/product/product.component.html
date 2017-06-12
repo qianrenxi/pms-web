@@ -1,24 +1,30 @@
-<div class="product-topbar d-flex bg-faded py-2 px-3 clearfix">
-  <select name="product" id="sel-product" class="custom-select">
-    <option value="">请选择一个产品</option>
-  </select>
-  <nav class="nav nav-pills ml-3">
-      <a class="nav-link active" [routerLink]="['/product', activeProduct.id, 'requirements']">需求</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'dynamics']">动态</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'plans']">计划</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'publishes']">发布</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'lines']">路线</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'documents']">文档</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'projects']">项目</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'modules']">模块</a>
-      <a class="nav-link" [routerLink]="['/product', activeProduct.id, 'survey']">概览</a>
-  </nav>
-  <div class="actions ml-auto">
-    <button class="btn btn-outline-primary" [routerLink]="['/product/list']"><i class="fa fa-cubes"></i> 所有产品</button>
-    <button class="btn btn-outline-primary" [routerLink]="['/product/add']"><i class="fa fa-plus"></i> 添加产品</button>
-    <button class="btn btn-outline-primary" [routerLink]="['/product/home']"><i class="fa fa-home"></i> 产品主页</button>
+<div class="d-flex flex-column">
+  <div class="product-topbar d-flex bg-faded py-2 px-3 clearfix sticky-top">
+    <select name="product" id="sel-product" class="custom-select" #selProd (change)="selectOne(selProd.value)">
+      <!-- <option value="">请选择一个产品</option> -->
+      <option *ngFor="let p of products" value="{{p.id}}">{{p.name}}</option>
+      
+    </select>
+    <nav class="nav nav-pills ml-3">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'requirements']">需求</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'activities']">活动</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'plans']">计划</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'release']">发布</a>
+        <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'lines']">路线</a>-->
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'docLibs']">文档</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'projects']">项目</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'modules']">模块</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'view']">概览</a>
+    </nav>
+    <div class="actions ml-auto">
+      <button class="btn btn-outline-primary" [routerLink]="['/product/list']"><i class="fa fa-cubes"></i> 所有产品</button>
+      <button class="btn btn-outline-primary" [routerLink]="['/product/add']"><i class="fa fa-plus"></i> 添加产品</button>
+      <button class="btn btn-outline-primary" routerLinkActive="d-none" [routerLink]="['/product/home']"><i class="fa fa-home"></i> 产品主页</button>
+    </div>
   </div>
-</div>
-<div class="container-fluid my-3">
-  <router-outlet></router-outlet>
+  <div>
+    <div class="container-fluid mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

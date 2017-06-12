@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { BASE_URL } from '../../mock/mock-config';
 
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
-
-import { PaginationModel } from '../../lib/pagination/pagination.model';
+import { PaginationModel } from '../../lib';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'pms-product-list',
@@ -17,13 +12,14 @@ export class ProductListComponent implements OnInit {
   columns;
   datas;
   pagination: PaginationModel;
+  errorMsg;
 
-  constructor(private http: Http) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.columns = [
       { title: 'ID', prop: 'id' },
-      { title: '产品名称', prop: 'name' },
+      { title: '产品名称', prop: 'name', tpl: 'pName' },
       { title: '产品负责人', prop: 'productLeader.name' },
       { title: '激活需求', prop: 'requirementActivedCount' },
       { title: '已变更需求', prop: 'requirementChangedCount' },
@@ -35,16 +31,15 @@ export class ProductListComponent implements OnInit {
       { title: '未指派BUG', prop: 'bugCount' },
     ];
 
-    let prodListUrl = BASE_URL + '/products';
-    this.http.get(prodListUrl)
-      .toPromise().then(res => {
-        this.datas = res.json().products;
-        console.log(this.datas);
-      }).catch(() => {
-        console.log('Get mock prods failed.');
-      });
+    this.productService.getProducts().subscribe(
+      products => this.datas = products,
+      error => this.errorMsg = error
+    );
 
     this.pagination = new PaginationModel (95, 15, 5);
   }
 
+  edit(id) {
+    console.log('Edit' + id);
+  }
 }

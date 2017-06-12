@@ -1,0 +1,88 @@
+<div class="row" style="margin-top: -1rem; margin-bottom: -1rem;">
+  <div class="col-9" style="padding-top: 1rem;">
+    <div class="page-header">
+      <h3 class="d-inline-block">活动</h3>
+    </div>
+    <div>
+      <form action="" class="form-inline">
+        <div class="form-group">
+          <label class="col-control-label sr-only">时段</label>
+          <div class="input-group">
+            <span class="input-group-addon">从</span>
+            <input type="text" class="form-control" name="startDate">
+            <span class="input-group-addon">到</span>
+            <input type="text" class="form-control" name="endDate">
+          </div>
+        </div>
+        <div class="form-group mx-2">
+          <label class="col-control-label sr-only">用户</label>
+          <input type="text" class="form-control" name="user" placeholder="选择用户">
+        </div>
+        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+      </form>
+    </div>
+    <div class="pagination pull-right">
+      <a href="javascript:;">上一页</a> |
+      <a href="javascript:;">下一页</a>
+    </div>
+    <dl *ngFor="let acts of activityGroups">
+      <dt>{{acts.date}}</dt>
+      <dd *ngFor="let act of acts.activities">
+        <span><i class="fa fa-file text-warning"></i> {{act.time | date: 'shortTime'}}</span>
+        <span class="badge badge-success">{{act.operation}}</span>
+        <a href="javascript:;"><strong>{{act.object.name}}</strong></a>
+        <br/>
+        <div class="ml-5">
+          <div class="" style="color: #666;">{{act.comment}}</div>
+          <a href="javascript:;"><span>{{act.user.displayName}}</span></a>
+        </div>
+      </dd>
+    </dl>
+    <div class="pagination pull-right">
+      <a href="javascript:;">上一页</a> |
+      <a href="javascript:;">下一页</a>
+    </div>
+  </div>
+  <div class="col-3 bg-faded" style="padding-top: 1rem;">
+    <fieldset class="form-group">
+      <legend>活动/对象类型</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="objectType" value="" checked>
+          任务
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="objectType" value="" checked>
+          BUG
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="objectType" value="" checked>
+          需求
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="objectType" value="" >
+          文档
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="objectType" value="" >
+          计划
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="objectType" value="" >
+          版本
+        </label>
+      </div>
+    </fieldset>
+    <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> 应用</button>
+  </div>
+</div>

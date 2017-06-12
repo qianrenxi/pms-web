@@ -12,14 +12,21 @@
   </div>
   <div class="cui-layout-body">
     <div class="cui-layout-sidebar">
-      <ul>
-        <li *ngFor="let ni of navItems">
-          <a [routerLink]="[ni.route]">{{ni.name}}</a>
-          <ul *ngIf="ni.children">
-            <li *ngFor="let nic of ni.children">
-              <a [routerLink]="[nic.route]">{{nic.name}}</a>
+      
+      <ul class="nav sidebar-nav" [ngClass]="{'fold': isSidebarFold, 'unfold': !isSidebarFold}">
+        <li class="nav-item">
+          <a href="javascript:;" class="nav-link" (click)="isSidebarFold = !isSidebarFold"><i class="nav-icon fa fa-fw fa-navicon"></i><span class="nav-text sr-only">开始</span></a>
+        </li>
+        <li class="nav-item" *ngFor="let ni of navItems">
+          <a class="nav-link" [routerLink]="[ni.route]" routerLinkActive="active">
+            <i class="nav-icon fa fa-fw fa-{{!!ni.icon ? ni.icon : 'file'}}"></i>
+            <span class="nav-text">{{ni.name}}</span>
+          </a>
+          <!--<ul class="nav" *ngIf="ni.children">
+            <li class="nav-item" *ngFor="let nic of ni.children">
+              <a class="nav-link" [routerLink]="[nic.route]">{{nic.name}}</a>
             </li>
-          </ul>
+          </ul>-->
         </li>
       </ul>
     </div>

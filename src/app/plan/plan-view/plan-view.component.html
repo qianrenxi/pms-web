@@ -1,0 +1,41 @@
+<div class="page-header clearfix">
+  <h5 class="d-inline-block mt-2">计划 #{{plan.id}} {{plan.name}}</h5>
+  <div class="actions pull-right">
+    <!--<button class="btn btn-outline-info"><i class="fa fa-"></i> 关闭</button>-->
+    <button class="btn btn-outline-primary" [routerLink]="['../', 'edit']"><i class="fa fa-pencil"></i> 编辑</button>
+    <button class="btn btn-outline-danger"><i class="fa fa-trash-o"></i> 删除</button>
+    <button class="btn btn-secondary" [routerLink]="['../../']">返回 <i class="fa fa-level-up"></i></button>
+  </div>
+</div>
+
+<div class="page-body mt-3">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#info" role="tab" aria-controls="home" aria-expanded="true"><i class="fa fa-flag"></i> 概览</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#requirement" role="tab" aria-controls="profile"><i class="fa fa-lightbulb-o"></i> 需求</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#bug" role="tab" aria-controls="profile"><i class="fa fa-bug"></i> Bug</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#report" role="tab" aria-controls="profile"><i class="fa fa-tasks"></i> 进程</a>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="home-tab">
+      <pms-plan-view-info></pms-plan-view-info>
+    </div>
+    <div class="tab-pane fade show" id="requirement" role="tabpanel" aria-labelledby="home-tab">
+      <pms-plan-view-requirement></pms-plan-view-requirement>
+    </div>
+    <div class="tab-pane fade show" id="bug" role="tabpanel" aria-labelledby="home-tab">
+      <pms-plan-view-bug></pms-plan-view-bug>
+    </div>
+    <div class="tab-pane fade show" id="report" role="tabpanel" aria-labelledby="home-tab">
+      <pms-plan-view-report></pms-plan-view-report>
+    </div>
+  </div>
+</div>

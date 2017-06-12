@@ -1,15 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter,
+  Directive,
+  ContentChild, ContentChildren, TemplateRef, AfterContentInit,
+  QueryList } from '@angular/core';
 
 import { CuiPagination } from '../pagination';
 
 import { Column } from './defs/api';
+import { ColTplDirective } from './col-tpl.directive';
 
 @Component({
   selector: 'cui-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, AfterContentInit {
   @Input() columns: Column[];
   @Input() data: any[];
   @Input() pagination: CuiPagination;
@@ -21,10 +25,23 @@ export class DataTableComponent implements OnInit {
   ids = [];
 
   @ContentChild('rowActions') rowActions: TemplateRef<any>;
+  @ContentChildren(ColTplDirective) _colTpls: QueryList<ColTplDirective>;
+
+  colTpls = {};
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  ngAfterContentInit() {
+    // console.log(this.rowActions);
+    // console.log(this._colTpls);
+
+    this._colTpls.forEach(it => {
+      this.colTpls[it.pmsColTpl] = it.templateRef;
+    });
   }
 
   fireReload() {

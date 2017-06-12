@@ -15,10 +15,11 @@
         <input type="{{selectType}}" name="ids" value="{{row['id']}}" #ids [checked]="isSelectAll" (change)="selectItem(row['id'], ids.checked)"/>
       </td>
       <td *ngFor="let col of columns">
-        <div *ngIf="!!col.prop">{{row[col.prop]}}</div>
+        <div *ngIf="!!col.prop && !colTpls[col.tpl]">{{row | objectPath: col.prop}}</div>
+        <ng-container *ngIf="!!colTpls[col.tpl]" [ngTemplateOutlet]="colTpls[col.tpl]" [ngOutletContext]="{row: row}"></ng-container>
       </td>
       <td class="text-xs-righ tb-nowrap" *ngIf="!!rowActions">
-        <template [ngTemplateOutlet]="rowActions" [ngOutletContext]="{row: row}"></template>
+        <ng-container [ngTemplateOutlet]="rowActions" [ngOutletContext]="{row: row}"></ng-container>
       </td>
     </tr>
   </tbody>
