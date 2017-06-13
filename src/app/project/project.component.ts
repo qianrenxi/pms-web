@@ -25,4 +25,11 @@ export class ProjectComponent implements OnInit {
     );
   }
 
+  selectOne(projectId: number) {
+    let proj = this.projects.find(it => it.id == projectId);
+    if (!!proj) {
+      this.activeProject = proj;
+    }
+  }
+
 }
