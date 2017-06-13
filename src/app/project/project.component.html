@@ -1,0 +1,30 @@
+<div class="d-flex flex-column">
+  <div class="project-topbar d-flex bg-faded py-2 px-3 clearfix sticky-top">
+    <select name="project" id="sel-project" class="custom-select" #selProject (change)="selectOne(selProject.value)">
+      <!-- <option value="">请选择一个项目</option> -->
+      <option *ngFor="let p of projects" value="{{p.id}}">{{p.name}}</option>
+      
+    </select>
+    <nav class="nav nav-pills ml-3">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'requirements']">需求</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'activities']">活动</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'plans']">计划</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'release']">发布</a>
+        <!--<a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'lines']">路线</a>-->
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'docLibs']">文档</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'projects']">项目</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'modules']">模块</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/project', activeProject.id, 'view']">概览</a>
+    </nav>
+    <div class="actions ml-auto">
+      <button class="btn btn-outline-primary" [routerLink]="['/project/list']"><i class="fa fa-codepen"></i> 所有项目</button>
+      <button class="btn btn-outline-primary" [routerLink]="['/project/add']"><i class="fa fa-plus"></i> 添加项目</button>
+      <button class="btn btn-outline-primary" routerLinkActive="d-none" [routerLink]="['/project/home']"><i class="fa fa-home"></i> 项目主页</button>
+    </div>
+  </div>
+  <div>
+    <div class="container-fluid mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

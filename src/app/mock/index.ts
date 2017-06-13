@@ -6,3 +6,4 @@ export * from './bmod.mock';
 export * from './requirement.mock';
 export * from './plan.mock';
 export * from './activity.mock';
+export * from './project.mock';
