@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../../entity/task';
+import { TaskService } from '../../service/task.service';
 
 @Component({
   selector: 'pms-task-edit',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskEditComponent implements OnInit {
 
-  constructor() { }
+  task: Task;
+
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.task = new Task();
+
+    this.taskService.getTask(1).subscribe(
+      task => this.task = task
+    );
   }
 
 }

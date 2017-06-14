@@ -8,20 +8,18 @@
     <a href="javascript:;">需求变动</a>
     <a href="javascript:;">更多 <i class="fa fa-caret-down"></i></a>
   </div>
-  <div class="views d-inline-block">
-    <span>日历</span>
-    <span>看板</span>
-    <span>甘特图</span>
-    <span>燃尽图</span>
-    <span>树状图</span>
-  </div>
   <div class="groups d-inline-block">
     <a href="javascript:;">分组查看 <i class="fa fa-caret-down"></i></a>
   </div>
   搜索
 
   <div class="actions pull-right">
-    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 报表</button>
+    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 日历</button>
+    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 看板</button>
+    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 甘特图</button>
+    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 燃尽图</button>
+    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 树状图</button>
+    <button class="btn btn-outline-primary"><i class="fa fa-bar-chart"></i> 摘要</button>
     <div class="btn-group">
       <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-download"></i> 导出</button>
@@ -40,6 +38,8 @@
         <div class="dropdown-menu dropdown-menu-right">
           <button class="dropdown-item">批量添加</button>
           <button class="dropdown-item">批量导入</button>
+          <button class="dropdown-item">从问题转入</button>
+          <button class="dropdown-item">从计划转入</button>
         </div>
       </div>
   </div>
@@ -70,9 +70,9 @@
           <span>|</span>
           <a href="javascript:;" class="text-primary" (click)="edit(row.id)">完成</a>
           <span>|</span>
-          <a href="javascript:;" class="text-primary" (click)="edit(row.id)">编辑</a>
-          <span>|</span>
-          <a href="#" class="text-danger">删除</a>
+          <a class="text-primary" [routerLink]="[row.id, 'edit']">编辑</a>
+          <!--<span>|</span>
+          <a href="#" class="text-danger">删除</a>-->
         </ng-template>
       </cui-data-table>
     </div>

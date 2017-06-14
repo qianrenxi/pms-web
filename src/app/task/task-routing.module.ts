@@ -8,7 +8,7 @@ import { TaskViewComponent } from './task-view/task-view.component';
 
 const routes: Routes = [
   { path: '', component: TaskListComponent },
-  { path: 'list', component: TaskListComponent },
+  // { path: 'list', component: TaskListComponent },
   { path: 'add', component: TaskCreateComponent },
   { path: ':taskId/view', component: TaskViewComponent },
   { path: ':taskId/edit', component: TaskEditComponent },

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./issue-list.component.scss']
 })
 export class IssueListComponent implements OnInit {
+  sideOpen = true;
 
   constructor() { }
 
