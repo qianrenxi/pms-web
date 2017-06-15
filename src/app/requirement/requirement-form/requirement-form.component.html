@@ -19,11 +19,13 @@
         <div class="row">
           <div class="form-group col-md-6 d-flex align-items-start">
             <label for="" class="col-form-label">所属计划</label>
-            <input type="text" class="form-control">
+            <pms-plan-select></pms-plan-select>
           </div>
           <div class="form-group col-md-6 d-flex align-items-start">
             <label for="" class="col-form-label">需求来源</label>
-            <input type="text" class="form-control">
+            <select [(ngModel)]="requirement.source" name='source' class="form-control">
+              <option *ngFor="let source of properties.requirementSource" [value]="source.key">{{source.value}}</option>
+            </select>
           </div>
         </div>
         
@@ -34,8 +36,8 @@
           <div class="input-group">
             <input type="text" class="form-control">
             <span class="input-group-addon">优先级</span>
-            <select class="form-control" style="width: 4rem; flex: 0 0 4rem;">
-              <option value="0">0</option>
+            <select [(ngModel)]="requirement.priority" name="priority" class="form-control" style="width: 4rem; flex: 0 0 4rem;">
+              <option *ngFor="let item of properties.priority" [value]="item.key">{{item.value}}</option>
             </select>
             <span class="input-group-addon">预计</span>
             <input type="text" class="form-control" style="width: 4rem; flex: 0 0 4rem;" placeholder="小时">
@@ -44,12 +46,16 @@
 
         <div class="form-group d-flex align-items-start">
           <label for="" class="col-form-label">需求描述</label>
-          <textarea rows="5" class="form-control"></textarea>
+          <div class="mx-3 w-100">
+            <ueditor [(ngModel)]="requirement.description" [config]="ueditorConfit" name="description" #description></ueditor>
+          </div>
         </div>
 
         <div class="form-group d-flex align-items-start">
           <label for="" class="col-form-label">验收标准</label>
-          <textarea rows="5" class="form-control"></textarea>
+          <div class="mx-3 w-100">
+            <ueditor [(ngModel)]="requirement.acceptance" [config]="ueditorConfit" name="acceptance" #acceptance></ueditor>
+          </div>
         </div>
 
         <div class="text-center">

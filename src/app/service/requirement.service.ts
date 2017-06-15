@@ -30,4 +30,11 @@ export class RequirementService {
             })
             .catch(util.handleError);
     }
+
+    getProperties(): Observable<{name: string, values: {key: string, value: string}[]}[]> {
+        let rurl = `${BASE_URL}/requirements/properties`;
+        return this.http.get(rurl)
+            .map(util.extractData)
+            .catch(util.handleError);
+    }
 }
