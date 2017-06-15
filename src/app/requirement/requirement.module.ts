@@ -10,13 +10,15 @@ import { RequirementFormComponent } from './requirement-form/requirement-form.co
 import { RequirementViewComponent } from './requirement-view/requirement-view.component';
 import { RequirementListComponent } from './requirement-list/requirement-list.component';
 import { RequirementEditComponent } from './requirement-edit/requirement-edit.component';
+import { ProductPublicModule } from '../product/public/public.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     CuiModule,
-    RequirementRoutingModule
+    RequirementRoutingModule,
+    ProductPublicModule
   ],
   declarations: [
     RequirementFormComponent,

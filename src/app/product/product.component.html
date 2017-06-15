@@ -1,10 +1,6 @@
 <div class="d-flex flex-column">
   <div class="product-topbar d-flex bg-faded py-2 px-3 clearfix sticky-top">
-    <select name="product" id="sel-product" class="custom-select" #selProd (change)="selectOne(selProd.value)">
-      <!-- <option value="">请选择一个产品</option> -->
-      <option *ngFor="let p of products" value="{{p.id}}">{{p.name}}</option>
-      
-    </select>
+    <pms-product-jump-box [activeProduct]="activeProduct" (jumpTo)="changeProduct($event)"></pms-product-jump-box>
     <nav class="nav nav-pills ml-3">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'requirements']">需求</a>
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/product', activeProduct.id, 'activities']">活动</a>

@@ -13,7 +13,8 @@ const routes: Routes = [
   {
     path: 'project',
     loadChildren: 'app/project/project.module#ProjectModule'
-  }
+  },
+  { path: 'test', loadChildren: 'app/test/test.module#TestModule'}
 ];
 
 @NgModule({

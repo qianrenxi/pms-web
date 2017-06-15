@@ -12,7 +12,7 @@ import { Bmod } from '../entity/bmod';
 export class BmodService {
     constructor(private http: Http) { }
 
-    getModules(): Observable<Bmod> {
+    getModules(): Observable<Bmod[]> {
         return this.http.get(`${BASE_URL}/products/1/modules`)
             .map(util.extractData)
             .catch(util.handleError);

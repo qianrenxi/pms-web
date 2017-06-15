@@ -21,6 +21,7 @@ import { BmodService } from '../service/bmod.service';
 import { ModuleTreeComponent } from './module-tree/module-tree.component';
 import { ReleaseListComponent } from './release/release-list/release-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
+import { ProductJumpBoxComponent } from './product-jump-box/product-jump-box.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { ProjectListComponent } from './project-list/project-list.component';
   ],
   declarations: [ProductComponent, ProductHomeComponent, ProductListComponent,
     ProductFormComponent, ProductRequirementListComponent, ProductModuleComponent,
-    ProductViewComponent, ModuleTreeComponent, ReleaseListComponent, ProjectListComponent],
-  providers: [ProductService, BmodService]
+    ProductViewComponent, ModuleTreeComponent, ReleaseListComponent, ProjectListComponent, ProductJumpBoxComponent],
+  providers: [ProductService, BmodService],
+  exports: [ProductJumpBoxComponent]
 })
 export class ProductModule { }

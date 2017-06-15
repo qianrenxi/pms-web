@@ -27,6 +27,8 @@ const routes: Routes = [
       { path: ':projectId/activities', component: ActivityViewComponent },
       { path: ':projectId/docLibs', component: DocumentLibListComponent },
       { path: ':projectId/team', component: MemberListComponent },
+      { path: ':projectId/build', loadChildren: 'app/project/build/build.module#BuildModule'},
+      { path: ':projectId/testtask', loadChildren: 'app/test/test-task/test-task.module#TestTaskModule'}
     ]
   },
 ];
