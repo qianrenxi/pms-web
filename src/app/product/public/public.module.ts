@@ -13,6 +13,6 @@ import { BmodService } from '../../service/bmod.service';
   ],
   declarations: [ProductSelectComponent, BmodSelectComponent],
   exports: [ProductSelectComponent, BmodSelectComponent],
-  providers: [ProductService, BmodService]
+  providers: [ProductService, BmodService],
 })
 export class ProductPublicModule { }

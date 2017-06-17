@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
   selector: 'cui-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent implements OnInit {
   defaultConfig;
@@ -28,6 +28,17 @@ export class SelectComponent implements OnInit {
   ngOnInit() {
     this.config = Object.assign({}, this.defaultConfig, this.config);
   }
+
+  // @HostListener('document:mousedown', ['$event'])
+  // overlayMouseDown(event: MouseEvent) {
+    // console.log(event);
+    // his.close();
+  // }
+
+  // @HostListener('focus', ['$event'])
+  // onFocus(e) {
+  //   console.log(e);
+  // }
 
   select(option: any) {
     this.selected = option;

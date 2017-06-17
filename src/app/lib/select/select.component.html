@@ -14,7 +14,7 @@
     </ul>
   </div>
 </div>
-<div class="mask-layer" *ngIf="open" (click)="close()"></div>
+<div class="overlay" *ngIf="open" (click)="close()"></div>
 
 <select name="{{name}}" class="d-none">
   <option *ngFor="let opt of options" value="opt | objectPath:config.option.value">{{opt | objectPath:config.option.text}}</option>

@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { TreeComponent, TreeNode } from 'angular-tree-component';
 
 import { Bmod } from '../../entity/bmod';
 import { BmodService } from '../../service/bmod.service';
+import { CuiDialog } from '../../lib/dialog/dialog';
 
 @Component({
   selector: 'pms-product-module-tree',
@@ -16,9 +17,13 @@ export class ModuleTreeComponent implements OnInit {
   @ViewChild(TreeComponent)
   private moduleTree: TreeComponent;
 
+  @ViewChild('cofim')
+  private confirm: TemplateRef<any>;
+
   private editingNode;
 
-  constructor(private bmodService: BmodService) { }
+  constructor(private bmodService: BmodService,
+      public dialog: CuiDialog) { }
 
   ngOnInit() {
     this.bmodService.getModules()
@@ -60,6 +65,10 @@ export class ModuleTreeComponent implements OnInit {
 
   delete(e) {
     console.log(e);
+    // this.dialog.open(this.confirm);
+    this.dialog.confirm('sure?', () => {
+      console.log('OK...');
+    });
   }
 
   catchEnter(event) {

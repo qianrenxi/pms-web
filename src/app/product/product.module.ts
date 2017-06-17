@@ -22,6 +22,7 @@ import { ModuleTreeComponent } from './module-tree/module-tree.component';
 import { ReleaseListComponent } from './release/release-list/release-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProductJumpBoxComponent } from './product-jump-box/product-jump-box.component';
+import { DialogModule } from '../lib/dialog/dialog.module';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { ProductJumpBoxComponent } from './product-jump-box/product-jump-box.com
     HttpModule,
     FormsModule,
     CuiModule,
+    DialogModule,
     TreeModule,
     ProductRoutingModule,
     RequirementModule,

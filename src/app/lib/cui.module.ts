@@ -5,12 +5,14 @@ import { CuiCoreModule } from './core/core.module'
 import { PaginationModule } from './pagination/pagination.module';
 import { DataTableModule } from './data-table/data-table.module';
 import { SelectModule } from './select/select.module';
+import { DialogModule } from './dialog/dialog.module';
 
 const CUI_MODULES = [
   CuiCoreModule,
   PaginationModule,
   DataTableModule,
   SelectModule,
+  DialogModule,
 ];
 
 @NgModule({
