@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FixedLayoutComponent } from './layouts/fixed-layout/fixed-layout.component';
+import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: '',
-    children: []
+    path: '', component: FixedLayoutComponent,
+    children: [
+      { path: 'product', loadChildren: 'app/product/product.module#ProductModule' },
+      { path: 'project', loadChildren: 'app/project/project.module#ProjectModule' },
+      { path: 'test', loadChildren: 'app/test/test.module#TestModule' }
+    ]
   },
-  {
-    path: 'product',
-    loadChildren: 'app/product/product.module#ProductModule'
-  },
-  {
-    path: 'project',
-    loadChildren: 'app/project/project.module#ProjectModule'
-  },
-  { path: 'test', loadChildren: 'app/test/test.module#TestModule'}
+
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

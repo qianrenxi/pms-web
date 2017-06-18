@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import './mock';
+import { LayoutsModule } from './layouts/layouts.module';
+import { AccountModule } from './account/account.module';
+import { ErrorModule } from './error/error.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import './mock';
   imports: [
     BrowserModule,
     HttpModule,
+    LayoutsModule,
+    AccountModule,
+    ErrorModule,
     AppRoutingModule,
   ],
   providers: [],
