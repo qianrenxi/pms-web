@@ -1,7 +1,9 @@
 
 export class User {
     id: number;
-    userName: string;
+    username: string;
+    password: string;
     name: string;
     displayName: string;
+    photo: string;
 }

@@ -9,3 +9,4 @@ export * from './activity.mock';
 export * from './project.mock';
 export * from './task.mock';
 export * from './issue.mock';
+export * from './account.mock';

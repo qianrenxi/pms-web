@@ -9,6 +9,7 @@ import './mock';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AccountModule } from './account/account.module';
 import { ErrorModule } from './error/error.module';
+import { APP_CONTEXT_PROVIDER } from './app-context';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { ErrorModule } from './error/error.module';
     ErrorModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [APP_CONTEXT_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@ export class FixedLayoutComponent implements OnInit {
   title = 'PMS';
   isSidebarFold = true;
   navItems = [
-    {name: '我的工作台', icon: 'dashboard', children: [
+    {name: '我的工作台', route: 'dashboard', icon: 'dashboard', children: [
       // {name: '仪表盘', route: 'dashboard'},
       // {name: '待办', route: ''},
       // {name: '任务', route: ''},

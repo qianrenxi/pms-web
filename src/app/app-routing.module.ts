@@ -7,6 +7,8 @@ const routes: Routes = [
   {
     path: '', component: FixedLayoutComponent,
     children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
       { path: 'product', loadChildren: 'app/product/product.module#ProductModule' },
       { path: 'project', loadChildren: 'app/project/project.module#ProjectModule' },
       { path: 'test', loadChildren: 'app/test/test.module#TestModule' }

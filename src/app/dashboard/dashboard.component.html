@@ -1,0 +1,22 @@
+<div class="d-flex flex-column">
+  <div class="product-topbar d-flex bg-faded py-2 px-3 clearfix sticky-top">
+    <nav class="nav nav-pills ml-3">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'home']">概览</a>
+        <a class="nav-link disabled" routerLinkActive="active" [routerLink]="['/dashboard', 'todos']">待办</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'tasks']">任务</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'issues']">问题</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'tests']">测试</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'requirements']">需求</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'projects']">项目</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'activities']">活动</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard', 'profile']">个人信息</a>
+    </nav>
+    <div class="actions ml-auto">
+    </div>
+  </div>
+  <div>
+    <div class="container-fluid mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
