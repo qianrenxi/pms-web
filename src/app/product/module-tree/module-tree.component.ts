@@ -3,7 +3,6 @@ import { TreeComponent, TreeNode } from 'angular-tree-component';
 
 import { Bmod } from '../../entity/bmod';
 import { BmodService } from '../../service/bmod.service';
-import { CuiDialog } from '../../lib/dialog/dialog';
 
 @Component({
   selector: 'pms-product-module-tree',
@@ -22,8 +21,7 @@ export class ModuleTreeComponent implements OnInit {
 
   private editingNode;
 
-  constructor(private bmodService: BmodService,
-      public dialog: CuiDialog) { }
+  constructor(private bmodService: BmodService) { }
 
   ngOnInit() {
     this.bmodService.getModules()
@@ -65,10 +63,6 @@ export class ModuleTreeComponent implements OnInit {
 
   delete(e) {
     console.log(e);
-    // this.dialog.open(this.confirm);
-    this.dialog.confirm('sure?', () => {
-      console.log('OK...');
-    });
   }
 
   catchEnter(event) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PaginationModel } from '../../lib/pagination/pagination.model';
+import { PaginationModel } from 'consoleui';
 
 @Component({
   selector: 'pms-member-list',
@@ -15,11 +15,11 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [
-      {title: '用户', prop: 'user.name'},
-      {title: '角色', prop: 'role.name'},
-      {title: '添加人', prop: 'createdBy.name'},
-      {title: '添加时间', prop: 'createdDate'},
-      {title: '项目贡献工时', prop: ''},
+      {title: '用户', data: 'user.name'},
+      {title: '角色', data: 'role.name'},
+      {title: '添加人', data: 'createdBy.name'},
+      {title: '添加时间', data: 'createdDate'},
+      {title: '项目贡献工时', data: ''},
     ];
   }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectComponent } from './project.component';
-import { CuiModule } from '../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectService } from '../service/project.service';
 import { ProjectFormComponent } from './project-form/project-form.component';

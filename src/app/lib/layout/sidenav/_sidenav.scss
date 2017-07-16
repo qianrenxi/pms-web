@@ -1,0 +1,138 @@
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    overflow: hidden;
+
+    *:focus {
+        outline: none !important;
+    }
+
+    &.fold {
+        transition: all .2s ease, .2s ease;
+        width: 3.5rem;
+
+        a.nav-link {
+            padding: 0 !important;
+            transition: all .2s ease, .2s ease;
+
+            .nav-text {
+                display: none;
+            }
+        }
+
+        ul.cui-submenu-list,
+        ul.cui-menugroup-list {
+            transition: all .2s ease, .2s ease;
+            width: 3.5rem;
+        }
+    }
+
+    &.unfold {
+        transition: all .2s ease, .2s ease;
+        width: 18rem;
+
+        ul.cui-submenu-list,
+        ul.cui-menugroup-list {
+            // transition: all .2s ease, .2s ease;
+            width: 18rem;
+        }
+
+        ul li ul li > a.nav-link {
+            padding-left: 2.5rem;
+            transition: all .2s ease, .2s ease;
+        }
+    }
+
+    .nav-link {
+        padding: 0;
+        height: 3rem;
+        overflow: hidden;
+
+        i.nav-icon {
+            font-size: 1.125rem;
+            padding: 1rem 1.125rem;
+        } 
+        
+        span.nav-text {
+            line-height: 1rem;
+            padding: 1rem 1.125rem;
+            display: inline-block;
+        }
+
+        i.icon-angle {
+            padding: 1rem !important;
+        }
+        
+        &.cui-submenu-title {
+            background-color: #ffffff;
+        }
+    }
+
+
+
+    cui-sidenav-item > li.nav-item > a.nav-link,
+    cui-sidenav-item > a.nav-link {
+        // padding: 0;
+
+        > i.nav-icon, > span.nav-text {
+            padding: 1.125rem 1.125rem;
+            font-size: 1.125rem;
+        }
+
+        > i.nav-icon {
+            + span.nav-text {
+                // padding-left: 0; 
+            }
+        }
+    }
+    
+    ul.subnav {
+        display: flex;
+        flex-direction: column;
+        width: 18rem;
+    }
+
+    &.light {
+        background-color: rgba(255, 255, 255, .5);
+
+        cui-sidenav-item > li.nav-item > a.nav-link,
+        cui-sidenav-item > a.nav-link {
+            // background-color: rgba(255, 255, 255, .5);
+
+            > i.nav-icon, > span.nav-text {
+                color: #333333;
+            }
+
+            > i.nav-icon {
+                color: #666666;
+            }
+
+            &:active, &.active {
+                background-color: rgba(0, 0, 0, .08);
+                border-left: 0.125rem solid #011946;
+                
+                > i.nav-icon {
+                    padding-left: 1rem;
+                }
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, .06);
+                border-left: 0.125rem solid #025AA5;
+                
+                > i.nav-icon {
+                    padding-left: 1rem;
+                }
+            }
+        }
+
+        ul.subnav {
+            background-color: rgba(255, 255, 255, .9);
+        }
+    }
+
+    &.inverse {
+
+    }
+}

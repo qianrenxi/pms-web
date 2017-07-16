@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlanSelectComponent } from './plan-select/plan-select.component';
-import { CuiModule } from '../../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { PlanService } from '../../service/plan.service';
 
 @NgModule({

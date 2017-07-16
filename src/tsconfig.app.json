@@ -4,7 +4,12 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [],
+    "paths": {
+      "consoleui": [
+        "./app/lib/consoleui.module"
+      ]
+    }
   },
   "exclude": [
     "test.ts",

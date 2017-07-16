@@ -1,0 +1,19 @@
+
+<div [ngClass]="{'cui-wizard': true, 'cui-wizard-horizontal': direction == 'horizontal', 'cui-wizard-vertical' : direction == 'vertical'}">
+  <div class="steps">
+    <ul class="nav nav-pills" [ngClass]="{'nav-fill': direction == 'horizontal', 'flex-column' : direction == 'vertical'}">
+      <li *ngFor="let item of steps; let i = index" class="nav-item cui-steps-item" #menuitem
+          [ngClass]="{'active':(i === activeIndex), 'disabled':item.disabled||(i !== activeIndex && readonly)}">
+          <!-- <a *ngIf="!item.routerLink" [href]="item.url||'#'" class="nav-link" (click)="itemClick($event, item, i)" [attr.target]="item.target"> -->
+            <span class="cui-steps-number">{{i + 1}}</span>
+            <span class="cui-steps-title">{{item.label}}</span>
+          <!-- </a> -->
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <ng-content></ng-content>
+  </div>
+</div>
+

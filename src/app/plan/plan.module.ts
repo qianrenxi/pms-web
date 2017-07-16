@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CuiModule } from '../lib'
+import { CuiModule } from 'consoleui'
 import { PlanRoutingModule } from './plan-routing.module';
 
 import { PlanService } from '../service/plan.service';

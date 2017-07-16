@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CuiModule } from './../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { IssueCreateComponent } from './issue-create/issue-create.component';
 import { IssueEditComponent } from './issue-edit/issue-edit.component';

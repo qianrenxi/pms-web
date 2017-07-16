@@ -13,7 +13,7 @@ import { ProductHomeComponent } from './product-home/product-home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductRequirementListComponent } from './product-requirement-list/product-requirement-list.component';
-import { CuiModule } from '../lib';
+import { CuiModule } from 'consoleui';
 import { ProductModuleComponent } from './product-module/product-module.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductService } from '../service/product.service';
@@ -22,7 +22,7 @@ import { ModuleTreeComponent } from './module-tree/module-tree.component';
 import { ReleaseListComponent } from './release/release-list/release-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProductJumpBoxComponent } from './product-jump-box/product-jump-box.component';
-import { DialogModule } from '../lib/dialog/dialog.module';
+import { CuiLayerModule } from 'consoleui';
 
 @NgModule({
   imports: [
@@ -30,7 +30,7 @@ import { DialogModule } from '../lib/dialog/dialog.module';
     HttpModule,
     FormsModule,
     CuiModule,
-    DialogModule,
+    CuiLayerModule,
     TreeModule,
     ProductRoutingModule,
     RequirementModule,
