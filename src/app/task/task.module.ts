@@ -5,7 +5,7 @@ import { TaskViewComponent } from './task-view/task-view.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskRoutingModule } from './task-routing.module';
-import { CuiModule } from '../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { TaskService } from '../service/task.service';
 
 @NgModule({

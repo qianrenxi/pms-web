@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Issue } from '../../entity/issue';
-import { PaginationModel } from '../../lib/pagination/pagination.model';
+import { PaginationModel } from 'consoleui';
 import { IssueService } from '../../service/issue.service';
 
 @Component({
@@ -21,16 +21,16 @@ export class IssueDataTableComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [
-      {title: 'ID', prop: 'id'},
-      {title: '问题标题', prop: 'name', tpl: 'nameColTpl'},
-      {title: '级别', prop: ''},
-      {title: '优先级', prop: ''},
-      {title: '状态', prop: ''},
-      {title: '截止日期', prop: ''},
-      {title: '创建者', prop: ''},
-      {title: '指派给', prop: ''},
-      {title: '解决者', prop: ''},
-      {title: '方案', prop: ''},
+      {title: 'ID', data: 'id'},
+      {title: '问题标题', data: 'name', tpl: 'nameColTpl'},
+      {title: '级别', data: ''},
+      {title: '优先级', data: ''},
+      {title: '状态', data: ''},
+      {title: '截止日期', data: ''},
+      {title: '创建者', data: ''},
+      {title: '指派给', data: ''},
+      {title: '解决者', data: ''},
+      {title: '方案', data: ''},
     ];
 
     this.issueService.getIssues().subscribe(

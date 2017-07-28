@@ -1,4 +1,4 @@
-import { CuiModule } from './../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MemberListComponent } from './member-list/member-list.component';

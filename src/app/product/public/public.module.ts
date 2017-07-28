@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CuiModule } from '../../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { ProductSelectComponent } from './product-select/product-select.component';
 import { ProductService } from '../../service/product.service';
 import { BmodSelectComponent } from './bmod-select/bmod-select.component';

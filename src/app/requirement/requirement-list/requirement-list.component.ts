@@ -22,15 +22,15 @@ export class RequirementListComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [
-      {title: 'ID', prop: 'id'},
-      {title: '需求名称', prop: 'name', tpl: 'nameCol'},
-      {title: '计划', prop: 'plan.name'},
-      // {title: '创建', prop: 'createdBy.displayName'},
-      // {title: '指派', prop: ''},
-      {title: '优先级', prop: 'priority'},
-      {title: '预估(H)', prop: 'estimate'},
-      {title: '状态', prop: 'status'},
-      {title: '阶段', prop: 'stage'},
+      {title: 'ID', data: 'id'},
+      {title: '需求名称', data: 'name', tpl: 'nameCol'},
+      {title: '计划', data: 'plan.name'},
+      // {title: '创建', data: 'createdBy.displayName'},
+      // {title: '指派', data: ''},
+      {title: '优先级', data: 'priority'},
+      {title: '预估(H)', data: 'estimate'},
+      {title: '状态', data: 'status'},
+      {title: '阶段', data: 'stage'},
     ];
 
     this.pagination = new PaginationModel (95, 15, 5);

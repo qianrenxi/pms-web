@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TestTaskListComponent } from './test-task-list/test-task-list.component';
-import { CuiModule } from '../../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { TestTaskRoutingModule } from './test-task-routing.module';
 
 @NgModule({

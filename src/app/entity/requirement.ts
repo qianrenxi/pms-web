@@ -30,7 +30,7 @@ export class Requirement {
     /** 状态 */
     status?: string;
     /** 评审结果 */
-    reviewResult: string;
+    reviewResult?: string;
 
     /** 所属产品 */
     product: {id: number, name: string};

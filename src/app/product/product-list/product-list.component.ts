@@ -18,17 +18,17 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [
-      { title: 'ID', prop: 'id' },
-      { title: '产品名称', prop: 'name', tpl: 'pName' },
-      { title: '产品负责人', prop: 'productLeader.name' },
-      { title: '激活需求', prop: 'requirementActivedCount' },
-      { title: '已变更需求', prop: 'requirementChangedCount' },
-      { title: '草稿需求', prop: 'requirementDraftCount' },
-      { title: '计划数', prop: 'planCount' },
-      { title: '发布数', prop: 'publishCount' },
-      { title: '相关BUG', prop: 'bugCount' },
-      { title: '未解决BUG', prop: 'bugCount' },
-      { title: '未指派BUG', prop: 'bugCount' },
+      { title: 'ID', data: 'id' },
+      { title: '产品名称', data: 'name', tpl: 'pName' },
+      { title: '产品负责人', data: 'productLeader.name' },
+      { title: '激活需求', data: 'requirementActivedCount' },
+      { title: '已变更需求', data: 'requirementChangedCount' },
+      { title: '草稿需求', data: 'requirementDraftCount' },
+      { title: '计划数', data: 'planCount' },
+      { title: '发布数', data: 'publishCount' },
+      { title: '相关BUG', data: 'bugCount' },
+      { title: '未解决BUG', data: 'bugCount' },
+      { title: '未指派BUG', data: 'bugCount' },
     ];
 
     this.productService.getProducts().subscribe(

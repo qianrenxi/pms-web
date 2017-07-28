@@ -1,0 +1,17 @@
+
+<div>
+  <input type="file" name="file" [multiple]="multiple" (change)="fileSelected($event)">
+
+  <button type="button" *ngIf="!auto" [disabled]="!hasFiles()" (click)="upload()" class="btn btn-primary">上传</button>
+</div>
+<div *ngIf="hasFiles()">
+  <div *ngFor="let file of files; let i = index;">
+    <dl>
+      <dt>{{i}}</dt>
+      <dd>{{file.name}}</dd>
+      <dd>{{file.size}}</dd>
+      <dd>{{progress}}</dd>
+    </dl>
+  </div>
+</div>
+{{msgs}}

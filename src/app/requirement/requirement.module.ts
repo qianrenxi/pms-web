@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CuiModule } from '../lib';
+import { CuiModule } from 'consoleui';
 import { UEditorModule } from 'ngx-ueditor';
 import { RequirementRoutingModule } from './requirement-routing.module';
 

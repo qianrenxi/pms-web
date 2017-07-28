@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BuildListComponent } from './build-list/build-list.component';
-import { CuiModule } from '../../lib/cui.module';
+import { CuiModule } from 'consoleui';
 import { BuildRoutingModule } from './build-routing.module';
 
 @NgModule({
