@@ -40,4 +40,16 @@ export class BaseService<T> {
     delete(ids: any[]): Observable<any> {
         return this.httpProxy.delete(this.url, {params: {ids: ids}});
     }
+
+    save(entity: T): Observable<T> {
+        if (!entity) {
+            return Observable.of(null);
+        }
+
+        if (entity['id']) {
+            return this.update(entity);
+        } else {
+            return this.create(entity);
+        }
+    }
 }

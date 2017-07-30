@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from '../../../service/product.service';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../../../entity/product';
 
 @Component({
   selector: 'pms-product-view',
@@ -8,16 +10,14 @@ import { ProductService } from '../../../service/product.service';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit {
-  product: any;
+  product: Product;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.product = {};
-
-    this.productService.getOne(2).subscribe(
-      prod => this.product = prod
-    );
+    this.route.data.subscribe((data: {product: Product}) => {
+      this.product = data.product;
+    });
 
   }
 

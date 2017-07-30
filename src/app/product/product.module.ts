@@ -15,6 +15,7 @@ import { ProductRoutingModule, routedComponents } from './product-routing.module
 import { ProductFormComponent } from './public/product-form/product-form.component';
 import { ModuleTreeComponent } from './public/module-tree/module-tree.component';
 import { ProductJumpBoxComponent } from './public/product-jump-box/product-jump-box.component';
+import { ModuleService } from '../service/module.service';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { ProductJumpBoxComponent } from './public/product-jump-box/product-jump-
     ModuleTreeComponent,
     ProductJumpBoxComponent,
   ],
-  providers: [ProductService, BmodService],
+  providers: [ProductService, BmodService, ModuleService],
   exports: [ProductJumpBoxComponent]
 })
 export class ProductModule { }

@@ -13,36 +13,46 @@ import { ProjectListComponent } from './views/project-list/project-list.componen
 import { ReleaseListComponent } from './views/release';
 import { ActivityViewComponent } from '../activity';
 import { LibListComponent as DocumentLibListComponent } from '../document';
+import { ProductDetailResolver } from './service/product-detail-resolver.service';
 
 
 const routes: Routes = [
     {
-      path: '', component: ProductComponent,
+        path: '', component: ProductComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full'},
-            { path: 'home', component: ProductHomeComponent},
-            { path: 'list', component: ProductListComponent},
-            { path: 'add', component: ProductAddComponent},
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: ProductHomeComponent },
+            { path: 'list', component: ProductListComponent },
+            { path: 'add', component: ProductAddComponent },
 
-            { path: ':productId/view', component: ProductViewComponent },
-            { path: ':productId/edit', component: ProductEditComponent },
-            { path: ':productId/modules', component: ProductModuleComponent},
-            { path: ':productId/plans',
-                loadChildren: 'app/plan/plan.module#PlanModule'},
-            { path: ':productId/requirements', component: ProductRequirementListComponent},
-            { path: ':productId/requirements',
-                loadChildren: 'app/requirement/requirement.module#RequirementModule'},
-            { path: ':productId/activities', component: ActivityViewComponent },
-            { path: ':productId/release', component: ReleaseListComponent },
-            { path: ':productId/projects', component: ProjectListComponent },
-            { path: ':productId/docLibs', component: DocumentLibListComponent},
+            {
+                path: ':productId', resolve: {product: ProductDetailResolver}, children: [
+                    { path: 'view', component: ProductViewComponent },
+                    { path: 'edit', component: ProductEditComponent },
+                    { path: 'modules', component: ProductModuleComponent },
+                    { path: 'activities', component: ActivityViewComponent },
+                    { path: 'release', component: ReleaseListComponent },
+                    { path: 'projects', component: ProjectListComponent },
+                    { path: 'docLibs', component: DocumentLibListComponent },
+                    {
+                        path: 'plans',
+                        loadChildren: 'app/plan/plan.module#PlanModule'
+                    },
+                    { path: 'requirements', component: ProductRequirementListComponent },
+                    {
+                        path: 'requirements',
+                        loadChildren: 'app/requirement/requirement.module#RequirementModule'
+                    },
+                ]
+            },
         ]
     },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+    providers: [ProductDetailResolver]
 })
 export class ProductRoutingModule { }
 

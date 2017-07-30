@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PaginationModel } from 'consoleui';
+import { PaginationModel, CuiPagination } from 'consoleui';
 import { ProductService } from '../../../service/product.service';
 
 @Component({
@@ -11,8 +11,11 @@ import { ProductService } from '../../../service/product.service';
 export class ProductListComponent implements OnInit {
   columns;
   datas;
-  pagination: PaginationModel;
+  pagination: CuiPagination;
   errorMsg;
+
+  params: {};
+  loading = true;
 
   constructor(private productService: ProductService) { }
 
@@ -31,15 +34,47 @@ export class ProductListComponent implements OnInit {
       { title: '未指派BUG', data: 'bugCount' },
     ];
 
-    this.productService.getAllOfPage().subscribe(
-      products => this.datas = products.content,
-      error => this.errorMsg = error
-    );
-
-    this.pagination = new PaginationModel (95, 15, 5);
+    this.loadData();
   }
 
-  edit(id) {
-    console.log('Edit' + id);
+  loadData(page?: CuiPagination) {
+    this.pagination = page;
+
+    this.loading = true;
+    this.productService.getAllOfPage(this.params, this.pagination).subscribe(
+      prods => {
+        this.datas = prods.content;
+        this.pagination = prods;
+        this.loading = false;
+      },
+      error => {
+        this.errorMsg = error;
+        this.loading = false;
+      }
+    );
+  }
+
+  getAll() {
+    this.params = {};
+    if (this.pagination) {
+      this.pagination.number = 0;
+    }
+    this.loadData();
+  }
+
+  getActive() {
+    this.params = { status: 'ACTIVE' };
+    if (this.pagination) {
+      this.pagination.number = 0;
+    }
+    this.loadData();
+  }
+
+  getClosed() {
+    this.params = { status: 'CLOSED' };
+    if (this.pagination) {
+      this.pagination.number = 0;
+    }
+    this.loadData();
   }
 }

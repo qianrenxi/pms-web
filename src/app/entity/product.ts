@@ -24,4 +24,6 @@ export class Product {
     testCaseCount?: number;
     buildCount?: number;
     publishCount?: number;
+
+    isDeleted?: boolean;
 }
