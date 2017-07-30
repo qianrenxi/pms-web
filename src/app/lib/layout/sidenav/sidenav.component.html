@@ -5,6 +5,6 @@
 
 <div class="sidebar-nav" [ngClass]="{'fold': isFold, 'unfold': !isFold}">
   <cui-menu direction="vertical" mode="inline">
-    <cui-sidenav-item *ngFor="let item of navItems" [item]="item"></cui-sidenav-item>
+    <cui-sidenav-item #me *ngFor="let item of navItems; let i = index;" [item]="item" (expanded)="onExpanded(me)"></cui-sidenav-item>
   </cui-menu>
 </div>

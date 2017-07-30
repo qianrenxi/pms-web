@@ -3,7 +3,7 @@
     <input *ngIf="!multiple" #in [attr.type]="type" [attr.id]="inputId" [attr.name]="name"
         [ngStyle]="inputStyle" [class]="inputStyleClass" [ngClass]="'form-control cui-autocomplete-input'" autocomplete="off"
         [attr.placeholder]="placeholder" [attr.size]="size" [attr.maxlength]="maxlength" [attr.tabindex]="tabindex" [readonly]="readonly" [disabled]="disabled"
-        [value]="value"
+        [value]="field ? (value[field] || '') : value"
         (click)="onInputClick($event)" (input)="onInput($event)" (keydown)="onKeydown($event)"
         (focus)="onInputFocus($event)" (blur)="onInputBlur($event)" (change)="onInputChange($event)">
     <ul *ngIf="multiple" #multiContainer class="form-control cui-autocomplete-multiple-container"

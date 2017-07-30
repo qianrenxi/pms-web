@@ -11,7 +11,10 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
       { path: 'product', loadChildren: 'app/product/product.module#ProductModule' },
       { path: 'project', loadChildren: 'app/project/project.module#ProjectModule' },
-      { path: 'test', loadChildren: 'app/test/test.module#TestModule' }
+      { path: 'test', loadChildren: 'app/test/test.module#TestModule' },
+
+      { path: 'org', loadChildren: 'app/org/org.module#OrgModule' },
+      { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' }
     ]
   },
 

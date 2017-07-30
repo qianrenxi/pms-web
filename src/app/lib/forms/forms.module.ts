@@ -20,15 +20,18 @@ import { TreeSelectComponent } from './tree-select/tree-select.component';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { WizardComponent } from './wizard/wizard.component';
 import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component';
+import { ValidatorsModule } from './validators/validators.module';
+import { CuiTreeModule } from '../data/tree/tree.module';
 
 @NgModule({
   imports: [
     CommonModule,
     TreeModule,
     CuiTemplateModule,
-    // BrowserAnimationsModule,
     DynamicFormModule,
-    CuiCoreModule
+    ValidatorsModule,
+    CuiCoreModule,
+    CuiTreeModule
   ],
   declarations: [AutocompleteComponent, InputTextDirective, CheckboxComponent,
     SelectComponent, CalendarComponent, ChipsComponent, InputSwitchComponent, TextareaDirective,
@@ -37,6 +40,7 @@ import { WizardStepComponent } from './wizard/wizard-step/wizard-step.component'
     SelectComponent, CalendarComponent, ChipsComponent, InputSwitchComponent, TextareaDirective,
     ListboxComponent, MultiSelectComponent, PasswordDirective, RadioComponent, TreeSelectComponent,
     DynamicFormModule,
+    ValidatorsModule,
     WizardComponent,
     WizardStepComponent]
 })

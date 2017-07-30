@@ -1,95 +1,64 @@
-/*div.tree div.tree-children::before,
-div.tree::before {
-    content: "";
-    position: absolute;
-    border-left: 1px dotted #23527c;
-    height: 100%;
-    top: -14px;
-    left: 12px
+
+:root .fa-rotate-45 {
+    -webkit-filter: none;
+    filter: none;
 }
 
-div.tree {
-    padding-left: 0;
-    margin-left: -5px
+.fa-rotate-45 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
-div.tree div.tree-children {
-    position: relative;
-    padding-left: 0;
-    margin-left: 16px
+.cui-treenode {
+    & {
+        &-content {
+            line-height: 1.8rem;
+            
+            &.cui-treenode-selectable {
+                cursor: pointer;
+                
+                &:hover:not(.selected) {
+                    background-color: rgba(180, 200, 255, .3);
+                }
+            }
+
+            &.selected {
+                // background-color: $brand-primary;
+                background-color: rgba(120, 200, 255, .5);
+            }
+        }
+
+        &-toggler {
+            cursor: pointer;
+        }
+
+        &-children {
+            padding-left: 1rem;
+        }
+
+    }
+
+    .cui-treenode-chkbox {
+        display: inline-block;
+        cursor: pointer;
+        vertical-align: middle;
+        margin-right: .25em;
+    }
+    .cui-chkbox-box {
+        cursor: pointer;
+
+        width: 1.15em;
+        height: 1.125em;
+        line-height: 1.125em;
+        border-radius: 2px;
+        text-align: center;
+
+        .cui-chkbox-icon {
+            display: block;
+            margin-top: 0.1rem;
+            margin-left: 0.05rem;
+        }
+    }
 }
 
-div.tree div.tree-children::before {
-    left: 5px
-}
-
-div.tree treenode>div>.node-wrapper {
-    margin-left: 24px
-}
-
-div.tree treenode>div>.node-wrapper>.node-content-wrapper {
-    margin-left: 4px
-}
-
-div.tree treenode>div.tree-node-leaf>.node-wrapper {
-    margin-left: 0
-}
-
-div.tree treenode>div::before {
-    content: "";
-    position: absolute;
-    border-bottom: 1px dotted #23527c;
-    width: 7px;
-    margin-top: 12px;
-    left: 7px
-}
-
-div.tree treenode>div .toggle-children-wrapper {
-    width: 13px;
-    height: 13px;
-    border: 1px solid #23527c;
-    position: absolute;
-    left: 15px;
-    margin-top: 5px;
-    margin-left: 0;
-    display: inline-block;
-    background-color: #fff;
-    z-index: 1
-}
-
-div.tree treenode>div .toggle-children-wrapper::before {
-    content: "";
-    display: inline-block;
-    width: 7px;
-    border-top: 1px solid #23527c;
-    position: absolute;
-    top: 5px;
-    left: 2px
-}
-
-div.tree treenode>div .toggle-children-wrapper.toggle-children-wrapper-collapsed::after {
-    content: "";
-    display: inline-block;
-    height: 7px;
-    border-left: 1px solid #23527c;
-    position: absolute;
-    top: 2px;
-    left: 5px
-}
-
-div.tree treenode>div .toggle-children-wrapper .toggle-children {
-    display: none
-}
-
-div.tree treenode>div .node-content-wrapper {
-    margin-left: 4px
-}
-
-div.tree>treenode>div::before {
-    left: 14px
-}
-
-div.tree>treenode>div>.node-wrapper>treenodeexpander>.toggle-children-wrapper {
-    left: 22px
-}
-*/

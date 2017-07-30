@@ -1,0 +1,18 @@
+<div class="d-flex flex-column">
+  <div class="product-topbar d-flex bg-faded py-2 px-3 clearfix sticky-top">
+    <nav class="nav nav-pills ml-3">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'users']">用户</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'dept']">部门</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'todos']">待办</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'logs']">日志</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'permission']">权限</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'activities']">动态</a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/org', 'comp']">公司</a>
+    </nav>
+  </div>
+  <div>
+    <div class="container-fluid mt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

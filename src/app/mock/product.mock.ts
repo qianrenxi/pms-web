@@ -1,8 +1,6 @@
-import * as Mock from 'mockjs';
+import { MockUtil } from './mock-util';
 
-import { BASE_URL } from './mock-config';
-
-Mock.mock(`${BASE_URL}/products`, {
+MockUtil.get(`/api/products`, {
     'products|15': [{
         'id|+1': 1,
         'name': '@ctitle(6, 20)',
@@ -11,7 +9,7 @@ Mock.mock(`${BASE_URL}/products`, {
 });
 
 
-Mock.mock(new RegExp(`${BASE_URL}/products/\\d$`), {
+MockUtil.get(`/api/products/\\d$`, {
     'data': {
         'id': 1,
         'name': '@ctitle(6, 20)',

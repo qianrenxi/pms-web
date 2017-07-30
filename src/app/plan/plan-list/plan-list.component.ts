@@ -14,6 +14,7 @@ export class PlanListComponent implements OnInit {
   plans: Plan[];
   columns;
   pagination;
+  errorMsg;
 
   constructor(
     private planService: PlanService

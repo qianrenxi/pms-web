@@ -30,6 +30,6 @@ export class MenuComponent implements OnInit, AfterViewInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    console.log(this.subMenus);
+    // console.log(this.subMenus);
   }
 }

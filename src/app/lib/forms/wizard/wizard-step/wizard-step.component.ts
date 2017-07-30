@@ -10,6 +10,7 @@ export class WizardStepComponent implements OnInit {
   @Input() active: boolean;
   @Input() complete: boolean;
   @Input() setpIndex: number;
+  @Input() valid: boolean;
 
   constructor() { }
 

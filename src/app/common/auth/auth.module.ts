@@ -6,14 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { RouterModule } from '@angular/router';
-import { SpkHttpModule } from '../http/spk-http.module';
+// import { SpkHttpModule } from '../http/spk-http.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    SpkHttpModule,
+    // SpkHttpModule,
   ],
   declarations: [LoginComponent],
   exports: [LoginComponent],

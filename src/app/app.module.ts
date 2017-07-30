@@ -10,6 +10,8 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { AccountModule } from './account/account.module';
 import { ErrorModule } from './error/error.module';
 import { APP_CONTEXT_PROVIDER } from './app-context';
+import { PmsCommonModule } from './common/pms-common.module';
+import { CuiModule } from 'consoleui';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { APP_CONTEXT_PROVIDER } from './app-context';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    CuiModule,
+    PmsCommonModule,
     LayoutsModule,
     AccountModule,
     ErrorModule,

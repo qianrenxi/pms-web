@@ -1,6 +1,7 @@
 import { CuiLayerRef } from '../layer-ref';
+import { OverlayConfig } from '../../core/overlay/overlay-config';
 
-export interface LayerConfig {
+export interface LayerConfig extends OverlayConfig {
     title?: string;
     content?: string | any;
     shade?: boolean;

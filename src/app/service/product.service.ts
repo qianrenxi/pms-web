@@ -4,30 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { BASE_URL } from './config';
 import { Product } from '../entity/product';
 
 import * as util from './utils';
+import { BaseService } from '../common/service/base.service';
+import { HttpProxy } from '../common/utils/http-utils';
 
 @Injectable()
-export class ProductService {
-    constructor(private http: Http) { }
-
-    getProducts(): Observable<Product[]> {
-        let prodListUrl = BASE_URL + '/products';
-        return this.http.get(prodListUrl)
-            .map((resp: Response) => {
-                return resp.json()['products'];
-            })
-            .catch(util.handleError);
-    }
-
-    getOne(id: number): Observable<Product> {
-        let url = `${BASE_URL}/products/${id}`;
-        return this.http.get(url)
-            .map((resp: Response) => {
-                return resp.json()['data'];
-            })
-            .catch(util.handleError);
+export class ProductService extends BaseService<Product> {
+    constructor(protected httpProxy: HttpProxy) {
+        super(httpProxy.http, httpProxy, '/api/products');
     }
 }

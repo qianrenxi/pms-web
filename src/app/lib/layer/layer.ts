@@ -102,7 +102,7 @@ export class CuiLayer {
 
     private createOverlay(config: LayerConfig): OverlayRef {
         // config
-        return this.overlay.create();
+        return this.overlay.create(config);
     }
 
     private attachLayerContainer(overlay: OverlayRef): LayerContainer {

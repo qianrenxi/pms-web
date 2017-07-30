@@ -9,7 +9,7 @@ import { Requirement } from '../../entity/requirement';
   styleUrls: ['./requirement-form.component.scss']
 })
 export class RequirementFormComponent implements OnInit {
-  properties = {};
+  properties;
   requirement: Requirement = new Requirement();
 
   ueditorConfit = {

@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChildren, QueryList } from '@angular/core';
+import { SidenavItemComponent } from './sidenav-item/sidenav-item.component';
+import { SidebarNavComponent } from '../sidebar-nav/sidebar-nav.component';
 
 @Component({
   selector: 'cui-sidenav',
@@ -6,12 +8,13 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  private _isOpen = true;
   private _isFold = false;
 
   @Input() navItems;
   @Input() color = 'light'; // 'light' / 'inverse'
   @Output() itemClick = new EventEmitter();
+
+  @ViewChildren(SidenavItemComponent) submenus: QueryList<SidenavItemComponent>;
 
   constructor() { }
 
@@ -20,10 +23,6 @@ export class SidenavComponent implements OnInit {
 
   get isFold() {
     return this._isFold;
-  }
-
-  get isOpen() {
-    return this._isOpen;
   }
 
   toggleFold() {
@@ -38,19 +37,13 @@ export class SidenavComponent implements OnInit {
     this._isFold = false;
   }
 
-  toggle() {
-    this._isOpen = !this._isOpen;
-  }
-
-  open() {
-    this._isOpen = true;
-  }
-
-  close() {
-    this._isOpen = false;
-  }
-
   onItemClick(item) {
     this.itemClick.emit(item);
+  }
+
+  onExpanded(submenu) {
+    if (this.submenus) {
+      this.submenus.filter(it => it != submenu).forEach(it => it.close());
+    }
   }
 }

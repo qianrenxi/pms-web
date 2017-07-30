@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-requirement-list.component.scss']
 })
 export class ProjectRequirementListComponent implements OnInit {
+  sideOpen = true;
 
   constructor() { }
 

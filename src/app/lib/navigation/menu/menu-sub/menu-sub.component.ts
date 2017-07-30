@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
@@ -12,6 +12,8 @@ export class MenuSubComponent extends MenuItemComponent implements OnInit {
   @Input() title: string;
   @Input() icon: string;
 
+  @Output() expanded: EventEmitter<any> = new EventEmitter();
+
   isOpen: boolean = false;
 
   constructor() {
@@ -22,6 +24,7 @@ export class MenuSubComponent extends MenuItemComponent implements OnInit {
   }
 
   open() {
+    this.expanded.emit();
     this.isOpen = true;
   }
 
@@ -31,6 +34,9 @@ export class MenuSubComponent extends MenuItemComponent implements OnInit {
 
   toggleOpen() {
     this.isOpen = !this.isOpen;
+    if (this.isOpen) {
+      this.expanded.emit();
+    }
   }
 
 }

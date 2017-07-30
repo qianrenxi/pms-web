@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import { GlobalPostionStrategy } from './position/global-position-strategy';
 import { PositionStrategy } from './position/position-strategy';
+import { OverlayConfig } from './overlay-config';
 
 export class OverlayRef implements PortalHost {
     private backdropElement: HTMLElement = null;
@@ -17,7 +18,8 @@ export class OverlayRef implements PortalHost {
     constructor(
         private portalHost: PortalHost,
         private pane: HTMLElement,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        private overlayConfig: OverlayConfig
     ) {}
 
     get overlayElement(): HTMLElement {
@@ -29,7 +31,9 @@ export class OverlayRef implements PortalHost {
 
         this.updatePostion();
 
-        this.attachBackdrop();
+        if (this.overlayConfig.shade) {
+            this.attachBackdrop();
+        }
 
         this.attachments.next();
 

@@ -11,7 +11,7 @@
 </li>-->
 
 
-<cui-submenu *ngIf="item.children && item.children.length > 0" [title]="item.name" [icon]="item.icon">
+<cui-submenu *ngIf="item.children && item.children.length > 0" [title]="item.name" [icon]="item.icon" (expanded)="onExpanded()">
   <cui-sidenav-item *ngFor="let i of item.children" [item]="i"></cui-sidenav-item>
 </cui-submenu>
 <cui-menuitem *ngIf="!item.children" [routerLink]="[item.route]" [icon]="item.icon">{{item.name}}</cui-menuitem>

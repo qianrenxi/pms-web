@@ -14,8 +14,8 @@ export class ProductSelectComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(
-      products => this.products = products
+    this.productService.getAllOfPage().subscribe(
+      products => this.products = products.content
     );
   }
 

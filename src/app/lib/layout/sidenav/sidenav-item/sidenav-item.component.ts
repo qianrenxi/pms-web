@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, QueryList } from '@angular/core';
+import { MenuSubComponent } from '../../../navigation/menu/menu-sub/menu-sub.component';
 
 @Component({
   selector: 'cui-sidenav-item',
@@ -6,10 +7,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./sidenav-item.component.scss']
 })
 export class SidenavItemComponent implements OnInit {
-  subClose = false;
 
   @Input() item;
   @Output() itemClick = new EventEmitter();
+
+  @Output() expanded: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild(MenuSubComponent) submenu: MenuSubComponent;
+
 
   constructor() { }
 
@@ -20,22 +25,19 @@ export class SidenavItemComponent implements OnInit {
     return this.item && this.item.children && this.item.children.length > 0;
   }
 
-  onClick(item) {
-    if (this.item === item && this.hasChildren()) {
-      this.toggleSub();
+  close() {
+    if (this.submenu) {
+      this.submenu.close();
     }
-    this.itemClick.emit(item);
   }
 
-  toggleSub() {
-    this.subClose = !this.subClose;
+  open() {
+    if (this.submenu) {
+      this.submenu.open();
+    }
   }
 
-  closeSub() {
-    this.subClose = true;
-  }
-
-  openSub() {
-    this.subClose = false;
+  onExpanded() {
+    this.expanded.emit();
   }
 }

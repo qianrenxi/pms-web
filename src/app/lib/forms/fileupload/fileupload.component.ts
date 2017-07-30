@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'cui-fileupload',
@@ -12,6 +12,8 @@ export class FileuploadComponent implements OnInit {
   @Input() withCredentials: boolean = true;
   @Input() multiple: boolean;
   @Input() auto: boolean;
+
+  @Output() uploadComplete = new EventEmitter();
 
   public files: File[] = [];
   public progress: number = 0;
@@ -74,12 +76,13 @@ export class FileuploadComponent implements OnInit {
           // upload ok
           try {
             let result = JSON.parse(xhr.response);
-            console.log(result);
+            // console.log(result);
             this.msgs = JSON.stringify(result);
+            this.uploadComplete.emit(result);
           } catch (e) {
 
           }
-          console.log('Upload success');
+          // console.log('Upload success');
         } else {
           // upload error
           console.error('Upload error');

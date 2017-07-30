@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor } from './http-interceptor';
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
-import { CuiLayer } from 'consoleui';
+// import { CuiLayer } from 'consoleui';
 import { handleError } from '../utils/http-utils';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private dialog: CuiLayer) { }
+    // constructor(private dialog: CuiLayer) { }
 
     afterRequest(response: Response): Observable<Response> | Response {
         if (!response.ok) {
@@ -15,11 +15,11 @@ export class ErrorInterceptor implements HttpInterceptor {
             try {
                 handleError(response).subscribe(() => {},
                     error => {
-                        this.dialog.msg(error);
+                        // this.dialog.msg(error);
                     }
                 );
             } catch (error) {
-                this.dialog.msg(error);
+                // this.dialog.msg(error);
             }
         }
         return response;

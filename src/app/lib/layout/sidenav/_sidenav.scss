@@ -1,16 +1,23 @@
 .sidebar-nav {
+    $sidebar-fold-width: 3.5rem;
+    $sidebar-unfold-width: 16rem;
+
     display: flex;
     flex-direction: column;
-    width: 18rem;
+    width: $sidebar-unfold-width;
     overflow: hidden;
 
     *:focus {
         outline: none !important;
     }
 
+    .cui-submenu-list {
+        background-color: #fff;
+    }
+
     &.fold {
         transition: all .2s ease, .2s ease;
-        width: 3.5rem;
+        width: $sidebar-fold-width;
 
         a.nav-link {
             padding: 0 !important;
@@ -24,51 +31,60 @@
         ul.cui-submenu-list,
         ul.cui-menugroup-list {
             transition: all .2s ease, .2s ease;
-            width: 3.5rem;
+            width: $sidebar-fold-width;
         }
     }
 
     &.unfold {
         transition: all .2s ease, .2s ease;
-        width: 18rem;
+        width: $sidebar-unfold-width;
 
         ul.cui-submenu-list,
         ul.cui-menugroup-list {
             // transition: all .2s ease, .2s ease;
-            width: 18rem;
+            width: $sidebar-unfold-width;
         }
 
         ul li ul li > a.nav-link {
-            padding-left: 2.5rem;
+            padding-left: 1.5rem;
             transition: all .2s ease, .2s ease;
         }
     }
 
     .nav-link {
         padding: 0;
-        height: 3rem;
+        height: 3.25rem;
         overflow: hidden;
 
         i.nav-icon {
             font-size: 1.125rem;
-            padding: 1rem 1.125rem;
+            padding: 1.125rem 1.125rem;
         } 
         
         span.nav-text {
             line-height: 1rem;
-            padding: 1rem 1.125rem;
+            padding: 1.125rem 1.125rem;
             display: inline-block;
         }
 
         i.icon-angle {
-            padding: 1rem !important;
+            padding: 1.125rem 1rem !important;
+            right: 0 !important;
         }
         
         &.cui-submenu-title {
-            background-color: #ffffff;
+            // background-color: #ffffff;
+            border-top: solid 1px #dce0e5;
         }
     }
 
+    .cui-menuitem > .nav-link,
+    .cui-submenu > .cui-submenu-title {
+        &:hover {
+            background-color: #F6F9FB;
+            color: #3984b8;
+        }
+    }
 
 
     cui-sidenav-item > li.nav-item > a.nav-link,
@@ -90,7 +106,7 @@
     ul.subnav {
         display: flex;
         flex-direction: column;
-        width: 18rem;
+        width: $sidebar-unfold-width;
     }
 
     &.light {

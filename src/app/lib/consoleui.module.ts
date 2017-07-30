@@ -12,6 +12,7 @@ import { CuiFormsModule } from './forms/forms.module';
 import { CuiLayerModule } from './layer/layer.module';
 import { CuiNavigationModule } from './navigation/navigation.module';
 import { CuiUeditorModule } from './forms/ueditor/ueditor.module';
+import { CuiTreeModule } from './data/tree/tree.module';
 
 const CUI_MODULES = [
   CuiCoreModule,
@@ -25,6 +26,7 @@ const CUI_MODULES = [
   CuiLayerModule,
   CuiNavigationModule,
   CuiUeditorModule,
+  CuiTreeModule
 ];
 
 @NgModule({
@@ -42,3 +44,4 @@ export * from './layer';
 export * from './data';
 export * from './navigation';
 export * from './forms/dynamic-form';
+export * from './forms/validators';

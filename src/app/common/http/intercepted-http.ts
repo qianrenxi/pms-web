@@ -12,6 +12,7 @@ import {
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/observable/of';
 
 import { HttpInterceptor } from './http-interceptor';
 import { RequestParams } from './request-params';

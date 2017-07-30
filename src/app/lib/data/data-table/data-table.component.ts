@@ -19,6 +19,9 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   @Input() pagination: CuiPagination;
   @Input() selectType?: string;
   @Input() rowActionTitle?: string;
+  @Input() loading?: boolean;
+  @Input() isComplexSearch?: boolean;
+  @Input() dynamicColumns?: boolean;
   // input, Output searchForm
   @Output() reload = new EventEmitter();
   @Output() select = new EventEmitter();
@@ -27,6 +30,11 @@ export class DataTableComponent implements OnInit, AfterContentInit {
 
   @ContentChild('rowActions') rowActions: TemplateRef<any>;
   @ContentChildren(ColTplDirective) _colTpls: QueryList<ColTplDirective>;
+
+  @ContentChild('complexSearch') complexSearch: TemplateRef<any>;
+  @ContentChild('simpleSearch') simpleSearch: TemplateRef<any>;
+  @ContentChild('listTools') listTools: TemplateRef<any>;
+  @ContentChild('actionGroup') actionGroup: TemplateRef<any>;
 
   columnsVisible: Column[];
 
@@ -83,6 +91,10 @@ export class DataTableComponent implements OnInit, AfterContentInit {
     this.ids = ids;
 
     this.select.emit(this.ids);
+  }
+
+  toggleComplexSearch() {
+    this.isComplexSearch = !this.isComplexSearch;
   }
 
 }

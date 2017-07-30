@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FixedLayoutComponent implements OnInit {
   title = 'PMS';
-  isSidebarFold = true;
+  isSidebarFold = false;
   navItems = [
     {name: '我的工作台', route: 'dashboard', icon: 'dashboard', children: [
       // {name: '仪表盘', route: 'dashboard'},
@@ -63,7 +63,7 @@ export class FixedLayoutComponent implements OnInit {
       // {name: '组织', route: ''},
       // {name: '自定义', route: ''},
     ]},
-    {name: '组织', route: 'comp', icon: 'sitemap', children: [
+    {name: '组织', route: 'org', icon: 'sitemap', children: [
       // {name: '用户', route: ''},
       // {name: '部门', route: ''},
       // {name: '待办', route: ''},

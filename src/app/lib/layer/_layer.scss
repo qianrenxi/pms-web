@@ -11,8 +11,9 @@
     -ms-flex-direction: column;
     flex-direction: column;
     background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
+    // border: 1px solid rgba(0, 0, 0, 0.125);
+    // border-radius: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 2px 4px;
 }
 
 .cui-layer-title {
@@ -21,10 +22,11 @@
     margin-bottom: 0;
     background-color: #f7f7f9;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    // ox-shadow: rgba(0, 0, 0, 0.25) 1px 2px 4px;
 
-    &:first-child {
+    /*&:first-child {
         border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-    }
+    }*/
 }
 
 .cui-layer-content {

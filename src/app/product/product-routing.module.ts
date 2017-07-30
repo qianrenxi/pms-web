@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductComponent } from './product.component';
-import { ProductHomeComponent } from './product-home/product-home.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductFormComponent } from './product-form/product-form.component';
-import { ProductRequirementListComponent } from './product-requirement-list/product-requirement-list.component';
-import { ProductModuleComponent } from './product-module/product-module.component';
-import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductComponent } from './views/product/product.component';
+import { ProductHomeComponent } from './views/product-home/product-home.component';
+import { ProductListComponent } from './views/product-list/product-list.component';
+import { ProductAddComponent } from './views/product-add/product-add.component';
+import { ProductEditComponent } from './views/product-edit/product-edit.component';
+import { ProductRequirementListComponent } from './views/product-requirement-list/product-requirement-list.component';
+import { ProductModuleComponent } from './views/product-module/product-module.component';
+import { ProductViewComponent } from './views/product-view/product-view.component';
+import { ProjectListComponent } from './views/project-list/project-list.component';
+import { ReleaseListComponent } from './views/release';
 import { ActivityViewComponent } from '../activity';
-import { ReleaseListComponent } from './release';
 import { LibListComponent as DocumentLibListComponent } from '../document';
-import { ProjectListComponent } from './project-list/project-list.component';
 
 
 const routes: Routes = [
@@ -21,10 +22,10 @@ const routes: Routes = [
             { path: '', redirectTo: 'home', pathMatch: 'full'},
             { path: 'home', component: ProductHomeComponent},
             { path: 'list', component: ProductListComponent},
-            { path: 'add', component: ProductFormComponent},
+            { path: 'add', component: ProductAddComponent},
 
             { path: ':productId/view', component: ProductViewComponent },
-            { path: ':productId/edit', component: ProductFormComponent },
+            { path: ':productId/edit', component: ProductEditComponent },
             { path: ':productId/modules', component: ProductModuleComponent},
             { path: ':productId/plans',
                 loadChildren: 'app/plan/plan.module#PlanModule'},
@@ -49,6 +50,11 @@ export const routedComponents = [
     ProductComponent,
     ProductHomeComponent,
     ProductListComponent,
+    ProductAddComponent,
+    ProductEditComponent,
+    ProductRequirementListComponent,
     ProductModuleComponent,
     ProductViewComponent,
+    ProjectListComponent,
+    ReleaseListComponent,
 ];

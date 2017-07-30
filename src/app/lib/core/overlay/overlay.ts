@@ -3,6 +3,7 @@ import { OverlayContainer, OVERLAY_CONTAINER_PROVIDER } from './overlay-containe
 import { OverlayRef } from './overlay-ref';
 import { DomPortalHost } from '../portal/dom-portal-host';
 import { OverlayPositionBuilder } from './position/overlay-position-builder';
+import { OverlayConfig } from './overlay-config';
 
 let nextUniqueId = 0;
 
@@ -18,8 +19,8 @@ export class Overlay {
         private ngZone: NgZone
     ) {}
 
-    create(): OverlayRef {
-        return this.createOverlayRef(this.createPaneElement());
+    create(overlayConfig: OverlayConfig): OverlayRef {
+        return this.createOverlayRef(this.createPaneElement(), overlayConfig);
     }
 
     position(): OverlayPositionBuilder {
@@ -40,9 +41,9 @@ export class Overlay {
         return new DomPortalHost(pane, this.componentFactoryResolver, this.appRef, this.injector);
     }
 
-    private createOverlayRef(pane: HTMLElement): OverlayRef {
+    private createOverlayRef(pane: HTMLElement, overlayConfig: OverlayConfig): OverlayRef {
         let portalHost = this.createPortalHost(pane);
-        return new OverlayRef(portalHost, pane, this.ngZone);
+        return new OverlayRef(portalHost, pane, this.ngZone, overlayConfig);
     }
 }
 

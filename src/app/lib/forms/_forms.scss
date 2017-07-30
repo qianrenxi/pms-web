@@ -82,7 +82,7 @@
 // 值是否有效
 .ng-valid{}
 
-.ng-invalid:not(form), .ng-invalid:not(.form-group){
+.-ng-invalid:not(form), .-ng-invalid:not(.form-group){
     &.ng-touched, &.ng-dirty  {
         $color: $brand-danger;
         &.form-control, .form-control {
