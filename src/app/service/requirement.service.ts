@@ -7,32 +7,18 @@ import 'rxjs/add/operator/catch';
 import * as util from './utils';
 import { BASE_URL } from './config';
 import { Requirement } from '../entity/requirement';
+import { BaseService } from '../common/service/base.service';
+import { HttpProxy } from '../common/utils/http-utils';
 
 
 @Injectable()
-export class RequirementService {
-    constructor(private http: Http) { }
-
-    getRequirements(filter: any): Observable<Requirement[]> {
-        let rurl = `${BASE_URL}/requirements`;
-        return this.http.get(rurl)
-            .map((resp: Response) => {
-                return resp.json()['data'];
-            })
-            .catch(util.handleError);
-    }
-
-    getRequirement(id: number): Observable<Requirement> {
-        let rurl = `${BASE_URL}/requirements/${id}`;
-        return this.http.get(rurl)
-            .map((resp: Response) => {
-                return resp.json()['data'];
-            })
-            .catch(util.handleError);
+export class RequirementService extends BaseService<Requirement> {
+    constructor(private httpAdaptor: HttpProxy) {
+        super(httpAdaptor.http, httpAdaptor, '/api/requirements');
     }
 
     getProperties(): Observable<{name: string, values: {key: string, value: string}[]}[]> {
-        let rurl = `${BASE_URL}/requirements/properties`;
+        let rurl = `/api/requirements/properties`;
         return this.http.get(rurl)
             .map(util.extractData)
             .catch(util.handleError);

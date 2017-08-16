@@ -5,14 +5,15 @@ import { ProductSelectComponent } from './product-select/product-select.componen
 import { ProductService } from '../../service/product.service';
 import { BmodSelectComponent } from './bmod-select/bmod-select.component';
 import { BmodService } from '../../service/bmod.service';
+import { ModuleSelectComponent } from './module-select/module-select.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CuiModule,
   ],
-  declarations: [ProductSelectComponent, BmodSelectComponent],
-  exports: [ProductSelectComponent, BmodSelectComponent],
+  declarations: [ProductSelectComponent, BmodSelectComponent, ModuleSelectComponent],
+  exports: [ProductSelectComponent, BmodSelectComponent, ModuleSelectComponent],
   providers: [ProductService, BmodService],
 })
 export class ProductPublicModule { }

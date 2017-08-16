@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RequirementService } from '../../service/requirement.service';
-import { Requirement } from '../../entity/requirement';
+import { RequirementService } from '../../../service/requirement.service';
+import { Requirement } from '../../../entity/requirement';
+import { Product } from '../../../entity/product';
 
 @Component({
   selector: 'pms-requirement-form',
@@ -11,6 +12,7 @@ import { Requirement } from '../../entity/requirement';
 export class RequirementFormComponent implements OnInit {
   properties;
   requirement: Requirement = new Requirement();
+  product: Product;
 
   ueditorConfit = {
     toolbars: [['FullScreen', 'Source', 'Undo', 'Redo', 'Bold' ]],
@@ -21,13 +23,17 @@ export class RequirementFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private requirementService: RequirementService
+    private requirementService: RequirementService,
   ) { }
 
   ngOnInit() {
     this.requirementService.getProperties().subscribe(
       properties => this.properties = properties
     );
+
+    this.route.data.subscribe((data: { product: Product }) => {
+      this.product = data.product;
+    });
   }
 
   backup() {

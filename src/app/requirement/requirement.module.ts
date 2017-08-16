@@ -8,10 +8,10 @@ import { RequirementRoutingModule } from './requirement-routing.module';
 
 import { RequirementService } from '../service/requirement.service';
 
-import { RequirementFormComponent } from './requirement-form/requirement-form.component';
-import { RequirementViewComponent } from './requirement-view/requirement-view.component';
-import { RequirementListComponent } from './requirement-list/requirement-list.component';
-import { RequirementEditComponent } from './requirement-edit/requirement-edit.component';
+import { RequirementFormComponent } from './views/requirement-form/requirement-form.component';
+import { RequirementViewComponent } from './views/requirement-view/requirement-view.component';
+import { RequirementListComponent } from './views/requirement-list/requirement-list.component';
+import { RequirementEditComponent } from './views/requirement-edit/requirement-edit.component';
 import { ProductPublicModule } from '../product/public/public.module';
 import { PlanPublicModule } from '../plan/public/public.module';
 

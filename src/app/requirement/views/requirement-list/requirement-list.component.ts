@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PaginationModel } from '../../lib';
+import { PaginationModel } from 'consoleui';
 
-import { Requirement } from '../../entity/requirement';
-import { RequirementService } from '../../service/requirement.service';
+import { Requirement } from '../../../entity/requirement';
+import { RequirementService } from '../../../service/requirement.service';
 
 @Component({
   selector: 'pms-requirement-list',
@@ -35,7 +35,7 @@ export class RequirementListComponent implements OnInit {
 
     this.pagination = new PaginationModel (95, 15, 5);
 
-    this.requirementService.getRequirements(this.filter)
+    this.requirementService.getAll(this.filter)
       .subscribe(
         requirements => this.requirements = requirements,
         err => this.errorMsg = err

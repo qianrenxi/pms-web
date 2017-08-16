@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Requirement } from '../../entity/requirement';
-import { RequirementService } from '../../service/requirement.service';
+import { Requirement } from '../../../entity/requirement';
+import { RequirementService } from '../../../service/requirement.service';
 
 @Component({
   selector: 'pms-requirement-view',
@@ -17,7 +17,7 @@ export class RequirementViewComponent implements OnInit {
   ngOnInit() {
     this.requirement = new Requirement();
 
-    this.requirementService.getRequirement(1)
+    this.requirementService.getOne(1)
       .subscribe(
         requirement => this.requirement = requirement,
         error => this.errorMsg = error
