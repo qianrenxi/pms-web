@@ -5,7 +5,7 @@
       <button type="button" class="btn btn-secondary" (click)="toList()">返回</button>
     </div>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <div class="alert alert-danger" *ngIf="err">err</div>
     <pms-user-form [user]="user" (submit)="onSubmit($event)" (cancel)="toList()"></pms-user-form>
   </div>

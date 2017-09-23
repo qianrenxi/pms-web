@@ -9,7 +9,7 @@
       <button class="btn btn-outline-primary" [routerLink]="['/product/add']"><i class="fa fa-plus"></i> 添加产品</button>
     </div>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
     <cui-data-table [columns]="columns" [data]="datas" [pagination]="pagination" [loading]="loading" selectType="checkbox"
         (reload)="loadData($event)">

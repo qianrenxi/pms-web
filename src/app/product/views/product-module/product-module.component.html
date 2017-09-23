@@ -2,7 +2,7 @@
   <div class="card-header">
     <span class="font-weight-bold">模块维护</span>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <div class="row">
       <div class="col-md-6 col-lg-6">
         <div class="card">
@@ -15,7 +15,7 @@
             </div>
             <span>{{product.name}}::模块维护</span>
           </div>
-          <div class="card-block">
+          <div class="card-body">
             <!-- <pms-product-module-tree></pms-product-module-tree> -->
             <cui-tree [value]="modules" [config]="treeConfig" (selectionChange)="onSelectChange($event)" selectionMode="single"></cui-tree>
           </div>

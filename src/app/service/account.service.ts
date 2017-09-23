@@ -11,9 +11,12 @@ import * as util from './utils';
 export class AccountService {
     constructor(private http: Http) { }
 
-    login(username: string, passwd: string): Observable<User> {
-        let rurl = `${BASE_URL}/account/login`;
-        return this.http.post(rurl, {username: username, passwd: passwd})
+    login(username: string, passwd: string): Observable<any> {
+        let rurl = `${BASE_URL}/login`;
+        let formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', passwd);
+        return this.http.post(rurl, formData)
             .map(util.extractData)
             .catch(util.handleError);
     }

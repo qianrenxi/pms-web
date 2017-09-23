@@ -23,14 +23,14 @@
       </div>
     </div>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <div class="with-side" [ngClass]="{'side-hide': !sideOpen}">
       <div class="side">
         <div class="side-handle" (click)='sideOpen = !sideOpen'><i class="fa" [ngClass]="{'fa-caret-left': sideOpen, 'fa-caret-right': !sideOpen}"></i></div>
         <div class="side-body">
           <div class="card">
             <div class="card-header"><i class="fa fa-cube"></i> ProductName</div>
-            <div class="card-block">
+            <div class="card-body">
               <pms-product-module-tree></pms-product-module-tree>
             </div>
           </div>

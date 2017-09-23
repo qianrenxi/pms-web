@@ -27,6 +27,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "mockjs": "^1.0.1-beta3",
+    "ng-zorro-antd": "^0.5.1",
     "ngx-ueditor": "^1.0.4",
     "object-path": "^0.11.4",
     "popper.js": "^1.12.5",
