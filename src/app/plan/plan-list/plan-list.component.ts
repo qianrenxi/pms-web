@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plan } from '../../entity/plan';
 import { PlanService } from '../../service/plan.service';
 
-import { PaginationModel } from '../../lib';
+import { PaginationModel } from 'consoleui';
 
 @Component({
   selector: 'pms-plan-list',

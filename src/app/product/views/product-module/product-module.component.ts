@@ -7,8 +7,7 @@ import { CuiLayer, CuiTreeNode } from 'consoleui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Module } from '../../../entity/module';
 import { ModuleService } from '../../../service/module.service';
-import { CuiLayerRef } from '../../../lib/layer/layer-ref';
-import { CuiTreeConfig } from '../../../lib/data/tree/defs/defs';
+import { CuiLayerRef, CuiTreeConfig } from 'consoleui';
 
 @Component({
   selector: 'pms-product-module',

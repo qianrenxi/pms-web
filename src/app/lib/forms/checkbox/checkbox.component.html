@@ -1,8 +1,0 @@
-
-<label>
-  <input type="checkbox" #cb [attr.id]="inputId" [name]="name" [value]="value" [checked]="checked"
-      [ngClass]="{'cui-state-focus': focused}" [disabled]="disabled" [attr.tabindex]="tabindex"
-      (focus)="onFocus($event)" (blur)="onBlur($event)" (change)="handleChange($event)">
-  <span *ngIf="label">{{label}}</span>
-  <ng-content></ng-content>
-</label>

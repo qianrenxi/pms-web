@@ -1,15 +1,1 @@
-
-@import 'variables';
-@import 'customs';
-
-@import 'reset';
-
-@import 'layouts';
-
-@import 'table';
-// @import 'tree';
-
-@import 'overlay';
-@import 'dialog';
-
-@import '../../app/lib/consoleui.scss';
+@import '../../consoleui/consoleui.scss';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../entity/product';
 import { ProductService } from '../../../service/product.service';
-import { CuiLayer } from '../../../lib/layer/layer';
+import { CuiLayer } from 'consoleui';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

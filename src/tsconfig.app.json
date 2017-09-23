@@ -7,7 +7,7 @@
     "types": [],
     "paths": {
       "consoleui": [
-        "./app/lib/consoleui.module"
+        "./consoleui/consoleui.module"
       ]
     }
   },

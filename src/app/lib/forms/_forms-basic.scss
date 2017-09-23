@@ -1,9 +1,0 @@
-
-.fa {
-    & {
-        &-field-required:before {
-            content: "*";
-            color: $brand-danger;
-        }
-    }
-}
