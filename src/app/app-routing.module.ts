@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' }
+      { path: '', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
+      { path: 'product', loadChildren: 'app/product/product.module#ProductModule' },
     ]
   },
 ];

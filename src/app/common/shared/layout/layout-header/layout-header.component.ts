@@ -17,7 +17,6 @@ export class LayoutHeaderComponent implements OnInit {
     this.authServer.getCurrentUser().subscribe(
       user => {
         this.user = user;
-        console.log(user)
       }
     );
   }

@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <nz-card [nzBordered]="false" [nzNoHovering]="true" [nzLoading]="false">
+    <ng-template #title>添加产品</ng-template>
+    <ng-template #extra></ng-template>
+    <ng-template #body>
+      <form nz-form [formGroup]="productForm" (ngSubmit)="_submitForm($event, productForm.value)" [nzLayout]="'horizontal'">
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+            <label for="name" nz-form-item-required>产品名称</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="16" [nzXs]="24" [nzHasFeedback]="'true'" [nzValidateStatus]="getFormControl('name')">
+            <nz-input type="text" formControlName="name" [nzId]="'name'"></nz-input>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row style="margin-bottom:8px;">
+          <div nz-form-control nz-col [nzSpan]="16" [nzOffset]="4">
+            <button nz-button [nzSize]="'large'" [nzType]="'primary'">保存</button>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </nz-card>
+
+</div>
