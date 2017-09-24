@@ -1,0 +1,10 @@
+
+html, body {
+    font-size: 12px;
+}
+
+a, button {
+    &:not(:disabled), &:not([disabled]), &:not(.disabled) {
+        cursor: pointer;
+    }
+}

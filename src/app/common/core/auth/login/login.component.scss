@@ -1,0 +1,22 @@
+.full-page {
+  width: 100%;
+  height: 100%;
+
+  background-color: #122173;
+}
+
+.login-form {
+  max-width: 300px;
+
+  [nz-form-item]:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}

@@ -1,0 +1,31 @@
+.ant-layout-header {
+  background: none;
+  padding: 0;
+  height: auto;
+  line-height: normal;
+}
+
+:host ::ng-deep .logo {
+  height: 32px;
+  background: #333;
+  border-radius: 6px;
+  margin: 16px;
+}
+
+:host ::ng-deep .nav-text {
+    margin-left: 0.8rem;
+}
+
+ :host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+  display: none;
+}
+
+ :host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+  display: none;
+}
+
+ :host ::ng-deep .ant-layout-sider-collapsed .anticon,
+ :host ::ng-deep .ant-layout-sider-collapsed .fa {
+  font-size: 16px;
+  margin-left: 8px;
+}
