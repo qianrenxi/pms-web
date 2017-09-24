@@ -19,16 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "pms",
       "styles": [
-        "styles/bootstrap/bootstrap.scss",
-        "styles/consoleui/consoleui.scss",
-        "../node_modules/font-awesome/css/font-awesome.css",
         "styles.scss"
       ],
-      "scripts": [
-        "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/popper.js/dist/umd/popper.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -43,13 +36,16 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json"
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
@@ -59,9 +55,6 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {},
-    "serve": {
-      "port": 4203
-    }
+    "component": {}
   }
 }

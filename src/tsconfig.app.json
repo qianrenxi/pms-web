@@ -2,14 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
+    "baseUrl": "./",
     "module": "es2015",
-    "baseUrl": "",
-    "types": [],
-    "paths": {
-      "consoleui": [
-        "./consoleui/consoleui.module"
-      ]
-    }
+    "types": []
   },
   "exclude": [
     "test.ts",
