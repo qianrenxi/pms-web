@@ -1,0 +1,8 @@
+
+<form nz-form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <div *ngFor="let field of fields">
+    <pms-dynamic-form-item [field]="field" [form]="form"></pms-dynamic-form-item>
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">提交</button>
+</form>

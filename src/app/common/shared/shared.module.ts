@@ -5,6 +5,7 @@ import { ErrorModule } from './error/error.module';
 import { CuiModule } from 'consoleui';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgZorroAntdModule.forRoot(),
     CuiModule,
     LayoutModule,
-    ErrorModule
+    ErrorModule,
+    DynamicFormModule
   ],
   declarations: [],
   exports: [
@@ -25,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgZorroAntdModule,
     CuiModule,
     LayoutModule,
-    ErrorModule
+    ErrorModule,
+    DynamicFormModule
   ]
 })
 export class SharedModule { }

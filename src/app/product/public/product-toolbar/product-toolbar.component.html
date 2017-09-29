@@ -1,6 +1,8 @@
 <div class="d-flex flex-row bg-faded py-2 px-3 clearfix sticky-top p-toolbar">
-  <select name="" id="">
-    <option value="">选择一个产品</option>
+  <select name="activedProduct" [(ngModel)]="activeProductId">
+    <option *ngFor="let prod of products" [value]="prod.id">
+      {{prod.name}}
+    </option>
   </select>
   
   <nav class="nav nav-pills ml-3">

@@ -3,42 +3,108 @@
     <ng-template #title>添加产品</ng-template>
     <ng-template #extra></ng-template>
     <ng-template #body>
-      <form nz-form [formGroup]="productForm" (ngSubmit)="_submitForm($event, productForm.value)" [nzLayout]="'horizontal'">
+      <nz-alert *ngIf="err" [nzType]="'error'"
+          [nzMessage]="err" [nzShowIcon]="true" [nzCloseable]="true"></nz-alert>
+      
+      <form nz-form [formGroup]="productForm" [nzLayout]="'horizontal'">
         <div nz-form-item nz-row>
-          <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+          <div nz-form-label nz-col [nzSpan]="4">
             <label for="name" nz-form-item-required>产品名称</label>
           </div>
-          <div nz-form-control nz-col [nzSm]="16" [nzXs]="24" [nzHasFeedback]="'true'" [nzValidateStatus]="getFormControl('name')">
-            <nz-input type="text" formControlName="name" [nzId]="'name'"></nz-input>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-input formControlName="name" nzPlaceHolder="请输入产品名称" nzSize="large"></nz-input>
           </div>
         </div>
-        <div nz-row>
-          <div nz-col [nzSm]="12" [nzXs]="24">
-            <div nz-form-item nz-row>
-              <div nz-form-label nz-col [nzSm]="8" [nzXs]="24">
-                <label for="name" nz-form-item-required>产品名称</label>
-              </div>
-              <div nz-form-control nz-col [nzSm]="12" [nzXs]="24" [nzHasFeedback]="'true'">
-                <nz-input type="text" [nzId]="'name'"></nz-input>
-              </div>
-            </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="code" nz-form-item-required>产品代码</label>
           </div>
-
-          <div nz-col [nzSm]="12" [nzXs]="24" [nzPull]="2">
-            <div nz-form-item nz-row>
-              <div nz-form-label nz-col [nzSm]="8" [nzXs]="24">
-                <label for="name" nz-form-item-required>产品名称</label>
-              </div>
-              <div nz-form-control nz-col [nzSm]="12" [nzXs]="24" [nzHasFeedback]="'true'">
-                <nz-input type="text" [nzId]="'name'"></nz-input>
-              </div>
-            </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-input formControlName="code" nzPlaceHolder="请输入产品代码" nzSize="large"></nz-input>
           </div>
         </div>
 
-        <div nz-form-item nz-row style="margin-bottom:8px;">
-          <div nz-form-control nz-col [nzSpan]="16" [nzOffset]="4">
-            <button nz-button [nzSize]="'large'" [nzType]="'primary'">保存</button>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="productLeader.id" nz-form-item-required>产品负责人</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-select formControlName="productLeader.id" nzPlaceHolder="请选择产品负责人" [nzAllowClear]="true" nzSize="large"
+              (nzSearchChange)="_leaderSearchChange($event)" [nzNotFoundContent]="'没有找到用户'" [nzShowSearch]="true">
+              <nz-option *ngFor="let item of _LEADERS" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="testLeader.id">测试负责人</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-select formControlName="testLeader.id" nzPlaceHolder="请选择产品负责人" [nzAllowClear]="true" nzSize="large"
+              (nzSearchChange)="_leaderSearchChange($event)" [nzNotFoundContent]="'没有找到用户'" [nzShowSearch]="true">
+              <nz-option *ngFor="let item of _LEADERS" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="publishLeader.id">发布负责人</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-select formControlName="publishLeader.id" nzPlaceHolder="请选择产品负责人" [nzAllowClear]="true" nzSize="large"
+              (nzSearchChange)="_leaderSearchChange($event)" [nzNotFoundContent]="'没有找到用户'" [nzShowSearch]="true">
+              <nz-option *ngFor="let item of _LEADERS" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="type">产品类型</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-select formControlName="type" nzPlaceHolder="" nzSize="large">
+              <nz-option *ngFor="let item of _types" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="description">产品描述</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-input formControlName="description" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'请输入产品描述'"></nz-input>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+            <label for="accessControl">访问控制</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16">
+            <nz-radio-group formControlName="accessControl" [nzSize]="'large'">
+              <label *ngFor="let item of _accessControls" nz-radio [nzValue]="item.value" [nzDisabled]="item.disabled" class="d-block">
+                    <span>{{item.label}}</span>
+                </label>
+            </nz-radio-group>
+          </div>
+        </div>
+
+        <div nz-form-item nz-row>
+          <div nz-col [nzSpan]="16" [nzOffset]="4">
+            <button nz-button (click)="save()" [nzType]="'primary'">
+                <span>保存</span>
+            </button>
+            <button nz-button (click)="cancel()" [nzType]="'default'">
+                <span>取消</span>
+            </button>
           </div>
         </div>
       </form>

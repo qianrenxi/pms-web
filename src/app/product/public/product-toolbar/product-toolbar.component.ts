@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductApiService } from '../../../common/api/product-api.service';
+import { Product } from '../../../common/entity/product';
 
 @Component({
   selector: 'pms-product-toolbar',
@@ -7,16 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductToolbarComponent implements OnInit {
 
+  products: Product[];
+  activeProductId;
   activeProduct;
 
-  constructor() { }
+  constructor(private productApi: ProductApiService) { }
 
   ngOnInit() {
-    this.activeProduct = {id: 1};
+    this.productApi.getAllOfPage().subscribe(
+      data => {
+        this.products = data.content;
+        this.activeProductId = this.products && this.products.length > 0 ? this.products[0].id : null;
+      }
+    );
   }
 
   get navs() {
-    if (this.activeProduct) {
+    if (this.activeProductId) {
+      this.activeProduct = this.products.find(it => it.id == this.activeProductId);
       return [
         { title: '需求', routerLink: ['/product', this.activeProduct.id, 'requirements'] },
         { title: '活动', routerLink: ['/product', this.activeProduct.id, 'activities'] },

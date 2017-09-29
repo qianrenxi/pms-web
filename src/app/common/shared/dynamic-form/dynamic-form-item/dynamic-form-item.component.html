@@ -1,0 +1,17 @@
+<div nz-form-item nz-row [formGroup]="form">
+  <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+    <label [attr.for]="field.key" nz-form-item-required>{{field.label}}</label>
+  </div>
+  <div nz-form-control nz-col [nzSm]="16" [nzXs]="24" [ngSwitch]="field.controlType">
+    <ng-container *ngSwitchCase="'text'">
+      <nz-input [id]="field.key" [nzType]="field.type" [formControlName]="field.key"></nz-input>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'dropdown'">
+      <select [id]="field.key" [formControlName]="field.key">
+        <option *ngFor="let opt of field.options" [value]="opt.value">{{opt.label}}</option>
+      </select>
+    </ng-container>
+    <div nz-form-explain *ngIf="!isValid">{{field.label}} 是必填项</div>
+  </div>
+</div>
