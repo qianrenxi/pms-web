@@ -10,6 +10,6 @@ import { ProductPublicModule } from './public/public.module';
     ProductRoutingModule,
     ProductPublicModule
   ],
-  declarations: [...routedComponents]
+  declarations: [...routedComponents, ]
 })
 export class ProductModule { }

@@ -1,0 +1,142 @@
+<form nz-form [formGroup]="requirementForm" [nzLayout]="'horizontal'">
+  <div class="row">
+    <div class="col">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8">
+          <label for="product.id" nz-form-item-required>所属产品</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <pms-product-select formControlName="product.id"></pms-product-select>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="module.id">所属模块</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <pms-module-select formControlName="module.id" [productId]="_productId"></pms-module-select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8">
+          <label for="plan.id">所属计划</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <pms-plan-select formControlName="plan.id" [productId]="_productId"></pms-plan-select>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label for="source">需求来源</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="6">
+          <!-- <nz-select formControlName="source">
+                  <nz-option nzLabel="客户" nzValue="customer"></nz-option>
+                </nz-select> -->
+          <pms-attribute-select formControlName="source" group="requirement" code="source"></pms-attribute-select>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8" class="pl-1">
+          <nz-input formControlName="sourceRemark" [nzPlaceHolder]="'需求来源说明'">
+            <ng-template #addOnBefore>来源说明</ng-template>
+          </nz-input>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="8">
+          <label for="assignTo.id">由谁评审</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <pms-user-select formControlName="assignTo.id"></pms-user-select>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6"></div>
+        <div nz-form-control nz-col [nzSpan]="14">
+            <label nz-checkbox formControlName="needReview">
+                <span>需要评审</span>
+            </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="name" nz-form-item-required>需求名称</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="14" [nzHasFeedback]="'true'" [nzValidateStatus]="getFormControl('name')">
+      <nz-input formControlName="name" nzPlaceHolder="请输入需求名称（需求名称不能重复）"></nz-input>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="2" class="pl-1">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon2">优先级</span>
+        <pms-attribute-select formControlName="priority" group="common" code="priority" style="flex: 1 1 auto;"></pms-attribute-select>
+      </div>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="2" class="pl-1">
+      <nz-input formControlName="estimate" [nzPlaceHolder]="'时'">
+        <ng-template #addOnBefore>预计</ng-template>
+      </nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="description" nz-form-item-required>需求描述</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <nz-input formControlName="description" [nzType]="'textarea'" [nzRows]="'6'" [nzPlaceHolder]="'请输入需求明细'"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row class="my-2">
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="acceptance">验收标准</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <nz-input formControlName="acceptance" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'请输入需求验收标准'"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="tracking">跟踪者</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <pms-user-select formControlName="tracking" [multiple]="true"></pms-user-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="keywords">关键词</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <nz-input formControlName="keywords" [nzPlaceHolder]="'请输入关键词以方便检索'"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-col [nzSpan]="18" [nzOffset]="4">
+      <button type="button" class="btn btn-primary" (click)="_save($event, false)"><i class="fa fa-save"></i> 保存</button>
+      <button *ngIf="_isCreate" type="button" class="btn btn-primary" (click)="_save($event, true)"><i class="fa fa-save"></i> 并添加下一条</button>
+      <button type="button" class="btn btn-light" (click)="_cancel($event)">取消</button>
+    </div>
+  </div>
+</form>

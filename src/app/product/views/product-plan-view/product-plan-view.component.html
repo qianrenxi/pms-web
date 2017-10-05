@@ -1,0 +1,118 @@
+<div class="my-4 mx-3 bg-white">
+  <nz-card [nzNoHovering]="true">
+    <ng-template #title>
+      <span class="badge badge-dark">{{plan.id}}</span>
+      <span>{{plan.name}}</span>
+      <span class="badge badge-pill badge-info"> {{plan.startDate | date: 'yyyy-MM-dd'}} - {{plan.endDate | date: 'yyyy-MM-dd'}}</span>
+    </ng-template>
+    <ng-template #extra>
+      <ng-container *ngTemplateOutlet="actions"></ng-container>
+    </ng-template>
+    <ng-template #body>
+      <nz-tabset nzSize="small" [nzAnimated]="{inkBar: true, tabPane: false}">
+        <nz-tab>
+          <ng-template #nzTabHeading>
+            <i class="fa fa-lightbulb-o"></i> <span>需求</span>
+          </ng-template>
+          <div>
+            <ng-container *ngTemplateOutlet="requirements"></ng-container>
+          </div>
+        </nz-tab>
+        <nz-tab>
+          <ng-template #nzTabHeading>
+            <i class="fa fa-bug"></i> <span>问题</span>
+          </ng-template>
+          <div>
+            <ng-container *ngTemplateOutlet="issues"></ng-container>
+          </div>
+        </nz-tab>
+        <nz-tab>
+          <ng-template #nzTabHeading>
+            <i class="fa fa-flag-o"></i> <span>计划详情</span>
+          </ng-template>
+          <div>
+            <ng-container *ngTemplateOutlet="planInfo"></ng-container>
+          </div>
+        </nz-tab>
+      </nz-tabset>
+    </ng-template>
+  </nz-card>
+
+</div>
+
+
+<ng-template #actions>
+  <button type="button" class="btn btn-link" disabled>提需求</button>
+  <button type="button" class="btn btn-link" disabled>关联需求</button>
+  <button type="button" class="btn btn-link" disabled>关联问题</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../', 'edit']">编辑</button>
+  <button type="button" class="btn btn-link" (click)="delete()">删除</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../../']">返回</button>
+</ng-template>
+
+
+<ng-template #requirements>
+  <cui-data-table [columns]="requirementColumns" [data]="requirements?.content" [pagination]="requirements">
+    <ng-template #listTools>
+      <button type="button" class="btn btn-primary">提需求</button>
+      <button type="button" class="btn btn-primary">关联需求</button>
+    </ng-template>
+
+    <ng-template cuiColTpl="actions">
+      <a class="text-primary ml-2" title="取消关联"><i class="fa fa-lg fa-unlink"></i></a>
+    </ng-template>
+  </cui-data-table>
+</ng-template>
+
+
+<ng-template #issues>
+  <cui-data-table [columns]="issueColumns" [data]="issues?.content" [pagination]="issues">
+    <ng-template #listTools>
+      <button type="button" class="btn btn-primary">关联问题</button>
+    </ng-template>
+
+    <ng-template cuiColTpl="actions">
+      <a class="text-primary ml-2" title="取消关联"><i class="fa fa-lg fa-unlink"></i></a>
+    </ng-template>
+  </cui-data-table>
+</ng-template>
+
+
+<ng-template #planInfo>
+  <section>
+    <h5 class="mb-3">基本信息</h5>
+    <dl class="row plan-base-info">
+      <dt class="col">名称</dt>
+      <dd class="col">{{plan.name}}</dd>
+      <dd class="w-100"></dd>
+
+      <dt class="col">开始日期</dt>
+      <dd class="col">{{plan.startDate | date: 'yyyy-MM-dd'}}</dd>
+      <dd class="w-100"></dd>
+
+      <dt class="col">结束日期</dt>
+      <dd class="col">{{plan.endDate | date: 'yyyy-MM-dd'}}</dd>
+      <dd class="w-100"></dd>
+    </dl>
+  </section>
+
+  <section class="mt-4">
+    <h5 class="mb-3">描述</h5>
+    <div>
+      {{plan.description}}
+    </div>
+  </section>
+
+  <section class="mt-4">
+    <div class="mb-3">
+      <h5 class="d-inline-block">历史记录</h5>
+      <a class="ml-2"><i class="fa fa-lg fa-sort"></i></a>
+      <a class="ml-1"><i class="fa fa-lg fa-plus-square-o"></i></a>
+    </div>
+    <div>
+      <div>
+        1. 2017-09-23 10:23 由 <a>张三</a> 创建
+      </div>
+    </div>
+  </section>
+</ng-template>

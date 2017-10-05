@@ -6,7 +6,9 @@ export class Plan {
     endDate: Date;
     description?: string;
 
-    product: {id: number, name: string};
+    // product: {id: number, name: string};
+    productId?: number;
+    productName?: string;
 
     // TODO: 添加父子计划的业务
 }

@@ -1,3 +1,4 @@
+import { WidgetModule } from './widget/widget.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from './layout/layout.module';
@@ -16,7 +17,8 @@ import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
     CuiModule,
     LayoutModule,
     ErrorModule,
-    DynamicFormModule
+    DynamicFormModule,
+    WidgetModule
   ],
   declarations: [],
   exports: [
@@ -28,7 +30,8 @@ import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
     CuiModule,
     LayoutModule,
     ErrorModule,
-    DynamicFormModule
+    DynamicFormModule,
+    WidgetModule
   ]
 })
 export class SharedModule { }

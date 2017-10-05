@@ -1,0 +1,16 @@
+    <nz-select
+    nzAllowClear
+    [nzMode]="multiple ? 'multiple' : null"
+    [nzPlaceHolder]="'请输入用户名或姓名搜索'"
+    [nzFilter]="false"
+    [(ngModel)]="_value"
+    (ngModelChange)="onChange($event)"
+    (nzSearchChange)="searchChange($event)"
+    [nzNotFoundContent]="'无法找到'"
+    [nzShowSearch]="true">
+    <nz-option
+      *ngFor="let u of _users"
+      [nzLabel]="u.displayName"
+      [nzValue]="u.id">
+    </nz-option>
+  </nz-select>

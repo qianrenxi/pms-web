@@ -1,0 +1,251 @@
+<div class="my-4 mx-3 bg-white">
+  <nz-card [nzNoHovering]="true">
+    <ng-template #title>
+      <div class="d-inline-block mt-2 pt-2">
+          <span class="badge badge-dark">{{requirement.id}}</span>
+          <span>{{_currSpec?.name}}</span>
+          <ng-container *ngIf="requirement.version > 1">
+              <span class="mx-2"><i class="fa fa-angle-right"></i></span>
+              <nz-select name="currVer" [nzSize]="'small'" [(ngModel)]="_currVersion" (ngModelChange)="loadSpec($event)">
+                <nz-option
+                  *ngFor="let ver of _versions"
+                  [nzLabel]="'V' + ver"
+                  [nzValue]="ver">
+                </nz-option>
+              </nz-select>
+          </ng-container>
+      </div>
+    </ng-template>
+    <ng-template #extra>
+      <ng-container [ngTemplateOutlet]="actions"></ng-container>
+    </ng-template>
+    <ng-template #body>
+      <div class="row">
+        <div class="col- order-2" style="width: 360px;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="mb-2">基本信息</h5>
+
+              <form nz-form [nzLayout]="'horizontal'">
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="product.id" nz-form-item-required>所属产品</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <a>{{requirement.productName}}</a>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="module.id">所属模块</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <a>{{requirement.moduleName}}</a>
+
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="plan.id">所属计划</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <a>{{requirement.planName}}</a>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="source">需求来源</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.source}}</span>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="sourceRemark">来源备注</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.sourceRemark}}</span>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="status">当前状态</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.status}}</span>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="priority">优先级</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.priority}}</span>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="estimate">预计工时</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.estimate}}</span>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="keywords">关键词</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.keywords}}</span>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="copyTo">抄送给</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <span>{{requirement.copyTo}}</span>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <!-- end card -->
+
+          <div class="card mt-3">
+            <div class="card-body">
+              <h5 class="mb-2">需求的一生</h5>
+
+              <form nz-form [nzLayout]="'horizontal'">
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="createdBy">创建者</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <a>{{requirement?.createdByDisplayName}}</a>
+                  </div>
+                </div>
+
+                <div nz-form-item nz-row>
+                  <div nz-form-label nz-col [nzSpan]="6">
+                    <label for="">指派给</label>
+                  </div>
+                  <div nz-form-control nz-col [nzSpan]="16">
+                    <a>{{requirement?.assignToDisplayName}}</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end card -->
+
+          <div class="card mt-3">
+            <div class="card-body">
+              <h5 class="mb-2">其他相关</h5>
+
+              <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                  <label class="text-right">相关需求</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="16">
+                  <a>关联需求</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end card -->
+        </div>
+        <div class="col order-1">
+          <form nz-form>
+            <div nz-form-item>
+              <div nz-form-control>
+                <h4>{{_currSpec?.name}}</h4>
+              </div>
+            </div>
+
+            <div nz-form-item class="mt-3">
+              <div nz-form-label>
+                <label for="description">需求描述</label>
+              </div>
+              <div nz-form-control>
+                {{_currSpec?.description}}
+              </div>
+            </div>
+
+            <div nz-form-item class="mt-3">
+              <div nz-form-label>
+                <label for="acceptance">验收标准</label>
+              </div>
+              <div nz-form-control>
+                {{_currSpec?.acceptance}}
+              </div>
+            </div>
+
+            <div nz-form-item class="mt-3">
+              <div nz-form-label>
+                <label for="remark">附件</label>
+              </div>
+              <div nz-form-control>
+
+              </div>
+            </div>
+
+            <div nz-form-item class="mt-3">
+              <div nz-form-control class="text-center">
+                <ng-container [ngTemplateOutlet]="actions"></ng-container>
+              </div>
+            </div>
+          </form>
+
+          <div *ngIf="_showRemark">
+            <div nz-form-item class="mt-3">
+                <div nz-form-label>
+                    <label for="remark">备注</label>
+                </div>
+                <div nz-form-control>
+                    <nz-input id="remark" name="remark" [(ngModel)]="remark" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'备注'"></nz-input>
+                </div>
+            </div>
+            <div class="mt-3">
+              <button type="button" class="btn btn-primary" (click)="saveRemark()">保存</button>
+              <button type="button" class="btn btn-light" (click)="hideRemark()">取消</button>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <pms-requirement-change-log [requirementId]="requirement.id"></pms-requirement-change-log>
+          </div>
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </ng-template>
+  </nz-card>
+
+</div>
+
+<ng-template #actions>
+  <button type="button" class="btn btn-link" [routerLink]="['../', 'change']">变更</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../', 'review']">评审</button>
+  <button type="button" class="btn btn-link" (click)="openSubdivide($event)">细分</button>
+  <button type="button" class="btn btn-link" (click)="openClose($event)">关闭</button>
+  <button type="button" class="btn btn-link" disabled>用例</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../', 'edit']">编辑</button>
+  <button type="button" class="btn btn-link" (click)="toggleRemark()">备注</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../', 'copy']">复制</button>
+  <button type="button" class="btn btn-link" (click)="delete()">删除</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../../']">返回</button>
+  <button type="button" class="btn btn-link" [disabled]="!near?.prev" (click)="prev()">上一条</button>
+  <button type="button" class="btn btn-link" [disabled]="!near?.next" (click)="next()">下一条</button>
+</ng-template>

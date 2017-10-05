@@ -8,7 +8,8 @@ export class Requirement {
     /** 验收标准 */
     acceptance?: string;
     /** 关键词 */
-    keyword?: string;
+    keywords?: string;
+    version?: number;
 
     // 动态可配置属性
     /** 优先级 */
@@ -31,19 +32,35 @@ export class Requirement {
     status?: string;
     /** 评审结果 */
     reviewResult?: string;
+    needReview?: boolean;
 
     /** 所属产品 */
-    product: {id: number, name: string};
+    // product: {id: number, name: string};
+    productId?: number;
+    productName?: string;
     /** 所属模块 */
-    productModule: {id: number, name: string};
+    // productModule: {id: number, name: string};
+    moduleId?: number;
+    moduleName?: string;
     /** 所属计划 */
-    plan: {id: number, name: string};
+    // plan: {id: number, name: string};
+    planId?: number;
+    planName?: string;
+
+    /** 指派给 */
+    assignToId?: number;
+    assignToDisplayName?: string;
 
     // 统计
     /** 任务数 */
     taskCount: number;
     /** bug数 */
-    bugCount: number;
+    issueCount: number;
     /** 用例数 */
     caseCount: number;
+
+    createdById?: number;
+    createdByDisplayName?: string;
+    lastModifiedById?: number;
+    lastModifiedByDisplayName?: string;
 }

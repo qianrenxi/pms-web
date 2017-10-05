@@ -1,5 +1,5 @@
+import { Module } from './module';
 import { Product } from './product';
-import { Bmod } from './bmod';
 import { Plan } from './plan';
 import { Project } from './project';
 import { Requirement } from './requirement';
@@ -12,11 +12,11 @@ export class Issue {
     description: string;
 
     product?: Product;
-    bmod?: Bmod;
+    module?: Module;
     plan?: Plan;
     type?: string; // {代码错误、界面优化、设计缺陷、配置相关、安装部署、安全相关、性能问题、标准规范、测试脚本、代码改进、其他等}
     severity?: number; // 严重程度
-    pri?: number; // 优先级
+    priority?: number; // 优先级
     status?: string; // {激活、已解决、已关闭}
     affirmed?: boolean; // 是否确认
     assignedTo?: User;

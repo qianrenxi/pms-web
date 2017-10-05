@@ -13,7 +13,7 @@ export class FormDataUtil {
                 }
             } else {
                 if (obj[it] instanceof Date) {
-
+                    formData.append(it, obj[it].getTime());
                 } else if (obj[it] && Object.keys(obj[it]).findIndex( itx => itx == 'id') > -1) {
                     formData.append(`${it}.id`, obj[it]['id']);
                 }

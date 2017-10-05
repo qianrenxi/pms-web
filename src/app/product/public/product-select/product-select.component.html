@@ -1,0 +1,16 @@
+<nz-select
+  nzAllowClear
+  [nzPlaceHolder]="'请输入产品名称搜索'"
+  [nzFilter]="false"
+  [(ngModel)]="_value"
+  (ngModelChange)="onChange($event)"
+  (nzSearchChange)="searchChange($event)"
+  [nzNotFoundContent]="'无法找到'"
+  [nzShowSearch]="true">
+
+  <nz-option
+    *ngFor="let prod of _products"
+    [nzLabel]="prod.name"
+    [nzValue]="prod.id">
+  </nz-option>
+</nz-select>

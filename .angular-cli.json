@@ -20,6 +20,7 @@
       "prefix": "pms",
       "styles": [
         "../node_modules/font-awesome/scss/font-awesome.scss",
+        "styles/antd/antd.scss",
         "styles/bootstrap/bootstrap.scss",
         "styles/consoleui/consoleui.scss",
         "styles/pms/pms.scss",

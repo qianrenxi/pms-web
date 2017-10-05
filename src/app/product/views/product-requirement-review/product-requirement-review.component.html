@@ -1,0 +1,107 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <div class="container">
+    <nz-card [nzNoHovering]="true">
+      <ng-template #title>
+        <span class="badge badge-dark">{{requirement.id}}</span>
+        <a [routerLink]="['../', 'view']">{{requirement.name}}</a>
+        <span class="mx-2"><i class="fa fa-angle-right"></i></span>
+        <span>评审</span>
+      </ng-template>
+      <ng-template #extra></ng-template>
+      <ng-template #body>
+        <form nz-form [formGroup]="reviewForm" [nzLayout]="'horizontal'">
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+              <label for="reviewedDate">评审时间</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="8">
+              <nz-datepicker formControlName="reviewedDate" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+              <label for="reviewedResult">评审结果</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="8">
+              <nz-select formControlName="reviewedResult">
+                <nz-option *ngFor="let item of _REVIEW_RESULTS" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+                </nz-option>
+              </nz-select>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+              <label for="assignToId" nz-form-item-required>指派给</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="8">
+              <pms-user-select formControlName="assignToId"></pms-user-select>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+              <label for="reviewedBy" nz-form-item-required>由谁评审</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="16">
+                <pms-user-select formControlName="reviewedBy"></pms-user-select>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+              <label for="remark">备注</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="16">
+              <nz-input formControlName="remark" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="'备注'"></nz-input>
+            </div>
+          </div>
+
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+              <label>检查影响</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="16">
+              <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    <span>影响的项目</span>
+                  </ng-template>
+                  <span>暂无</span>
+                </nz-tab>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    <span>影响的问题</span>
+                  </ng-template>
+                  <span>暂无</span>
+                </nz-tab>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    <span>影响的用例</span>
+                  </ng-template>
+                  <span>暂无</span>
+                </nz-tab>
+              </nz-tabset>
+            </div>
+          </div>
+
+          <div nz-row class="mt-3">
+            <div nz-col [nzSpan]="24" class="text-center">
+              <button type="button" class="btn btn-primary" (click)="onSave($event)">保存</button>
+              <button type="button" class="btn btn-light" (click)="onCancel($event)">取消</button>
+            </div>
+          </div>
+
+        </form>
+
+        <div class="mt-4">
+            <pms-requirement-change-log [requirementId]="requirement.id"></pms-requirement-change-log>
+          </div>
+      </ng-template>
+    </nz-card>
+
+
+
+  </div>
+</div>

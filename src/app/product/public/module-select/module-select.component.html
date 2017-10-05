@@ -1,0 +1,9 @@
+<nz-cascader
+  [nzPlaceHolder]="'请选择一个模块'"
+  [nzChangeOnSelect]="true"
+  [nzOptions]="_modules"
+  [nzValueProperty]="'id'"
+  [nzLabelProperty]="'name'"
+  [(ngModel)]="_selection"
+  (ngModelChange)="selectionChange($event)">
+</nz-cascader>

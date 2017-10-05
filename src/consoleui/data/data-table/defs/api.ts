@@ -11,6 +11,7 @@ export interface Column {
     width?: number | string;
     style?: string;
     styleClass?: string;
+    defaultValue?: any;
 }
 
 export interface DataTebleConfig {

@@ -1,0 +1,48 @@
+<div class="my-4 mx-3">
+  <nz-card [nzBordered]="false" [nzNoHovering]="true" style="max-width: 28rem;">
+    <ng-template #title>
+      <span>{{product?.name}} : [模块]</span>
+    </ng-template>
+    <ng-template #extra>
+      <a (click)="openAdd()"><i class="anticon anticon-folder-add"></i></a>
+    </ng-template>
+    <ng-template #body>
+      <div class="d-none">
+        <a><i class="anticon anticon-folder-add"></i></a>
+        <a><i class="anticon anticon-edit"></i></a>
+        <a><i class="anticon anticon-delete"></i></a>
+      </div>
+      
+      <div>
+        <cui-tree [config]="treeConfig"></cui-tree>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>
+
+<nz-modal
+    [(nzVisible)]="formVisable"
+    [nzTitle]="'模块信息'"
+    [nzClosable]="true"
+    [nzWidth]="520"
+    [nzContent]="modalContent"
+    [nzOkText]="'确定'"
+    [nzCancelText]="'取消'"
+    [nzMaskClosable]="false"
+    [nzZIndex]="1030"
+    (nzOnCancel)="handleCancel($event)"
+    (nzOnOk)="handleOk($event)">
+  <ng-template #modalContent>
+    <form *ngIf="moduleForm" nz-form [formGroup]="moduleForm" [nzLayout]="'horizontal'">
+      <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="4">
+              <label for="name" nz-form-item-required>模块名称</label>
+          </div>
+          <div nz-form-control nz-col [nzSpan]="16" [nzHasFeedback]="'true'" [nzValidateStatus]="moduleForm.controls.name">
+              <nz-input formControlName="name" [nzPlaceHolder]="'请输入模块名称'" [nzSize]="'large'"></nz-input>
+          </div>
+      </div>
+    </form>
+  </ng-template>
+</nz-modal>
+

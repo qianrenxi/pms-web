@@ -13,6 +13,8 @@ export class ProductToolbarComponent implements OnInit {
   activeProductId;
   activeProduct;
 
+  _navs;
+
   constructor(private productApi: ProductApiService) { }
 
   ngOnInit() {
@@ -20,25 +22,30 @@ export class ProductToolbarComponent implements OnInit {
       data => {
         this.products = data.content;
         this.activeProductId = this.products && this.products.length > 0 ? this.products[0].id : null;
+        this.onSelectChange();
       }
     );
   }
 
-  get navs() {
-    if (this.activeProductId) {
-      this.activeProduct = this.products.find(it => it.id == this.activeProductId);
-      return [
-        { title: '需求', routerLink: ['/product', this.activeProduct.id, 'requirements'] },
-        { title: '活动', routerLink: ['/product', this.activeProduct.id, 'activities'] },
-        { title: '计划', routerLink: ['/product', this.activeProduct.id, 'plans'] },
+  updateNavs() {
+    if (this.activeProduct) {
+      this._navs = [
+        { title: '需求', routerLink: ['/product', this.activeProduct.id, 'requirement'] },
+        { title: '活动', routerLink: ['/product', this.activeProduct.id, 'activity'] },
+        { title: '计划', routerLink: ['/product', this.activeProduct.id, 'plan'] },
         { title: '发布', routerLink: ['/product', this.activeProduct.id, 'release'] },
-        { title: '路线', routerLink: ['/product', this.activeProduct.id, 'lines'] },
-        { title: '文档', routerLink: ['/product', this.activeProduct.id, 'docLibs'] },
-        { title: '项目', routerLink: ['/product', this.activeProduct.id, 'projects'] },
-        { title: '模块', routerLink: ['/product', this.activeProduct.id, 'modules'] },
-        { title: '概览', routerLink: ['/product', this.activeProduct.id, 'view'] },
+        { title: '路线', routerLink: ['/product', this.activeProduct.id, 'line'] },
+        { title: '文档', routerLink: ['/product', this.activeProduct.id, 'docLib'] },
+        { title: '项目', routerLink: ['/product', this.activeProduct.id, 'project'] },
+        { title: '模块', routerLink: ['/product', this.activeProduct.id, 'module'] },
+        { title: '概览', routerLink: ['/product', this.activeProduct.id, 'overview'] },
       ];
     }
+  }
+
+  onSelectChange() {
+    this.activeProduct = this.products.find(it => it.id == this.activeProductId);
+    this.updateNavs();
   }
 
 }

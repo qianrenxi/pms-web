@@ -1,0 +1,63 @@
+
+<form nz-form [formGroup]="planForm" [nzLayout]="'horizontal'">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+            <label for="productName">所属产品</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            {{productName}}
+        </div>
+    </div>
+    
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+            <label for="name" nz-form-item-required>计划名称</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8" [nzHasFeedback]="'true'" [nzValidateStatus]="getFormControl('name')">
+            <nz-input formControlName="name" [nzPlaceHolder]="'计划名称'"></nz-input>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8" class="ml-3"> (上次计划: "某某计划")</div>
+    </div>
+    
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+            <label for="startDate" nz-form-item-required>开始日期</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8">
+          <nz-datepicker formControlName="startDate" [nzPlaceHolder]="'请选择日期'" class="w-100"></nz-datepicker>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8"></div>
+    </div>
+    
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+            <label for="endDate" nz-form-item-required>结束日期</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <nz-datepicker formControlName="endDate" [nzPlaceHolder]="'请选择日期'" class="w-100"></nz-datepicker>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            <nz-radio-group>
+                <label *ngFor="let item of _DURITIONS" nz-radio [nzValue]="item.value" [nzDisabled]="item.disabled">
+                  <span>{{item.label}}</span>
+                </label>
+            </nz-radio-group>
+        </div>
+    </div>
+    
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+            <label for="description">描述</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            <nz-input formControlName="description" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="''"></nz-input>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row class="mt-3">
+        <div nz-form-control nz-col [nzSpan]="16" [nzOffset]="4">
+            <button type="button" class="btn btn-primary" (click)="_save($event)">保存</button>
+            <button type="button" class="btn btn-light" (click)="_cancel($event)">取消</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,98 @@
+<div class="text-right">
+  <button type="button" class="btn btn-outline-primary">粘贴文本</button>
+  <button type="button" class="btn btn-outline-primary">设置列</button>
+</div>
+
+<div class="batch-form-wrapper mt-2">
+  <div nz-row [nzType]="'flex'" class="bath-form-title mb-2 py-2">
+    <div nz-col [nzSpan]="1" class="text-center">
+      序号
+    </div>
+    <div *ngFor="let col of _COLUMNS" nz-col [nzSpan]="col.span" [hidden]="col.disabled" class="text-center">
+      {{col.title}}
+    </div>
+
+    <div nz-col [nzSpan]="1" class="text-center">
+      操作
+    </div>
+  </div>
+
+  <ng-container *ngFor="let fg of batchForms; let index=index;">
+    <ng-container *ngTemplateOutlet="formRow; context: {$implicit: index, fg: fg, index: index}"></ng-container>
+  </ng-container>
+
+  <div nz-row class="my-3">
+    <div nz-col [nzSpan]="24" class="text-center">
+      <button type="button" class="btn btn-primary" (click)="_save($event)">保存</button>
+      <button type="button" class="btn btn-light" (click)="_cancel($event)">取消</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #formRow let-fg="fg" let-index="index">
+  <form [formGroup]="fg">
+    <div nz-row [nzType]="'flex'">
+      <div nz-col [nzSpan]="1" class="text-center">
+        {{index}}
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('module').span" class="pl-1" [hidden]="getColumn('module').disabled">
+        <nz-select formControlName="module" [nzPlaceHolder]="''" [nzAllowClear]="true" class="w-100">
+          <nz-option *ngFor="let item of []" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+          </nz-option>
+        </nz-select>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('plan').span" class="pl-1" [hidden]="getColumn('plan').disabled">
+        <nz-select formControlName="plan" [nzPlaceHolder]="''" [nzAllowClear]="true" class="w-100">
+          <nz-option *ngFor="let item of []" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+          </nz-option>
+        </nz-select>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('name').span" class="pl-1" [hidden]="getColumn('name').disabled">
+        <nz-input formControlName="name" [nzPlaceHolder]="''"></nz-input>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('source').span" class="pl-1" [hidden]="getColumn('source').disabled">
+        <nz-select formControlName="source" [nzPlaceHolder]="''" [nzAllowClear]="true" class="w-100">
+          <nz-option *ngFor="let item of []" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+          </nz-option>
+        </nz-select>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('description').span" class="pl-1" [hidden]="getColumn('description').disabled">
+        <nz-input formControlName="description" [nzPlaceHolder]="''"></nz-input>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('acceptance').span" class="pl-1" [hidden]="getColumn('acceptance').disabled">
+        <nz-input formControlName="acceptance" [nzPlaceHolder]="''"></nz-input>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('priority').span" class="pl-1" [hidden]="getColumn('priority').disabled">
+        <nz-select formControlName="priority" [nzPlaceHolder]="''" [nzAllowClear]="true" class="w-100">
+          <nz-option *ngFor="let item of []" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+          </nz-option>
+        </nz-select>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('estimate').span" class="pl-1" [hidden]="getColumn('estimate').disabled">
+        <nz-input formControlName="estimate" [nzPlaceHolder]="''"></nz-input>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('needReview').span" class="pl-1" [hidden]="getColumn('needReview').disabled" class="text-center">
+        <label nz-checkbox formControlName="needReview">
+            <span></span>
+        </label>
+      </div>
+
+      <div nz-col [nzSpan]="getColumn('keywords').span" class="pl-1" [hidden]="getColumn('keywords').disabled">
+        <nz-input formControlName="keywords" [nzPlaceHolder]="''"></nz-input>
+      </div>
+
+      <div nz-col [nzSpan]="1" class="text-center">
+        <i class="fa fa-trash"></i>
+      </div>
+    </div>
+  </form>
+</ng-template>

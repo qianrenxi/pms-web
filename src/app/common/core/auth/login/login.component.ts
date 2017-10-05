@@ -44,4 +44,12 @@ export class LoginComponent implements OnInit {
       err => this.err = err
     );
   }
+
+  devLogin() {
+    this.loginForm.controls['username'].setValue('yintao');
+    this.loginForm.controls['password'].setValue('yintao');
+    this.loginForm.controls['rememberMe'].setValue(true);
+
+    this._submitForm();
+  }
 }

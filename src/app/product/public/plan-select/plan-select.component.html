@@ -1,0 +1,16 @@
+<nz-select
+  nzAllowClear
+  [nzPlaceHolder]="'请输入计划名称搜索'"
+  [nzFilter]="false"
+  [(ngModel)]="_value"
+  (ngModelChange)="onChange($event)"
+  (nzSearchChange)="searchChange($event)"
+  [nzNotFoundContent]="'无法找到'"
+  [nzShowSearch]="true">
+
+  <nz-option
+    *ngFor="let plan of _plans"
+    [nzLabel]="plan.name"
+    [nzValue]="plan.id">
+  </nz-option>
+</nz-select>

@@ -36,7 +36,7 @@
         <cui-radio *ngIf="selectType=='radio'" name="ids" value="{{row['id']}}" #ids  (change)="selectItem(row, ids.checked)"></cui-radio>
       </td>
       <td *ngFor="let col of columnsVisible" [style]="col.style" [ngClass]="col.styleClass">
-        <div *ngIf="!!col.data && !colTpls[col.tpl]">{{row | objectPath: col.data}}</div>
+        <div *ngIf="!!col.data && !colTpls[col.tpl]">{{(row | objectPath: col.data) || col.defaultValue}}</div>
         <ng-container *ngIf="!!colTpls[col.tpl]" [ngTemplateOutlet]="colTpls[col.tpl]" [ngOutletContext]="{row: row}"></ng-container>
       </td>
       <td class="text-right tb-nowrap" *ngIf="!!rowActions">

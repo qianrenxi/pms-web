@@ -1,0 +1,11 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <div class="container">
+    <nz-card [nzNoHovering]="true">
+      <ng-template #title>提需求</ng-template>
+      <ng-template #extra>配置表单</ng-template>
+      <ng-template #body>
+        <pms-requirement-form [requirement]="requirement" (save)="onSave($event)" (cancel)="onCancel($event)"></pms-requirement-form>
+      </ng-template>
+    </nz-card>
+  </div>
+</div>

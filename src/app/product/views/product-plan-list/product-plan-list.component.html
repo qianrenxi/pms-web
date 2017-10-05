@@ -1,0 +1,33 @@
+<div class="my-4 mx-3 p-3 bg-white">
+
+  <cui-data-table [columns]="columns" [data]="data?.content" [pagination]="data">
+
+    <ng-template #simpleSearch>
+      <div class="d-inline-block mt-2">
+          <a class="text-primary ml-2">全部</a>
+          <a class="text-primary ml-2">未过期</a>
+          <a class="text-primary ml-2">已过期</a>
+      </div>
+    </ng-template>
+
+    <ng-template #listTools>
+      <button type="button" class="btn btn-primary" [routerLink]="['add']"><i class="fa fa-plus"></i> 创建计划</button>
+    </ng-template>
+
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary" [routerLink]="[row.id, 'view']">{{row.name}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="startDate" let-row="row">{{row.startDate | date: 'yyyy-MM-dd'}}</ng-template>
+    <ng-template cuiColTpl="endDate" let-row="row">{{row.endDate | date: 'yyyy-MM-dd'}}</ng-template>
+    <ng-template cuiColTpl="actions" let-row="row">
+      <a title="关联需求" class="text-primary1 ml-2"><i class="fa fa-lg fa-link"></i></a>
+      <a title="关联问题" class="text-primary1 ml-2"><i class="fa fa-lg fa-bug"></i></a>
+      <a title="编辑计划" class="text-primary ml-2" [routerLink]="[row.id, 'edit']"><i class="fa fa-lg fa-edit"></i></a>
+      
+      <nz-popconfirm [nzTitle]="'确定要删除吗？'" (nzOnConfirm)="delete(row.id)">
+        <a nz-popconfirm title="删除计划" class="text-primary ml-2"><i class="fa fa-lg fa-trash"></i></a>
+      </nz-popconfirm>
+    </ng-template>
+  </cui-data-table>
+
+</div>

@@ -1,0 +1,8 @@
+<nz-select [(ngModel)]="_value" (ngModelChange)="onChange($event)" nzAllowClear>
+    <nz-option
+      *ngFor="let option of _attr?.values"
+      [nzLabel]="option.label"
+      [nzValue]="option.value"
+      [nzDisabled]="option.disabled">
+    </nz-option>
+  </nz-select>
