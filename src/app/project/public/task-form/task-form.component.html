@@ -1,0 +1,76 @@
+<form nz-form [formGroup]="taskForm" [nzLayout]="'horizontal'">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4">
+            <label for="module">所属模块</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            项目模块 不是关联的产品的模块... 待设计
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label nz-form-control-required>任务类型</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <pms-attribute-select formControlName="type" group="task" code="type"></pms-attribute-select>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>指派给</label></div>
+        <div nz-form-control nz-col [nzSpan]="8">
+            <pms-user-select formControlName="assignedToId"></pms-user-select>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>相关需求</label></div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            选择需求
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>任务名称</label></div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            <input nz-input formControlName="name">
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>优先级</label></div>
+        <div nz-form-control nz-col [nzSpan]="6">
+            <pms-attribute-select formControlName="priority" group="common" code="priority"></pms-attribute-select>
+        </div>
+        <div nz-form-label nz-col [nzSpan]="4"><label>预计工时</label></div>
+        <div nz-form-control nz-col [nzSpan]="6">
+            <input nz-input formControlName="estimate">
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>任务描述</label></div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            <textarea nz-input formControlName="description" rows="6" nzPlaceHolder=""></textarea>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>日程规划</label></div>
+        <div nz-form-control nz-col [nzSpan]="10" class="d-flex">
+            <nz-datepicker formControlName="estimateStarted" (ngModelChange)="_startValueChange($event)" [nzDisabledDate]="_disabledStartDate"
+              [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'预计开始'"></nz-datepicker>
+            <span>至</span>
+            <nz-datepicker formControlName="deadline" (ngModelChange)="_endValueChange($event)" [nzDisabledDate]="_disabledEndDate"
+              [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'截至日期'"></nz-datepicker>
+          </div>
+    </div>
+
+    // 跟踪 、 附件
+
+    <div nz-form-item nz-row>
+        <div nz-form-control nz-col [nzSpan]="16" [nzOffset]="4">
+            <button type="button" class="btn btn-primary" (click)="_save($event)">保存</button>
+            <button type="button" class="btn btn-light" (click)="_cancel($event)">取消</button>
+        </div>
+    </div>
+</form>

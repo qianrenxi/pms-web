@@ -1,0 +1,13 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <div class="container">
+    <nz-card>
+        <ng-template #title>
+          <span>新建任务</span>
+        </ng-template>
+        <ng-template #body>
+            <pms-task-form (save)="onSave($event)" (cancel)="onCancel($event)"></pms-task-form>
+        </ng-template>
+    </nz-card>
+    
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<form nz-form [formGroup]="projectForm" [nzLayout]="'horizontal'">
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="name" nz-form-item-required>项目名称</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10" [nzHasFeedback]="'true'" [nzValidateStatus]="getFormControl('name')">
+      <nz-input formControlName="name" [nzPlaceHolder]="'请输入项目名称'"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="code" nz-form-item-required>项目代码</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10" [nzHasFeedback]="'true'" [nzValidateStatus]="getFormControl('code')">
+      <nz-input formControlName="code" [nzPlaceHolder]="'请输入项目名称'"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="circleDate" nz-form-item-required>起止日期</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10" class="d-flex">
+      <nz-datepicker formControlName="startDate" (ngModelChange)="_startValueChange($event)" [nzDisabledDate]="_disabledStartDate"
+        [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'开始日期'"></nz-datepicker>
+      <span>至</span>
+      <nz-datepicker formControlName="endDate" (ngModelChange)="_endValueChange($event)" [nzDisabledDate]="_disabledEndDate"
+        [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'结束日期'"></nz-datepicker>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="16">
+        <nz-radio-group>
+            <label *ngFor="let item of _duritions" nz-radio [nzValue]="item.value" [nzDisabled]="item.disabled">
+              <span>{{item.label}}</span>
+            </label>
+        </nz-radio-group>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="workingDays">可用工作日</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10">
+      <nz-input formControlName="workingDays" [nzPlaceHolder]="''"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="teamName">团队名称</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10">
+      <nz-input formControlName="teamName" [nzPlaceHolder]="''"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="type">项目类型</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10">
+      <nz-select formControlName="type" [nzPlaceHolder]="''" [nzAllowClear]="true">
+        <nz-option *ngFor="let item of _types" [nzLabel]="item.label" [nzValue]="item.value" [nzDisabled]="item.disabled">
+        </nz-option>
+      </nz-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="productId">所属产品</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="10">
+      <pms-product-select formControlName="productId"></pms-product-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label for="description">项目描述</label>
+    </div>
+
+    <div nz-form-control nz-col [nzSpan]="16">
+      <nz-input formControlName="description" [nzType]="'textarea'" [nzRows]="'4'" [nzPlaceHolder]="''"></nz-input>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="4">
+        <label for="accessControl">访问控制</label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="16">
+        <nz-radio-group formControlName="accessControl" [nzSize]="'large'">
+          <label *ngFor="let item of _accessControls" nz-radio [nzValue]="item.value" [nzDisabled]="item.disabled" class="d-block">
+                <span>{{item.label}}</span>
+            </label>
+        </nz-radio-group>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-col [nzSpan]="16" [nzOffset]="4">
+          <button nz-button (click)="_save($event)" [nzType]="'primary'">
+              <span>保存</span>
+          </button>
+          <button nz-button (click)="_cancel($event)" [nzType]="'default'">
+              <span>取消</span>
+          </button>
+        </div>
+      </div>
+</form>

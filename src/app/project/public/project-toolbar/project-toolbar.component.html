@@ -1,0 +1,17 @@
+<div class="d-flex flex-row bg-faded py-2 px-3 clearfix sticky-top p-toolbar">
+  <select #ps *ngIf="projects?.length > 0" name="activedProject" [(ngModel)]="activeProjectId" (change)="onSelectChange()">
+    <option *ngFor="let proj of projects" [value]="proj.id">
+      {{proj.name}}
+    </option>
+  </select>
+
+  <nav class="nav nav-pills ml-3">
+    <a *ngFor="let nav of _navs" class="nav-link" [routerLink]="nav.routerLink" routerLinkActive="active">{{nav.title}}</a>
+  </nav>
+
+  <div class="actions ml-auto">
+    <button class="btn btn-outline-primary" [routerLink]="['/project/list']"><i class="fa fa-cubes"></i> 所有项目</button>
+    <button class="btn btn-outline-primary" [routerLink]="['/project/add']"><i class="fa fa-plus"></i> 添加项目</button>
+    <button class="btn btn-outline-primary" [routerLink]="['/project/home']" routerLinkActive="d-none"><i class="fa fa-home"></i> 项目主页</button>
+  </div>
+</div>

@@ -1,0 +1,234 @@
+<div class="my-4 mx-3 bg-white">
+  <nz-card [nzNoHovering]="true">
+    <ng-template #title>
+      <div class="d-inline-block mt-2 pt-2">
+        <span class="badge badge-dark">{{task.id}}</span>
+        <a [routerLink]="['../', 'view']">{{task.name}}</a>
+        <span class="mx-2"><i class="fa fa-angle-right"></i></span>
+        <span>编辑</span>
+      </div>
+    </ng-template>
+    <ng-template #extra>
+      <ng-container [ngTemplateOutlet]="actions"></ng-container>
+    </ng-template>
+    <ng-template #body>
+      <form nz-form [formGroup]="_form" [nzLayout]="'horizontal'">
+        <div class="row">
+          <div class="col- order-2" style="width: 360px; flex: 0 0 auto;">
+            <ng-container [ngTemplateOutlet]="baseInfo"></ng-container>
+            <ng-container [ngTemplateOutlet]="workInfo"></ng-container>
+            <ng-container [ngTemplateOutlet]="lifeInfo"></ng-container>
+          </div>
+          <div class="col- order-1" style="flex: 1 1 auto;">
+            <ng-container [ngTemplateOutlet]="detail"></ng-container>
+
+            <div class="text-center mt-4">
+              <ng-container [ngTemplateOutlet]="actions"></ng-container>
+            </div>
+            <div class="mt-4">
+              <pms-change-log targetType="task" [targetId]="task.id"></pms-change-log>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </nz-card>
+</div>
+
+<ng-template #baseInfo>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">基本信息</h5>
+      <ng-container [formGroup]="_form">
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>所属项目</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            {{task.projectName}}
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>所属模块</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>相关需求</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            {{task.requirementName}}
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>指派给</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            <pms-user-select formControlName="assignedToId"></pms-user-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>任务类型</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            <pms-attribute-select formControlName="type" group="task" code="type"></pms-attribute-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>任务状态</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <pms-attribute-select formControlName="status" group="task" code="status"></pms-attribute-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>优先级</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <pms-attribute-select formControlName="priority" group="common" code="priority"></pms-attribute-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>跟踪</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #workInfo>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">工时信息</h5>
+      <ng-container [formGroup]="_form">
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>预计开始</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            <nz-datepicker formControlName="estimateStarted" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>实际开始</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <nz-datepicker formControlName="actsureStarted" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>截止日期</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <nz-datepicker formControlName="deadline" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>预计工时</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            <nz-input-number formControlName="estimate" [nzMin]="estimate" [nzMax]="10000" [nzStep]="1"
+                 [nzPlaceHolder]="''"></nz-input-number>
+            <span>小时</span>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>总耗时</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            {{task.usedTime}} <a>详情</a>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>预计剩余</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <nz-input-number formControlName="leftTime" [nzMin]="1" [nzMax]="1000" [nzStep]="1"
+              [nzPlaceHolder]="''"></nz-input-number>
+         <span>小时</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #lifeInfo>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">任务的一生</h5>
+      <ng-container [formGroup]="_form">
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>由谁创建</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            {{task.createdByDisplayName}}
+            {{task.createdDate | date: 'yyyy-MM-dd HH:mm'}}
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>由谁完成</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            <pms-user-select formControlName="completedById"></pms-user-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>完成时间</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <nz-datepicker formControlName="completedDate" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>由谁取消</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <pms-user-select formControlName="canceledById"></pms-user-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>取消时间</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <nz-datepicker formControlName="canceledDate" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>由谁关闭</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <pms-user-select formControlName="closedById"></pms-user-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>关闭原因</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+            <pms-attribute-select formControlName="closedReason" group="task" code="closedReason"></pms-attribute-select>
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSpan]="6"><label>关闭时间</label></div>
+          <div nz-form-control nz-col [nzSpan]="18">
+              <nz-datepicker formControlName="closedDate" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #detail>
+  <ng-container [formGroup]="_form">
+    <div nz-form-item nz-row>
+      <div nz-form-control nz-col [nzSpan]="24">
+        <input nz-input formControlName="name" required maxlength="200" [nzSize]="'large'">
+      </div>
+    </div>
+    <div nz-form-item nz-row class="mt-3">
+      <div nz-form-label nz-col [nzSpan]="24" class="p-0"><label>任务描述</label></div>
+      <div nz-form-control nz-col [nzSpan]="24">
+        <textarea nz-input formControlName="description" rows="6" nzPlaceHolder="" maxlength=""></textarea>
+      </div>
+    </div>
+    <div nz-form-item nz-row class="mt-3">
+      <div nz-form-label nz-col [nzSpan]="24" class="p-0"><label>备注</label></div>
+      <div nz-form-control nz-col [nzSpan]="24">
+        <textarea nz-input formControlName="remark" rows="4" nzPlaceHolder="" maxlength=""></textarea>
+      </div>
+    </div>
+    <div nz-form-item nz-row class="mt-3">
+      <div nz-form-label nz-col [nzSpan]="24" class="p-0"><label>附件</label></div>
+      <div nz-form-control nz-col [nzSpan]="24">
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #actions>
+  <button class="btn btn-primary" (click)="onSave()">保存</button>
+  <button class="btn btn-light" (click)="onCancel()">取消</button>
+</ng-template>

@@ -1,0 +1,113 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="card-title">
+        <span class="badge badge-dark">{{build.id}}</span>
+        <span>{{build.name}}</span>
+      </div>
+      <div class="card-extra ml-auto">
+        <ng-container *ngTemplateOutlet="actions"></ng-container>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="order-2" style="width: 360px;">
+          <ng-container *ngTemplateOutlet="buildInfo"></ng-container>
+        </div>
+        <div class="col order-1">
+          <ng-container *ngTemplateOutlet="details"></ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #buildInfo>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">基本信息</h5>
+      <dl class="row">
+        <dt class="col-3">产品</dt>
+        <dd class="col-9">{{build.productName}}</dd>
+
+        <dt class="col-3">名称编号</dt>
+        <dd class="col-9">{{build.name}}</dd>
+
+        <dt class="col-3">构建者</dt>
+        <dd class="col-9">{{build.buildedByDisplayName}}</dd>
+
+        <dt class="col-3">构建日期</dt>
+        <dd class="col-9">{{build.buildedDate | date: 'yyyy-MM-dd'}}</dd>
+
+        <dt class="col-3">源码库</dt>
+        <dd class="col-9">{{build.repositoryUrl}}</dd>
+
+        <dt class="col-3">下载地址</dt>
+        <dd class="col-9">{{build.downloadUrl}}</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">描述</h5>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="mb-3">附件</h5>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <!-- <h5 class="mb-3">历史记录</h5> -->
+      <pms-change-log></pms-change-log>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #details>
+  <nz-tabset nzSize="small" [nzAnimated]="{inkBar: true, tabPane: false}" [(nzSelectedIndex)]="_outletActived">
+    <nz-tab (nzSelect)="tabSelect($event, { requirement: ['requirement', {buildId: this.build.id}] })">
+      <ng-template #nzTabHeading>
+        <span class="text-success"><i class="fa fa-lightbulb-o"></i> <span>完成的需求</span></span>
+      </ng-template>
+      <div>
+        <router-outlet name="requirement" (activate)="_outletActived = 0"></router-outlet>
+      </div>
+    </nz-tab>
+    <nz-tab (nzSelect)="tabSelect($event, { issue: ['issue', {buildId: this.build.id}] })">
+      <ng-template #nzTabHeading>
+        <span class="text-success"><i class="fa fa-bug"></i> <span>解决的问题</span></span>
+      </ng-template>
+      <div>
+        <router-outlet name="issue" (activate)="_outletActived = 1"></router-outlet>
+      </div>
+    </nz-tab>
+    <nz-tab (nzSelect)="tabSelect($event, { issueBlow: ['issueBlow', {buildId: this.build.id}] })">
+      <ng-template #nzTabHeading>
+        <span class="text-danger"><i class="fa fa-bug"></i> <span>产生的问题</span></span>
+      </ng-template>
+      <div>
+        <router-outlet name="issueBlow" (activate)="_outletActived = 2"></router-outlet>
+      </div>
+    </nz-tab>
+
+    <ng-template #nzTabBarExtraContent>
+      <button *ngIf="_outletActived == 0" type="button" class="btn btn-sm btn-primary" [routerLink]="['../requirement/link']">
+            <i class="fa fa-link"></i> 关联需求</button>
+      <button *ngIf="_outletActived == 1" type="button" class="btn btn-sm btn-primary" [routerLink]="['../issue/link']">
+            <i class="fa fa-bug"></i> 关联问题</button>
+    </ng-template>
+  </nz-tabset>
+</ng-template>
+
+<ng-template #actions>
+  <button type="button" class="btn btn-link" [routerLink]="['../requirement/link']"><i class="fa fa-link"></i> 关联需求</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../issue/link']"><i class="fa fa-bug"></i> 关联问题</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../edit']"><i class="fa fa-edit"></i> 编辑</button>
+  <button type="button" class="btn btn-link" (click)="delete()"><i class="fa fa-trash"></i> 删除</button>
+  <button type="button" class="btn btn-link" [routerLink]="['../../']">返回 <i class="fa fa-level-up"></i></button>
+</ng-template>

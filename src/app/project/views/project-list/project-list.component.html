@@ -1,0 +1,55 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+
+  <cui-data-table [columns]="columns" [data]="data?.content" [pagination]="data">
+
+    <ng-template #simpleSearch>
+      <div class="d-inline-block">
+        <a>所有</a>
+        <a>未完成</a>
+        <a>未开始</a>
+        <a>已挂起</a>
+        <a>已完成</a>
+      </div>
+      <select>
+        <option value="">请选择产品</option>
+      </select>
+    </ng-template>
+
+    <ng-template #listTools>
+      <a class="btn btn-outline-primary" [routerLink]="['../add']"><i class="fa fa-plus"></i> 添加项目</a>
+    </ng-template>
+
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary" [routerLink]="['../', row.id, 'overview']">{{row.name}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="endDate" let-row="row">
+      {{row.endDate | date: 'yyyy-MM-dd'}}
+    </ng-template>
+    <ng-template cuiColTpl="status" let-row="row">
+      <ng-container *ngTemplateOutlet="status; context: {status: row.status}"></ng-container>
+    </ng-template>
+    <ng-template cuiColTpl="progress" let-row="row">
+      <nz-progress [ngModel]="row.progress || 0"></nz-progress>
+    </ng-template>
+    <ng-template cuiColTpl="burnDownChart" let-row="row">
+    </ng-template>
+    <ng-template cuiColTpl="actions" let-row="row">
+      <a class="text-primary ml-2" title="开始" (click)="start(row)"><i class="fa fa-lg fa-play"></i></a>
+      <a class="text-primary ml-2" title="延期" (click)="delay(row)"><i class="fa fa-lg fa-calendar"></i></a>
+      <a class="text-primary ml-2" title="挂起" (click)="pause(row)"><i class="fa fa-lg fa-pause"></i></a>
+      <a class="text-primary ml-2" title="关闭" (click)="close(row)"><i class="fa fa-lg fa-power-off"></i></a>
+      <a class="text-primary ml-2" title="编辑" [routerLink]="['../', row.id, 'edit']"><i class="fa fa-lg fa-edit"></i></a>
+    </ng-template>
+  </cui-data-table>
+</div>
+
+<ng-template #status let-status="status">
+  <ng-container [ngSwitch]="status">
+    <span *ngSwitchCase="'WAIT'" class="text-secondary">未开始</span>
+    <span *ngSwitchCase="'GOING'" class="text-primary">已开始</span>
+    <span *ngSwitchCase="'DELAY'" class="text-danger">已延期</span>
+    <span *ngSwitchCase="'PAUSE'" class="text-warning">已挂起</span>
+    <span *ngSwitchCase="'COMPLETE'" class="text-success">已完成</span>
+    <span *ngSwitchDefault>{{status}}</span>
+  </ng-container>
+</ng-template>

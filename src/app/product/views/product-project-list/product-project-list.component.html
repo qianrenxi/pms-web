@@ -1,0 +1,27 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+
+  <cui-data-table [columns]="columns" [data]="projects">
+
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary">{{row.name}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="endDate" let-row="row">
+      {{row.endDate | date: 'yyyy-MM-dd'}}
+    </ng-template>
+    <ng-template cuiColTpl="status" let-row="row">
+      <ng-container *ngTemplateOutlet="status; context: {status: row.status}"></ng-container>
+    </ng-template>
+    <ng-template cuiColTpl="progress" let-row="row">
+      <nz-progress [ngModel]="70"></nz-progress>
+    </ng-template>
+    <ng-template cuiColTpl="burnDownChart" let-row="row">
+    </ng-template>
+  </cui-data-table>
+</div>
+
+<ng-template #status let-status="status">
+  <ng-container [ngSwitch]="status">
+    <span *ngSwitchCase="'COMPLETE'" class="text-success">已完成</span>
+    <span *ngSwitchDefault>{{status}}</span>
+  </ng-container>
+</ng-template>

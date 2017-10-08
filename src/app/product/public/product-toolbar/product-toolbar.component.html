@@ -1,5 +1,5 @@
 <div class="d-flex flex-row bg-faded py-2 px-3 clearfix sticky-top p-toolbar">
-  <select #ps name="activedProduct" [(ngModel)]="activeProductId" (change)="onSelectChange()">
+  <select #ps *ngIf="products?.length > 0" name="activedProduct" [(ngModel)]="activeProductId" (change)="onSelectChange()">
     <option *ngFor="let prod of products" [value]="prod.id">
       {{prod.name}}
     </option>

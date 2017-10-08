@@ -1,3 +1,4 @@
+import { ProductProjectListComponent } from './views/product-project-list/product-project-list.component';
 import { PlanDetailResolver } from './service/plan-detail-resolver.service';
 import { ProductPlanViewComponent } from './views/product-plan-view/product-plan-view.component';
 import { ProductPlanEditComponent } from './views/product-plan-edit/product-plan-edit.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
                     { path: 'module', component: ProductModuleComponent },
                     { path: 'overview', component: ProductOverviewComponent },
                     { path: 'activity', component: ProductActivityComponent },
+                    { path: 'project', component: ProductProjectListComponent },
                     {
                         path: 'requirement', children: [
                             { path: '', component: ProductRequirementListComponent },
@@ -95,6 +97,7 @@ export const routedComponents = [
     ProductAddComponent,
     ProductOverviewComponent,
     ProductModuleComponent,
+    ProductProjectListComponent,
 
     ProductRequirementListComponent,
     ProductRequirementAddComponent,

@@ -1,0 +1,85 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+
+  <cui-data-table [columns]="columns" [data]="data?.content" [pagination]="data" selectType="checkbox" [(selection)]="selection">
+
+    <ng-template #listTools>
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-download"></i> <span>导出</span>
+            </button>
+        <div class="dropdown-menu dropdown-menu-left">
+          <a class="dropdown-item">Excel</a>
+          <a class="dropdown-item">Word</a>
+          <a class="dropdown-item">PDF</a>
+        </div>
+      </div>
+      <button class="btn btn-outline-primary"><i class="fa fa-area-chart"></i> <span>报表</span></button>
+      <div class="btn-group">
+        <a class="btn btn-primary" [routerLink]="['add']">
+              <i class="fa fa-plus"></i> <span>添加任务</span>
+          </a>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item">从需求转入</a>
+          <a class="dropdown-item">从问题转入</a>
+          <a class="dropdown-item">从其他项目转入</a>
+          <a class="dropdown-item">批量导入</a>
+          <a class="dropdown-item" [routerLink]="['batchAdd']">批量添加</a>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary" [routerLink]="[row.id, 'view']">{{row.name}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="status" let-row="row">
+      <ng-container *ngTemplateOutlet="rowStatus; context: {status: row.status}"></ng-container>
+    </ng-template>
+    <ng-template cuiColTpl="createdDate" let-row="row">
+      {{row.createdDate | date: 'yyyy-MM-dd'}}
+    </ng-template>
+    <ng-template cuiColTpl="deadline" let-row="row">
+      {{row.deadline | date: 'yyyy-MM-dd'}}
+    </ng-template>
+    <ng-template cuiColTpl="completedDate" let-row="row">
+      {{row.completedDate | date: 'yyyy-MM-dd'}}
+    </ng-template>
+    <ng-template cuiColTpl="progress" let-row="row">
+        <!-- <nz-progress [ngModel]="row.progress || 0"></nz-progress> -->
+        <nz-progress [ngModel]="getProgress(row)"></nz-progress>
+    </ng-template>
+    <ng-template cuiColTpl="actions" let-row="row">
+      <a class="text-primary ml-2" title="指派" (click)="operate(row, 'assign')"><i class="fa fa-lg fa-hand-o-right"></i></a>
+      <a class="text-primary ml-2" title="开始" (click)="operate(row, 'start')"><i class="fa fa-lg fa-play"></i></a>
+      <a class="text-primary ml-2" title="登记工时" (click)="operate(row, 'timeEntries')"><i class="fa fa-lg fa-clock-o"></i></a>
+      <a class="text-primary ml-2" title="完成" (click)="operate(row, 'complete')"><i class="fa fa-lg fa-check-square-o"></i></a>
+      <a class="text-primary ml-2" title="关闭" (click)="operate(row, 'close')"><i class="fa fa-lg fa-power-off"></i></a>
+      <a class="text-primary ml-2" title="编辑" [routerLink]="[row.id, 'edit']"><i class="fa fa-lg fa-edit"></i></a>
+      
+      <nz-popconfirm [nzTitle]="'确定要删除吗？'" (nzOnConfirm)="delete(row.id)">
+        <a nz-popconfirm class="text-primary ml-2" title="删除"><i class="fa fa-lg fa-trash"></i></a>
+      </nz-popconfirm>
+    </ng-template>
+
+    <ng-template #actionGroup>
+      <nz-popconfirm [nzTitle]="'确定要删除吗？'" (nzOnConfirm)="delete()">
+          <button nz-popconfirm type="button" class="btn btn-danger">批量删除</button>
+      </nz-popconfirm>
+      
+    </ng-template>
+  </cui-data-table>
+</div>
+
+<ng-template #rowStatus let-status="status">
+  <ng-container [ngSwitch]="status">
+    <span *ngSwitchCase="'INITIAL'" class="text-secondary">未开始</span>
+    <span *ngSwitchCase="'GOING'" class="text-primary">进行中</span>
+    <span *ngSwitchCase="'COMPLETED'" class="text-success">已完成</span>
+    <span *ngSwitchCase="'CANCELED'" class="text-warning">已取消</span>
+    <span *ngSwitchCase="'PAUSED'" class="text-info">已暂停</span>
+    <span *ngSwitchCase="'CLOSED'" class="text-danger">已关闭</span>
+    <span *ngSwitchDefault class="text-">--</span>
+  </ng-container>
+</ng-template>

@@ -1,3 +1,5 @@
+import { Build } from 'app/common/entity';
+import { Project } from './../entity/project';
 import { Module } from './../entity/module';
 import { Plan } from './../entity/plan';
 import { Requirement } from './../entity/requirement';
@@ -19,14 +21,22 @@ export class ProductApiService extends BaseService<Product> {
     }
 
     requirements(productId: number): Observable<Pagination<Requirement>> {
-        return this.httpAdaptor.get(`/api/products/${productId}/requirements`);
+        return this.httpAdaptor.get(`${this.url}/${productId}/requirements`);
     }
 
     plans(productId: number): Observable<Pagination<Plan>> {
-        return this.httpAdaptor.get(`/api/products/${productId}/plans`);
+        return this.httpAdaptor.get(`${this.url}/${productId}/plans`);
     }
 
     modulesFlat(productId: number): Observable<Module[]> {
-        return this.httpAdaptor.get(`/api/products/${productId}/modulesFlat`);
+        return this.httpAdaptor.get(`${this.url}/${productId}/modulesFlat`);
+    }
+
+    projects(productId: number): Observable<Project[]> {
+        return this.httpAdaptor.get(`${this.url}/${productId}/projects`);
+    }
+
+    getBuilds(productId: number): Observable<Build[]> {
+        return this.httpAdaptor.get(`${this.url}/${productId}/builds`);
     }
 }

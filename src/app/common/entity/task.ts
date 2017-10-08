@@ -1,4 +1,3 @@
-import { Bmod } from './bmod';
 import { Project } from './project';
 import { Requirement } from './requirement';
 
@@ -16,10 +15,18 @@ export class Task {
     /** 截止日期 */
     deadline?: Date;
 
-    project: Project;
-    bmod?: Bmod;
-    assignedTo?: {id: number, name: string, displayName: string};
-    requirement?: Requirement;
+    // project: Project;
+    projectId?: number;
+    projectName?: string;
+
+    // assignedTo?: {id: number, name: string, displayName: string};
+    assignedToId?: number;
+    assignedToUsername?: string;
+    assignedTodDisplayName?: string;
+
+    // requirement?: Requirement;
+    requirementId?: number;
+    requirementName?: string;
 
     // 影藏属性
     status?: string; // Enum {未开始、进行中、已完成、已关闭}
@@ -35,12 +42,31 @@ export class Task {
     leftTime?: number;
 
     // 任务周期 life circle
-    createdBy?: {id: number, name: string, displayName: string};
+    // createdBy?: {id: number, name: string, displayName: string};
+    createdById?: number;
+    createdByUsername?: string;
+    createdByDisplayName?: string;
     createdDate?: Date;
-    finishedBy?: {id: number, name: string, displayName: string};
-    caceledBy?: {id: number, name: string, displayName: string};
-    closedBy?: {id: number, name: string, displayName: string};
+
+    // caceledBy?: {id: number, name: string, displayName: string};
+    canceledById?: number;
+    canceledByUsername?: string;
+    canceledByDisplayName?: string;
+    canceledDate?: Date;
+
+    // closedBy?: {id: number, name: string, displayName: string};
+    closedById?: number;
+    closedByUsername?: string;
+    closedByDisplayName?: string;
+    closedDate?: Date;
     closeReason?: string;
-    lastUpdatedBy?: {id: number, name: string, displayName: string};
-    lastUpdatedDate?: Date;
+
+    // lastUpdatedBy?: {id: number, name: string, displayName: string};
+    // lastUpdatedDate?: Date;
+
+    // 完成
+    completedById?: number;
+    completedByUsername?: string;
+    completedByDisplayName?: string;
+    completedDate?: Date;
 }

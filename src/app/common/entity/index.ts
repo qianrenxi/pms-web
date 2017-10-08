@@ -1,3 +1,4 @@
+import { Build } from './build';
 import { Activity } from './activity';
 import { Issue } from './issue';
 import { Module } from './module';
@@ -12,6 +13,7 @@ import { User } from './user';
 
 export {
     Activity,
+    Build,
     Issue,
     Module,
     Plan,

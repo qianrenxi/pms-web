@@ -1,0 +1,79 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <nz-alert class="mb-4" [nzType]="'info'" [nzMessage]="'项目关联的需求是产品需求的子集，并且只有评审通过的需求才能关联。'" [nzDescription]="''" [nzShowIcon]="true"
+    [nzCloseable]="true"></nz-alert>
+
+  <cui-data-table [columns]="columns" [data]="data?.content" [pagination]="data" selectType="checkbox" [(selection)]="selection"
+    [loading]="loading">
+
+    <ng-template #listTools>
+      <button class="btn btn-outline-primary"><i class="fa fa-download"></i> <span>导出数据</span></button>
+      <button class="btn btn-outline-primary"><i class="fa fa-plus"></i> <span>添加需求</span></button>
+      <button class="btn btn-outline-primary" [routerLink]="['link']"><i class="fa fa-link"></i> <span>关联需求</span></button>
+    </ng-template>
+
+    <ng-template cuiColTpl="priority" let-row="row">
+      <ng-container *ngTemplateOutlet="priority; context: {priority: row.priority}"></ng-container>
+    </ng-template>
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary" [routerLink]="[row.id, 'view']">{{row.name}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="status" let-row="row">
+      <ng-container *ngTemplateOutlet="status; context: {status: row.status}"></ng-container>
+    </ng-template>
+    <ng-template cuiColTpl="stage" let-row="row">
+      <ng-container *ngTemplateOutlet="stage; context: {stage: row.stage}"></ng-container>
+    </ng-template>
+    <ng-template cuiColTpl="actions" let-row="row">
+      <a class="text-primary ml-2" title="分解任务"><i class="fa fa-lg fa-calendar-plus-o"></i></a>
+      <a class="text-primary ml-2" title="批量分解"><i class="fa fa-lg fa-calendar"></i></a>
+      <a class="text-primary ml-2" title="建用例"><i class="fa fa-lg fa-newspaper-o"></i></a>
+      <nz-popconfirm [nzTitle]="'确定要解除吗？'" (nzOnConfirm)="unlink(row.id)">
+        <a nz-popconfirm class="text-primary ml-2" title="解除关联"><i class="fa fa-lg fa-unlink"></i></a>
+      </nz-popconfirm>
+
+    </ng-template>
+
+    <ng-template #actionGroup>
+      <nz-popconfirm [nzTitle]="'确定要解除吗？'" (nzOnConfirm)="unlink()">
+        <button nz-popconfirm type="button" class="btn btn-primary">解除关联</button>
+      </nz-popconfirm>
+    </ng-template>
+  </cui-data-table>
+</div>
+
+
+<ng-template #priority let-priority="priority">
+  <ng-container [ngSwitch]="+priority">
+    <span *ngSwitchCase="1" class="badge badge-pill badge-danger">1</span>
+    <span *ngSwitchCase="2" class="badge badge-pill badge-warning">2</span>
+    <span *ngSwitchCase="3" class="badge badge-pill badge-primary">3</span>
+    <span *ngSwitchCase="4" class="badge badge-pill badge-info">4</span>
+    <span *ngSwitchCase="5" class="badge badge-pill badge-secondary">5</span>
+    <span *ngSwitchDefault class="badge badge-pill badge-light"><i class="fa fa-question"></i></span>
+  </ng-container>
+</ng-template>
+
+<ng-template #status let-status="status">
+  <ng-container [ngSwitch]="status">
+    <span *ngSwitchCase="'DRAFT'" class="badge badge-light">草稿</span>
+    <span *ngSwitchCase="'ACTIVE'" class="badge badge-success">激活</span>
+    <span *ngSwitchCase="'CLOSED'" class="badge badge-dark">已关闭</span>
+    <span *ngSwitchCase="'CHANGED'" class="badge badge-warning">已变更</span>
+    <span *ngSwitchDefault>{{status}}</span>
+  </ng-container>
+</ng-template>
+
+<ng-template #stage let-stage="stage">
+  <ng-container [ngSwitch]="stage">
+    <span *ngSwitchCase="'WAIT'" class="badge badge-light">未开始</span>
+    <span *ngSwitchCase="'PLANNED'" class="badge badge-info">已计划</span>
+    <span *ngSwitchCase="'PROJECTED'" class="badge badge-info">已立项</span>
+    <span *ngSwitchCase="'DEVELOPING'" class="badge badge-primary">开发中</span>
+    <span *ngSwitchCase="'DEVELOPED'" class="badge badge-primary">开发完成</span>
+    <span *ngSwitchCase="'TESTING'" class="badge badge-dark">测试中</span>
+    <span *ngSwitchCase="'TESTED'" class="badge badge-dark">测试完成</span>
+    <span *ngSwitchCase="'VERIFIED'" class="badge badge-success">已验收</span>
+    <span *ngSwitchCase="'RELEASED'" class="badge badge-success">已发布</span>
+    <span *ngSwitchDefault>{{stage}}</span>
+  </ng-container>
+</ng-template>

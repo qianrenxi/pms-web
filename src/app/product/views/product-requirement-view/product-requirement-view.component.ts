@@ -145,8 +145,8 @@ export class ProductRequirementViewComponent implements OnInit {
     this.modal.confirm({
       title  : '您是否确认要删除这条需求',
       content: '需求删除后关联的任务、问题和测试不会级联删除，需要手动清理。',
-      onOk() {
-        console.log('确定');
+      onOk: () => {
+        this.doDelete();
       },
       onCancel() {
       }

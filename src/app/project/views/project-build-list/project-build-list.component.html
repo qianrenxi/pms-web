@@ -1,0 +1,38 @@
+<div class="my-4 mx-3 bg-white">
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="card-title">构建列表</div>
+      <div class="card-action ml-auto">
+        <button type="button" class="btn btn-primary" [routerLink]="['add']"><i class="fa fa-plus"></i> 添加构建</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <ng-container [ngTemplateOutlet]="buildDataTable"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #buildDataTable>
+  <cui-data-table [columns]="columns" [data]="builds" [loading]="loading">
+
+    <ng-template cuiColTpl="product" let-row="row">
+      <a class="text-primary" [routerLink]="['/product', row.productId, 'overview']">{{row.productName}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary" [routerLink]="[row.id, 'view']">{{row.name}}</a>
+    </ng-template>
+    <ng-template cuiColTpl="buildedDate" let-row="row">
+      {{row.buildedDate | date: 'yyyy-MM-dd'}}
+    </ng-template>
+    <ng-template cuiColTpl="actions" let-row="row">
+      <a class="text-primary ml-2" title="关联需求"><i class="fa fa-lg fa-link"></i></a>
+      <a class="text-primary ml-2" title="关联问题"><i class="fa fa-lg fa-bug"></i></a>
+      <a class="text-primary ml-2" title="提交测试"><i class="fa fa-lg fa-coffee"></i></a>
+      <a class="text-primary ml-2" title="编辑" [routerLink]="[row.id, 'edit']"><i class="fa fa-lg fa-edit"></i></a>
+      <nz-popconfirm [nzTitle]="'确定要删除吗？'" (nzOnConfirm)="delete(row.id)">
+          <a nz-popconfirm class="text-primary ml-2" title="删除"><i class="fa fa-lg fa-trash"></i></a>
+      </nz-popconfirm>
+      
+    </ng-template>
+  </cui-data-table>
+</ng-template>

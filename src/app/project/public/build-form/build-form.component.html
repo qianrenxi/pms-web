@@ -1,0 +1,56 @@
+<form nz-form [formGroup]="_form" [nzLayout]="'horizontal'">
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label nz-form-control-required>产品</label></div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      {{productName}}
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label nz-form-control-required>名称/标签</label></div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <input nz-input formControlName="name">
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label nz-form-control-required>构建者</label></div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-user-select formControlName="buildedById"></pms-user-select>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label nz-form-control-required>构建日期</label></div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <nz-datepicker formControlName="buildedDate" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label>源码地址</label></div>
+    <div nz-form-control nz-col [nzSpan]="16">
+      <input nz-input formControlName="repositoryUrl" placeholder="软件源码库地址，这个待优化成自动构建部署">
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label>下载地址</label></div>
+    <div nz-form-control nz-col [nzSpan]="16">
+      <input nz-input formControlName="downloadUrl" placeholder="该版本的软件包下载存储地址">
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label>软件包</label></div>
+    <div nz-form-control nz-col [nzSpan]="16">
+      附件
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4"><label>描述</label></div>
+    <div nz-form-control nz-col [nzSpan]="16">
+      <textarea nz-input formControlName="description" rows="5"></textarea>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-control nz-col [nzSpan]="16" [nzOffset]="4">
+      <button type="button" class="btn btn-primary" (click)="_save($event)">保存</button>
+      <button type="button" class="btn btn-light" (click)="_cancel($event)">取消</button>
+    </div>
+  </div>
+</form>

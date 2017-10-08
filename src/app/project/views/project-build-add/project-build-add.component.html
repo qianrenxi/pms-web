@@ -1,0 +1,12 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <span>添加构建</span>
+      </div>
+      <div class="card-body">
+          <pms-build-form [productName]="project?.productName" (save)="onSave($event)" (cancel)="onCancel($dvent)"></pms-build-form>
+      </div>
+    </div>
+  </div>
+</div>

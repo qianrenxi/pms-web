@@ -1,0 +1,102 @@
+<div class="my-4 mx-3 bg-white">
+  <nz-card [nzNoHovering]="true">
+    <ng-template #title>
+      <div class="d-inline-block mt-2 pt-2">
+        <span class="badge badge-dark">{{project.id}}</span>
+        <span>{{project.name}}</span>
+      </div>
+    </ng-template>
+    <ng-template #extra>
+      <ng-container [ngTemplateOutlet]="actions"></ng-container>
+    </ng-template>
+    <ng-template #body>
+      <div class="row">
+        <div class="col- order-2" style="width: 360px; flex: 0 0 auto;">
+          <ng-container [ngTemplateOutlet]="baseInfo"></ng-container>
+        </div>
+        <div class="col- order-1" style="flex: 1 1 auto;">
+          <ng-container [ngTemplateOutlet]="detail"></ng-container>
+
+          <div class="text-center mt-4">
+              <ng-container [ngTemplateOutlet]="actions"></ng-container>
+          </div>
+          <div class="mt-4">
+            <pms-project-change-log [projectId]="project.id"></pms-project-change-log>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>
+
+<ng-template #baseInfo>
+  <div class="card">
+    <div class="card-body">
+        <h5>基本信息</h5>
+        
+        <dl class="row mt-3">
+          <dt class="col-3">项目名称</dt>
+          <dd class="col-9">{{project.name}}</dd>
+  
+          <dt class="col-3">项目代码</dt>
+          <dd class="col-9">{{project.code}}</dd>
+  
+          <dt class="col-3">起止日期</dt>
+          <dd class="col-9">
+            <span>{{project.startDate | date: 'yyyy-MM-dd'}}</span>
+            <span> ~ </span>
+            <span>{{project.endDate | date: 'yyyy-MM-dd'}}</span>
+          </dd>
+  
+          <dt class="col-3">可用工作日</dt>
+          <dd class="col-9">{{project.workingDays}}</dd>
+  
+          <dt class="col-3">项目类型</dt>
+          <dd class="col-9">{{project.type}}</dd>
+  
+          <dt class="col-3">项目状态</dt>
+          <dd class="col-9">{{project.status}}</dd>
+  
+          <dt class="col-3">项目负责人</dt>
+          <dd class="col-9">{{project.projectLeaderDisplayName}}</dd>
+  
+          <dt class="col-3">产品负责人</dt>
+          <dd class="col-9"></dd>
+  
+          <dt class="col-3">测试负责人</dt>
+          <dd class="col-9"></dd>
+  
+          <dt class="col-3">发布负责人</dt>
+          <dd class="col-9"></dd>
+  
+          <dt class="col-3">所属产品</dt>
+          <dd class="col-9">{{project.productName}}</dd>
+  
+          <dt class="col-3">访问控制</dt>
+          <dd class="col-9">{{project.accessControl}}</dd>
+  
+        </dl>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #detail>
+  <h3>{{project.name}}</h3>
+  <div class="mt-3">
+      <h5>项目描述</h5>
+      <div>{{project.description}}</div>
+  </div>
+  <div class="mt-3">
+      <h5>工时统计</h5>
+      <div>可用工时17885.0工时，总共预计0工时，已经消耗0工时，预计剩余0工时</div>
+  </div>
+</ng-template>
+
+<ng-template #actions>
+  <button class="btn btn-link" (click)="start($event)"><i class="fa fa-play"></i> 开始</button>
+  <button class="btn btn-link" (click)="delay($event)"><i class="fa fa-calendar"></i> 延期</button>
+  <button class="btn btn-link" (click)="pause($event)"><i class="fa fa-pause"></i> 挂起</button>
+  <button class="btn btn-link" (click)="close($event)"><i class="fa fa-power-off"></i> 关闭</button>
+  <button class="btn btn-link" [routerLink]="['../', 'edit']"><i class="fa fa-edit"></i> 编辑</button>
+  <button class="btn btn-link" [routerLink]="['../../list']">返回 <i class="fa fa-level-up"></i></button>
+</ng-template>
