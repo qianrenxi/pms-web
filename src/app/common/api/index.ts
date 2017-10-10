@@ -1,3 +1,8 @@
+import { TestTaskApiService } from './test-task-api.service';
+import { TestSuiteApiService } from './test-suite-api.service';
+import { TestResultApiService } from './test-result-api.service';
+import { TestCaseApiService } from './test-case-api.service';
+import { IssueApiService } from './issue-api.service';
 import { BuildApiService } from './build-api.service';
 import { TaskApiService } from './task-api.service';
 import { AttributeApiService } from './attribute-api.service';
@@ -20,6 +25,11 @@ export {
     RequirementApiService,
     PlanApiService,
     TaskApiService,
+    IssueApiService,
+    TestCaseApiService,
+    TestResultApiService,
+    TestSuiteApiService,
+    TestTaskApiService,
 
     ApiProvidorModule
 };

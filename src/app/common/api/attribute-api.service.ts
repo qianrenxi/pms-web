@@ -78,6 +78,35 @@ export class AttributeApiService {
                     { id: 1, value: 'NEXT_PLAN', label: '下次计划', disabled: false },
                 ]
             }
+        },
+        testCase: {
+            type: {
+                id: 6,
+                name: '用例类型',
+                code: 'type',
+                values: [
+                    { id: 1, value: 'feature', label: '功能测试', disabled: false },
+                    { id: 1, value: 'performance', label: '性能测试', disabled: false },
+                    { id: 1, value: 'config', label: '配置相关', disabled: false },
+                    { id: 1, value: 'install', label: '安装部署', disabled: false },
+                    { id: 1, value: 'security', label: '安全相关', disabled: false },
+                    { id: 1, value: 'interface', label: '接口测试', disabled: false },
+                    { id: 1, value: 'other', label: '其他', disabled: false },
+                ]
+            },
+            stage: {
+                id: 6,
+                name: '适用阶段',
+                code: 'stage',
+                values: [
+                    { id: 1, value: 'unittest', label: '单元测试阶段', disabled: false },
+                    { id: 1, value: 'feature', label: '功能测试阶段', disabled: false },
+                    { id: 1, value: 'intergrate', label: '集成测试阶段', disabled: false },
+                    { id: 1, value: 'system', label: '系统测试阶段', disabled: false },
+                    { id: 1, value: 'smoke', label: '冒烟测试阶段', disabled: false },
+                    { id: 1, value: 'bvt', label: '版本验证阶段', disabled: false },
+                ]
+            },
         }
     };
 

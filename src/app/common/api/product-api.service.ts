@@ -1,4 +1,4 @@
-import { Build } from 'app/common/entity';
+import { Build, TestCase, Issue, TestTask, TestSuite } from 'app/common/entity';
 import { Project } from './../entity/project';
 import { Module } from './../entity/module';
 import { Plan } from './../entity/plan';
@@ -38,5 +38,21 @@ export class ProductApiService extends BaseService<Product> {
 
     getBuilds(productId: number): Observable<Build[]> {
         return this.httpAdaptor.get(`${this.url}/${productId}/builds`);
+    }
+
+    getIssues(productId: number): Observable<Pagination<Issue>> {
+        return this.httpAdaptor.get(`${this.url}/${productId}/test/issues`);
+    }
+
+    getTestCases(productId: number): Observable<Pagination<TestCase>> {
+        return this.httpAdaptor.get(`${this.url}/${productId}/test/cases`);
+    }
+
+    getTestTasks(productId: number): Observable<Pagination<TestTask>> {
+        return this.httpAdaptor.get(`${this.url}/${productId}/test/tasks`);
+    }
+
+    getTestSuites(productId: number): Observable<Pagination<TestSuite>> {
+        return this.httpAdaptor.get(`${this.url}/${productId}/test/suites`);
     }
 }

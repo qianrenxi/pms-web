@@ -1,0 +1,15 @@
+<div class="d-flex flex-row bg-faded py-2 px-3 clearfix sticky-top p-toolbar">
+    <select #ps *ngIf="products?.length > 0" name="activedProduct" [(ngModel)]="activeProductId" (change)="onSelectChange()">
+      <option *ngFor="let prod of products" [value]="prod.id">
+        {{prod.name}}
+      </option>
+    </select>
+    
+    <nav class="nav nav-pills ml-3">
+      <a *ngFor="let nav of _navs" class="nav-link" [routerLink]="nav.routerLink" routerLinkActive="active" [ngClass]="{'disabled': nav.disabled}">{{nav.title}}</a>
+    </nav>
+  
+    <div class="actions ml-auto">
+      <button class="btn btn-outline-primary" [routerLink]="['/test/home']" routerLinkActive="d-none"><i class="fa fa-home"></i> 测试主页</button>
+    </div>
+  </div>

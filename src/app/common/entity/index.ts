@@ -1,3 +1,8 @@
+import { TestTask } from './test-task';
+import { TestSuite } from './test-suite';
+import { TestStep } from './test-step';
+import { TestResult } from './test-result';
+import { TestCase } from './test-case';
 import { Build } from './build';
 import { Activity } from './activity';
 import { Issue } from './issue';
@@ -22,5 +27,10 @@ export {
     Requirement,
     Task,
     UserToken,
-    User
+    User,
+    TestCase,
+    TestResult,
+    TestStep,
+    TestSuite,
+    TestTask,
 };

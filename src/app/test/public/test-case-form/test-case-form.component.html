@@ -1,0 +1,92 @@
+<form nz-form [formGroup]="_form" [nzLayout]="'horizontal'">
+    <div class="row">
+      <div class="col">
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="8"><label>所属产品</label></div>
+            <div nz-form-control nz-col [nzSpan]="16">
+                <pms-product-select formControlName="productId"></pms-product-select>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+          <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSpan]="4"><label>所属模块</label></div>
+              <div nz-form-control nz-col [nzSpan]="16">
+                  <pms-module-select formControlName="moduleId" [productId]="productId"></pms-module-select>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="8"><label>用例类型</label></div>
+            <div nz-form-control nz-col [nzSpan]="16">
+                <pms-attribute-select formControlName="type" group="testCase" code="type"></pms-attribute-select>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+          <div nz-form-item nz-row>
+              <div nz-form-label nz-col [nzSpan]="4"><label>适用阶段</label></div>
+              <div nz-form-control nz-col [nzSpan]="16">
+                  <pms-attribute-select formControlName="stage" group="testCase" code="stage"></pms-attribute-select>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>相关需求</label></div>
+        <div nz-form-control nz-col [nzSpan]="16">
+            
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label nz-form-control-required>用例标题</label></div>
+        <div nz-form-control nz-col [nzSpan]="14">
+            <input nz-input formControlName="name">
+        </div>
+        <div nz-form-label nz-col [nzSpan]="2"><label>优先级</label></div>
+        <div nz-form-control nz-col [nzSpan]="2">
+            <pms-attribute-select formControlName="priority" group="common" code="priority"></pms-attribute-select>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>前置条件</label></div>
+        <div nz-form-control nz-col [nzSpan]="18">
+            <textarea nz-input formControlName="precondition" nzPlaceHolder=""></textarea>
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>用例步骤</label></div>
+        <div nz-form-control nz-col [nzSpan]="18">
+            
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>关键词</label></div>
+        <div nz-form-control nz-col [nzSpan]="18">
+            <input nz-input formControlName="keywords">
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="4"><label>附件</label></div>
+        <div nz-form-control nz-col [nzSpan]="18">
+        </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-control nz-col [nzSpan]="18" [nzOffset]="4">
+            <button type="button" class="btn btn-primary" (click)="_save($event)">保存</button>
+            <button type="button" class="btn btn-light" (click)="_save($event)">取消</button>
+        </div>
+    </div>
+
+</form>
