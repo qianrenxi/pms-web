@@ -17,6 +17,7 @@ const PUBLIC_COMPONENTS = [
   TestTaskFormComponent,
   TestCaseFormComponent,
   TestSuiteFormComponent,
+  TestStepControlComponent,
 ];
 
 @NgModule({
@@ -25,7 +26,7 @@ const PUBLIC_COMPONENTS = [
     RouterModule,
     ProductPublicModule,
   ],
-  declarations: [...PUBLIC_COMPONENTS, TestStepControlComponent],
+  declarations: [...PUBLIC_COMPONENTS],
   exports: [...PUBLIC_COMPONENTS]
 })
 export class TestPublicModule { }

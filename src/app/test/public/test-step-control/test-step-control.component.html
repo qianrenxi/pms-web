@@ -9,4 +9,13 @@
     <th>结果</th>
     <th>操作</th>
   </tr>
+  <tr *ngFor="let fm of _forms; let index = index;" [formGroup]="fm">
+    <td>{{index}}</td>
+    <td><input type="text" nz-input formControlName="action" /></td>
+    <td></td>
+    <td><input type="text" nz-input formControlName="expect" /></td>
+    <td></td>
+    <td></td>
+    <td><i class="fa fa-plus"></i> <i class="fa fa-close"></i></td>
+  </tr>
 </table>
