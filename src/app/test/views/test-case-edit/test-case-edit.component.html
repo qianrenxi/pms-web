@@ -1,3 +1,14 @@
-<p>
-  test-case-edit works!
-</p>
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <span>建用例</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <pms-test-case-form [productId]="productId" [testCase]="testCase" (save)="onSave($event)" (cancel)="onCancel($event)"></pms-test-case-form>
+      </div>
+    </div>
+  </div>
+</div>

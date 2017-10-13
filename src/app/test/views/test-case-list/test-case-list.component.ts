@@ -21,19 +21,19 @@ export class TestCaseListComponent implements OnInit {
   loading: boolean;
 
   columns: Column[] = [
-    {title: 'ID', data: 'id'},
-    {title: '优先级', data: 'priority'},
-    {title: '用例名称', data: 'name'},
-    {title: '类型', data: 'type'},
-    {title: '创建者', data: 'createdByDisplayName'},
-    {title: '执行人', data: ''},
-    {title: '执行时间', data: ''},
-    {title: '结果', data: 'result'},
-    {title: '状态', data: 'status'},
-    {title: '问题数', data: ''},
-    {title: '执行次数', data: ''},
-    {title: '步骤数', data: ''},
-    {title: '操作', tpl: 'actions'},
+    { title: 'ID', data: 'id' },
+    { title: '优先级', data: 'priority' },
+    { title: '用例名称', data: 'name' },
+    { title: '类型', data: 'type' },
+    { title: '创建者', data: 'createdByDisplayName' },
+    { title: '执行人', data: '' },
+    { title: '执行时间', data: '' },
+    { title: '结果', data: 'result' },
+    { title: '状态', data: 'status' },
+    { title: '问题数', data: 'issueCount', defaultValue: 0, styleClass: "text-center" },
+    { title: '执行次数', data: 'excuteCount', defaultValue: 0, styleClass: "text-center" },
+    { title: '步骤数', data: 'steps.length', defaultValue: 0, styleClass: "text-center" },
+    { title: '操作', tpl: 'actions', styleClass: "text-right" },
   ];
 
   constructor(private router: Router, private route: ActivatedRoute,

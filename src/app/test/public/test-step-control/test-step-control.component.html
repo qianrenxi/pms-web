@@ -1,21 +1,24 @@
 
-<table>
+<table class="table table-sm table-bordered">
   <tr>
-    <th>编号</th>
+    <th class="text-center">编号</th>
     <th>步骤</th>
-    <th>组</th>
+    <th class="text-center">组</th>
     <th>预期</th>
     <th>实际</th>
-    <th>结果</th>
-    <th>操作</th>
+    <th class="text-center">结果</th>
+    <th class="text-right">操作</th>
   </tr>
   <tr *ngFor="let fm of _forms; let index = index;" [formGroup]="fm">
-    <td>{{index}}</td>
-    <td><input type="text" nz-input formControlName="action" /></td>
+    <th class="text-center">{{index}}</th>
+    <td><input type="text" nz-input formControlName="action" (ngModelChange)="_valueChange(fm, 'action', $event)" /></td>
+    <td class="text-center"></td>
+    <td><input type="text" nz-input formControlName="expect" (ngModelChange)="_valueChange(fm, 'action', $event)" /></td>
     <td></td>
-    <td><input type="text" nz-input formControlName="expect" /></td>
-    <td></td>
-    <td></td>
-    <td><i class="fa fa-plus"></i> <i class="fa fa-close"></i></td>
+    <td class="text-center"></td>
+    <td class="text-right">
+      <a (click)="appendRow(index)"><i class="fa fa-plus"></i></a> 
+      <a (click)="removeRow(index)"><i class="fa fa-close"></i></a>
+    </td>
   </tr>
 </table>
