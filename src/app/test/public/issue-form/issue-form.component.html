@@ -1,3 +1,154 @@
-<p>
-  issue-form works!
-</p>
+<form nz-form [formGroup]="_form" [nzLayout]="'horizontal'">
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>所属产品</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-product-select formControlName="productId"></pms-product-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>所属模块</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-module-select formControlName="moduleId" [productId]="productId"></pms-module-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>所属项目</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-project-select formControlName="projectId" [productId]="productId"></pms-project-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>影响版本</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-build-select  formControlName="effectBuildId" [projectId]="projectId"></pms-build-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>当前指派</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-user-select formControlName="assignedToId"></pms-user-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>截止日期</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <nz-datepicker formControlName="deadline" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>问题类型</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="4">
+      <pms-attribute-select formControlName="type" group="issue" code="type"></pms-attribute-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>平台</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="4">
+        <pms-attribute-select formControlName="system" group="issue" code="system"></pms-attribute-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>浏览器</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="4">
+        <pms-attribute-select formControlName="browser" group="issue" code="browser"></pms-attribute-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>问题标题</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="12">
+      <input nz-input formControlName="name" required maxlength="30">
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>严重程度</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="2">
+        <pms-attribute-select formControlName="severity" group="issue" code="severity"></pms-attribute-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>优先级</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="2">
+        <pms-attribute-select formControlName="priority" group="common" code="priority"></pms-attribute-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>问题描述</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="20">
+      <textarea nz-input formControlName="description" rows="6"></textarea>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>相关需求</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+      <pms-requirement-select formControlName="requirementId" [productId]="productId" [projectId]="projectId"></pms-requirement-select>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>相关任务</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="8">
+        <pms-task-select formControlName="taskId" [projectId]="projectId"></pms-task-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>关键词</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="20">
+      <input nz-input formControlName="keyword" required maxlength="30">
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>跟踪</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="20">
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>附件</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="20">
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+      <div nz-form-control nz-col [nzSpan]="20" [nzOffset]="4">
+          <button type="button" class="btn btn-primary" (click)="_save($event)">保存</button>
+          <button type="button" class="btn btn-light" (click)="_cancel($event)">取消</button>
+      </div>
+  </div>
+
+</form>

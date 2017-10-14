@@ -3,7 +3,10 @@
     <div class="card">
       <div class="card-header">
         <div class="card-title">
-          <span>建用例</span>
+          <span class="badge badge-dark">{{testCase.id}}</span>
+          <a [routerLink]="['../', 'view']">{{testCase.name}}</a>
+          <span class="mx-2"><i class="fa fa-angle-right"></i></span>
+          <span>编辑</span>
         </div>
       </div>
       <div class="card-body">

@@ -12,6 +12,7 @@ import { ModuleSelectComponent } from './module-select/module-select.component';
 import { PlanSelectComponent } from './plan-select/plan-select.component';
 import { ProductSelectComponent } from './product-select/product-select.component';
 import { RequirementChangeLogComponent } from './requirement-change-log/requirement-change-log.component';
+import { RequirementSelectComponent } from './requirement-select/requirement-select.component';
 
 const PUBLIC_COMPONENTS = [
   ProductToolbarComponent,
@@ -24,6 +25,7 @@ const PUBLIC_COMPONENTS = [
   PlanSelectComponent,
   ProductSelectComponent,
   RequirementChangeLogComponent,
+  RequirementSelectComponent,
 ];
 
 @NgModule({
@@ -31,7 +33,7 @@ const PUBLIC_COMPONENTS = [
     SharedModule,
     RouterModule
   ],
-  declarations: [...PUBLIC_COMPONENTS, ],
+  declarations: [...PUBLIC_COMPONENTS,],
   exports: [...PUBLIC_COMPONENTS],
   entryComponents: [
     RequirementSubdivideDialogComponent,

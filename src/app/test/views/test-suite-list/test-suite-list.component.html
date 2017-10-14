@@ -1,3 +1,9 @@
-<p>
-  test-suite-list works!
-</p>
+<div class="my-4 mx-3 p-3 bg-white">
+    <cui-data-table [columns]="columns" [data]="data?.content" [pagination]="data" selectType="checkbox" [loading]="loading"
+    [(selection)]="selection">
+      
+    <ng-template #listTools>
+      <button type="button" class="btn btn-primary" [routerLink]="['add']"><i class="fa fa-plus"></i> 添加套件</button>
+    </ng-template>
+    </cui-data-table>
+  </div>

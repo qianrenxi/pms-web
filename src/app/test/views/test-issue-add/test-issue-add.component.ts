@@ -12,4 +12,26 @@ export class TestIssueAddComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSave(event) {
+    let value = event.value;
+
+    /* this.caseApi.create(value).subscribe(
+      ok => {
+        this.message.success('添加成功');
+        this.toList();
+      },
+      err => {
+        this.message.error('添加失败');
+      }
+    );*/
+  }
+
+  onCancel(event) {
+    this.toList();
+  }
+
+  toList() {
+    // this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
 }

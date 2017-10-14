@@ -23,7 +23,7 @@ export class TestCaseListComponent implements OnInit {
   columns: Column[] = [
     { title: 'ID', data: 'id' },
     { title: '优先级', data: 'priority' },
-    { title: '用例名称', data: 'name' },
+    { title: '用例名称', tpl: 'name' },
     { title: '类型', data: 'type' },
     { title: '创建者', data: 'createdByDisplayName' },
     { title: '执行人', data: '' },

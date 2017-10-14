@@ -1,6 +1,6 @@
 import { NzMessageService } from 'ng-zorro-antd';
-import { ProductApiService } from './../../../common/api/product-api.service';
-import { TestCaseApiService } from './../../../common/api/test-case-api.service';
+import { ProductApiService } from 'app/common/api';
+import { TestCaseApiService } from 'app/common/api';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -37,7 +37,9 @@ export class TestCaseAddComponent implements OnInit {
     );
   }
 
-  onCancel(event) { }
+  onCancel(event) {
+    this.toList();
+  }
 
   toList() {
     this.router.navigate(['../'], { relativeTo: this.route });

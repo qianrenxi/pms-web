@@ -1,3 +1,37 @@
-<p>
-  test-issue-list works!
-</p>
+<div class="my-4 mx-3 p-3 bg-white">
+  <cui-data-table [columns]="columns" [data]="data?.content" [pagination]="data" selectType="checkbox" [loading]="loading"
+  [(selection)]="selection">
+    
+  <ng-template #listTools>
+    <ng-container *ngTemplateOutlet="tableListTools"></ng-container>
+  </ng-template>
+  </cui-data-table>
+</div>
+
+<ng-template #tableListTools>
+  <div class="btn-group">
+    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-download"></i> <span>导出</span>
+        </button>
+    <div class="dropdown-menu dropdown-menu-left">
+      <a class="dropdown-item">Excel</a>
+      <a class="dropdown-item">Word</a>
+      <a class="dropdown-item">PDF</a>
+    </div>
+  </div>
+  <a class="btn btn-outline-primary" [routerLink]="['report']">
+    <i class="fa fa-area-chart"></i> <span>报表</span>
+  </a>
+  <div class="btn-group">
+    <a class="btn btn-primary" [routerLink]="['add']">
+      <i class="fa fa-plus"></i> <span>添加问题</span>
+    </a>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item">批量导入</a>
+      <a class="dropdown-item" [routerLink]="['batchAdd']">批量添加</a>
+    </div>
+  </div>
+</ng-template>

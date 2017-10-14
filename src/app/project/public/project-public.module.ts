@@ -10,6 +10,9 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectChangeLogComponent } from './project-change-log/project-change-log.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { BuildFormComponent } from './build-form/build-form.component';
+import { ProjectSelectComponent } from './project-select/project-select.component';
+import { BuildSelectComponent } from './build-select/build-select.component';
+import { TaskSelectComponent } from './task-select/task-select.component';
 
 const PROJECT_PUBLIC_COMPONENTS = [
   ProjectToolbarComponent,
@@ -18,6 +21,10 @@ const PROJECT_PUBLIC_COMPONENTS = [
 
   TaskFormComponent,
   BuildFormComponent,
+
+  ProjectSelectComponent,
+  BuildSelectComponent,
+  TaskSelectComponent,
 ];
 
 @NgModule({

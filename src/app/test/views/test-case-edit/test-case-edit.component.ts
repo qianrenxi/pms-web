@@ -41,7 +41,9 @@ export class TestCaseEditComponent implements OnInit {
     );
   }
 
-  onCancel(event) { }
+  onCancel(event) {
+    this.toList();
+  }
 
   toList() {
     this.router.navigate(['../../'], { relativeTo: this.route });

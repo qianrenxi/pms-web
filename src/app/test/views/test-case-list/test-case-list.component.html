@@ -6,6 +6,9 @@
       <ng-container *ngTemplateOutlet="tableListTools"></ng-container>
     </ng-template>
 
+    <ng-template cuiColTpl="name" let-row="row">
+      <a class="text-primary" [routerLink]="[row.id, 'view']">{{row.name}}</a>
+    </ng-template>
     <ng-template cuiColTpl="actions" let-row="row">
       <a class="text-primary ml-2" title="执行"><i class="fa fa-lg fa-play"></i></a>
       <a class="text-primary ml-2" title="结果"><i class="fa fa-lg fa-list-alt"></i></a>

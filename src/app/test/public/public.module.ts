@@ -1,3 +1,4 @@
+import { ProjectPublicModule } from './../../project/public/project-public.module';
 import { ProductPublicModule } from './../../product/public/public.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/common/shared';
@@ -25,6 +26,7 @@ const PUBLIC_COMPONENTS = [
     SharedModule,
     RouterModule,
     ProductPublicModule,
+    ProjectPublicModule,
   ],
   declarations: [...PUBLIC_COMPONENTS],
   exports: [...PUBLIC_COMPONENTS]
