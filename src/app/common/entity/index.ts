@@ -1,3 +1,5 @@
+import { Document } from './document';
+import { DocLib } from './doc-lib';
 import { TestTask } from './test-task';
 import { TestSuite } from './test-suite';
 import { TestStep } from './test-step';
@@ -33,4 +35,6 @@ export {
     TestStep,
     TestSuite,
     TestTask,
+    DocLib,
+    Document
 };

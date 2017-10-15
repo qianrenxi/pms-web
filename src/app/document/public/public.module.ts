@@ -1,3 +1,4 @@
+import { DocOperateDialogModule } from './doc-operate-dialog/doc-operate-dialog.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/common/shared';
 import { NgModule } from '@angular/core';
@@ -11,9 +12,11 @@ const PUBLIC_COMPONENTS = [
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule,
+
+    DocOperateDialogModule
   ],
-  declarations: [...PUBLIC_COMPONENTS],
-  exports: [...PUBLIC_COMPONENTS]
+  declarations: [...PUBLIC_COMPONENTS, ],
+  exports: [...PUBLIC_COMPONENTS, DocOperateDialogModule]
 })
 export class DocumentPublicModule { }
