@@ -30,12 +30,12 @@ export class TestToolbarComponent implements OnInit {
   updateNavs() {
     if (this.activeProduct) {
       this._navs = [
-        { title: '问题', routerLink: ['/test', this.activeProduct.id, 'issue'] },
-        { title: '用例', routerLink: ['/test', this.activeProduct.id, 'case'] },
-        { title: '版本', routerLink: ['/test', this.activeProduct.id, 'testTask'] },
-        { title: '套件', routerLink: ['/test', this.activeProduct.id, 'suite'] },
-        { title: '报告', routerLink: ['/test', this.activeProduct.id, 'report'] },
-        { title: '用例库', routerLink: ['/test', this.activeProduct.id, 'suiteLib'], disabled: true},
+        { title: '问题', routerLink: ['./', this.activeProduct.id, 'issue'] },
+        { title: '用例', routerLink: ['./', this.activeProduct.id, 'case'] },
+        { title: '版本', routerLink: ['./', this.activeProduct.id, 'testTask'] },
+        { title: '套件', routerLink: ['./', this.activeProduct.id, 'suite'] },
+        { title: '报告', routerLink: ['./', this.activeProduct.id, 'report'] },
+        { title: '用例库', routerLink: ['./', this.activeProduct.id, 'suiteLib'], disabled: true},
       ];
     }
   }

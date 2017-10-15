@@ -1,0 +1,45 @@
+<div class="p-3">
+  <nz-tabset nzTabPosition="left" [nzShowPagination]="false">
+    <nz-tab>
+      <ng-template #nzTabHeading>
+        <div class="text-left" style="width: 120px">
+            <i class="fa fa-user-o"></i>
+            <span>个人资料</span>
+        </div>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="info"></ng-container>
+    </nz-tab>
+
+    <nz-tab>
+      <ng-template #nzTabHeading>
+        <div class="text-left" style="width: 120px">
+            <i class="fa fa-lock"></i>
+            <span>账户安全</span>
+        </div>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="security"></ng-container>
+    </nz-tab>
+
+    <nz-tab>
+      <ng-template #nzTabHeading>
+        <div class="text-left" style="width: 120px">
+            <i class="fa fa-comments-o"></i>
+            <span>我的消息</span>
+        </div>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="comments"></ng-container>
+    </nz-tab>
+  </nz-tabset>
+</div>
+
+<ng-template #info>
+  <pms-user-form></pms-user-form>
+</ng-template>
+
+<ng-template #security>
+  info
+</ng-template>
+
+<ng-template #comments>
+  info
+</ng-template>

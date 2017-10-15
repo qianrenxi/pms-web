@@ -30,15 +30,15 @@ export class ProductToolbarComponent implements OnInit {
   updateNavs() {
     if (this.activeProduct) {
       this._navs = [
-        { title: '需求', routerLink: ['/product', this.activeProduct.id, 'requirement'] },
-        { title: '活动', routerLink: ['/product', this.activeProduct.id, 'activity'] },
-        { title: '计划', routerLink: ['/product', this.activeProduct.id, 'plan'] },
-        { title: '发布', routerLink: ['/product', this.activeProduct.id, 'release'] },
-        { title: '路线', routerLink: ['/product', this.activeProduct.id, 'line'] },
-        { title: '文档', routerLink: ['/product', this.activeProduct.id, 'docLib'] },
-        { title: '项目', routerLink: ['/product', this.activeProduct.id, 'project'] },
-        { title: '模块', routerLink: ['/product', this.activeProduct.id, 'module'] },
-        { title: '概览', routerLink: ['/product', this.activeProduct.id, 'overview'] },
+        { title: '需求', routerLink: ['./', this.activeProduct.id, 'requirement'] },
+        { title: '活动', routerLink: ['./', this.activeProduct.id, 'activity'] },
+        { title: '计划', routerLink: ['./', this.activeProduct.id, 'plan'] },
+        { title: '发布', routerLink: ['./', this.activeProduct.id, 'release'] },
+        { title: '路线', routerLink: ['./', this.activeProduct.id, 'line'] },
+        { title: '文档', routerLink: ['./', this.activeProduct.id, 'docLib'] },
+        { title: '项目', routerLink: ['./', this.activeProduct.id, 'project'] },
+        { title: '模块', routerLink: ['./', this.activeProduct.id, 'module'] },
+        { title: '概览', routerLink: ['./', this.activeProduct.id, 'overview'] },
       ];
     }
   }

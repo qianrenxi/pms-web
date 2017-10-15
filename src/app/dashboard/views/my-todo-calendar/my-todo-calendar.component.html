@@ -1,0 +1,19 @@
+<nz-layout class="bg-white">
+  <nz-sider [nzCollapsible]="false" [nzWidth]="300" [nzCollapsedWidth]="64" class="bg-white">
+    <button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus"></i> 新建事件</button>
+    <div class="mt-4"></div>
+    <nz-calendar [nzLocale]="'zh-cn'" [nzFullScreen]="false" 
+      style="width: 300px; border: 1px solid rgb(217, 217, 217); border-radius: 4px;"></nz-calendar>
+  </nz-sider>
+  <nz-layout class="bg-white">
+    <nz-header>
+
+    </nz-header>
+    <nz-content>
+      <nz-calendar [nzLocale]="'zh-cn'"></nz-calendar>
+    </nz-content>
+    <nz-footer>
+
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

@@ -30,16 +30,16 @@ export class ProjectToolbarComponent implements OnInit {
   updateNavs() {
     if (this.activeProject) {
       this._navs = [
-        { title: '任务', routerLink: ['/project', this.activeProject.id, 'task'] },
-        { title: '需求', routerLink: ['/project', this.activeProject.id, 'requirement'] },
-        { title: '问题', routerLink: ['/project', this.activeProject.id, 'issue'] },
-        { title: '构建', routerLink: ['/project', this.activeProject.id, 'build'] },
-        { title: '测试', routerLink: ['/project', this.activeProject.id, 'test'] },
-        { title: '团队', routerLink: ['/project', this.activeProject.id, 'team'] },
-        { title: '动态', routerLink: ['/project', this.activeProject.id, 'activity'] },
-        { title: '文档', routerLink: ['/project', this.activeProject.id, 'docLib'] },
-        { title: '产品', routerLink: ['/project', this.activeProject.id, 'product'] },
-        { title: '概况', routerLink: ['/project', this.activeProject.id, 'overview'] },
+        { title: '任务', routerLink: ['./', this.activeProject.id, 'task'] },
+        { title: '需求', routerLink: ['./', this.activeProject.id, 'requirement'] },
+        { title: '问题', routerLink: ['./', this.activeProject.id, 'issue'] },
+        { title: '构建', routerLink: ['./', this.activeProject.id, 'build'] },
+        { title: '测试', routerLink: ['./', this.activeProject.id, 'test'] },
+        { title: '团队', routerLink: ['./', this.activeProject.id, 'team'] },
+        { title: '动态', routerLink: ['./', this.activeProject.id, 'activity'] },
+        { title: '文档', routerLink: ['./', this.activeProject.id, 'docLib'] },
+        { title: '产品', routerLink: ['./', this.activeProject.id, 'product'] },
+        { title: '概况', routerLink: ['./', this.activeProject.id, 'overview'] },
       ];
     }
   }

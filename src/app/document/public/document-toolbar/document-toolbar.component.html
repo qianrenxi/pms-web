@@ -1,0 +1,9 @@
+<div class="d-flex flex-row bg-faded py-2 px-3 clearfix sticky-top p-toolbar">
+  <nav class="nav nav-pills ml-3">
+    <a *ngFor="let nav of _navs" class="nav-link" [routerLink]="nav.routerLink" routerLinkActive="active">{{nav.title}}</a>
+  </nav>
+
+  <div class="actions ml-auto">
+    <button type="button" class="btn btn-outline-primary"><i class="fa fa-plus"></i> 添加文档库</button>
+  </div>
+</div>
