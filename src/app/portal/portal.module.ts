@@ -1,10 +1,13 @@
+import { PortalRoutingModule, routedComponents } from './portal-routing.module';
+import { SharedModule } from 'app/common';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    CommonModule
+    SharedModule,
+    PortalRoutingModule
   ],
-  declarations: []
+  declarations: [...routedComponents]
 })
 export class PortalModule { }

@@ -4,10 +4,10 @@
       selectType="checkbox" [(selection)]="seletion" [loading]="loading">
 
       <ng-template cuiColTpl="project" let-row="row">
-        <a class="text-primary" [routerLink]="['/console/project']">{{row.projectName}}</a>
+        <a class="text-primary" [routerLink]="['/project']">{{row.projectName}}</a>
       </ng-template>
       <ng-template cuiColTpl="name" let-row="row">
-        <a class="text-primary" [routerLink]="['/console/project', row.projectId, 'task', row.id, 'view']">{{row.name}}</a>
+        <a class="text-primary" [routerLink]="['/project', row.projectId, 'task', row.id, 'view']">{{row.name}}</a>
       </ng-template>
       <ng-template cuiColTpl="actions" let-row="row">
         <a class="text-primary ml-2" title="指派" (click)="operate(row, 'assign')"><i class="fa fa-lg fa-hand-o-right"></i></a>
@@ -15,7 +15,7 @@
         <a class="text-primary ml-2" title="登记工时" (click)="operate(row, 'timeEntries')"><i class="fa fa-lg fa-clock-o"></i></a>
         <a class="text-primary ml-2" title="完成" (click)="operate(row, 'complete')"><i class="fa fa-lg fa-check-square-o"></i></a>
         <a class="text-primary ml-2" title="关闭" (click)="operate(row, 'close')"><i class="fa fa-lg fa-power-off"></i></a>
-        <a class="text-primary ml-2" title="编辑" [routerLink]="['/console/project', row.projectId, 'task', row.id, 'edit']"><i class="fa fa-lg fa-edit"></i></a>
+        <a class="text-primary ml-2" title="编辑" [routerLink]="['/project', row.projectId, 'task', row.id, 'edit']"><i class="fa fa-lg fa-edit"></i></a>
       </ng-template>
     </cui-data-table>
   </div>

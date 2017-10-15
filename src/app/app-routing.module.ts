@@ -4,9 +4,9 @@ import { MainLayoutComponent } from 'app/common/shared';
 import { AuthGuard } from 'app/common/core';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'console', pathMatch: 'full' },
+  // { path: '', redirectTo: 'console', pathMatch: 'full' },
   {
-    path: 'console', component: MainLayoutComponent, canActivate: [AuthGuard],
+    path: '', component: MainLayoutComponent, canActivate: [AuthGuard],
     children: [
       { path: '', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
       { path: 'product', loadChildren: 'app/product/product.module#ProductModule' },
@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
     ]
   },
+  // { path: '', loadChildren: 'app/portal/portal.module#PortalModule' },
 ];
 
 @NgModule({

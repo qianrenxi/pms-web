@@ -7,40 +7,40 @@
       <nz-sider [nzCollapsible]="true" [nzWidth]="200" [nzCollapsedWidth]="64" style="background: #ffffff;">
         <ul nz-menu [nzMode]="'vertical'" [nzTheme]="'light'">
           <li nz-menu-item [nzSelected]="rlaDash.isActive || rlaMy.isActive">
-            <a [routerLink]="['./']" routerLinkActive #rlaDash="routerLinkActive" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-dashboard fa-lg"></i> <span class="nav-text">我的工作台</span></a>
-            <a class="d-none" routerLinkActive #rlaMy="routerLinkActive" [routerLink]="['my']"></a>
+            <a [routerLink]="['/']" routerLinkActive #rlaDash="routerLinkActive" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-dashboard fa-lg"></i> <span class="nav-text">我的工作台</span></a>
+            <a class="d-none" routerLinkActive #rlaMy="routerLinkActive" [routerLink]="['/my']"></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaProd.isActive">
-            <a [routerLink]="['product']" routerLinkActive #rlaProd="routerLinkActive"><i class="fa fa-cubes fa-lg"></i> <span class="nav-text">产品</span></a>
+            <a [routerLink]="['/product']" routerLinkActive #rlaProd="routerLinkActive"><i class="fa fa-cubes fa-lg"></i> <span class="nav-text">产品</span></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaProj.isActive">
-            <a [routerLink]="['project']" routerLinkActive #rlaProj="routerLinkActive"><i class="fa fa-code fa-lg"></i> <span class="nav-text">项目</span></a>
+            <a [routerLink]="['/project']" routerLinkActive #rlaProj="routerLinkActive"><i class="fa fa-code fa-lg"></i> <span class="nav-text">项目</span></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaTest.isActive">
-            <a [routerLink]="['test']" routerLinkActive #rlaTest="routerLinkActive"><i class="fa fa-bug fa-lg"></i> <span class="nav-text">测试</span></a>
+            <a [routerLink]="['/test']" routerLinkActive #rlaTest="routerLinkActive"><i class="fa fa-bug fa-lg"></i> <span class="nav-text">测试</span></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaDoc.isActive">
-            <a [routerLink]="['document']" routerLinkActive #rlaDoc="routerLinkActive"><i class="fa fa-file-text-o fa-lg"></i> <span class="nav-text">文档</span></a>
+            <a [routerLink]="['/document']" routerLinkActive #rlaDoc="routerLinkActive"><i class="fa fa-file-text-o fa-lg"></i> <span class="nav-text">文档</span></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaReport.isActive">
-            <a [routerLink]="['report']" routerLinkActive #rlaReport="routerLinkActive"><i class="fa fa-area-chart fa-lg"></i> <span class="nav-text">统计</span></a>
+            <a [routerLink]="['/report']" routerLinkActive #rlaReport="routerLinkActive"><i class="fa fa-area-chart fa-lg"></i> <span class="nav-text">统计</span></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaGroup.isActive">
-            <a [routerLink]="['group']" routerLinkActive #rlaGroup="routerLinkActive"><i class="fa fa-sitemap fa-lg"></i> <span class="nav-text">组织</span></a>
+            <a [routerLink]="['/group']" routerLinkActive #rlaGroup="routerLinkActive"><i class="fa fa-sitemap fa-lg"></i> <span class="nav-text">组织</span></a>
           </li>
 
           <li nz-menu-item [nzSelected]="rlaAdmin.isActive">
-            <a [routerLink]="['admin']" routerLinkActive #rlaAdmin="routerLinkActive"><i class="fa fa-cogs fa-lg"></i> <span class="nav-text">管理</span></a>
+            <a [routerLink]="['/admin']" routerLinkActive #rlaAdmin="routerLinkActive"><i class="fa fa-cogs fa-lg"></i> <span class="nav-text">管理</span></a>
           </li>
 
           <!-- <li nz-menu-item [nzSelected]="rlaFeed.isActive">
-            <a [routerLink]="['feedback']" routerLinkActive #rlaFeed="routerLinkActive"><i class="fa fa-rss fa-lg"></i> <span class="nav-text">反馈</span></a>
+            <a [routerLink]="['/feedback']" routerLinkActive #rlaFeed="routerLinkActive"><i class="fa fa-rss fa-lg"></i> <span class="nav-text">反馈</span></a>
           </li> -->
           
           <li nz-submenu style="display: none;">

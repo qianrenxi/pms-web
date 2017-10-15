@@ -16,7 +16,7 @@
   <cui-data-table [columns]="columns" [data]="builds" [loading]="loading">
 
     <ng-template cuiColTpl="product" let-row="row">
-      <a class="text-primary" [routerLink]="['/console/product', row.productId, 'overview']">{{row.productName}}</a>
+      <a class="text-primary" [routerLink]="['/product', row.productId, 'overview']">{{row.productName}}</a>
     </ng-template>
     <ng-template cuiColTpl="name" let-row="row">
       <a class="text-primary" [routerLink]="[row.id, 'view']">{{row.name}}</a>

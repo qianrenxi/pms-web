@@ -1,6 +1,6 @@
 <div class="d-flex flex-row bg-faded py-2 px-3 clearfix sticky-top p-toolbar">
     <nav class="nav nav-pills ml-3">
-      <a class="nav-link" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">首页</a>
+      <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">首页</a>
       <a *ngFor="let nav of _navs" class="nav-link" [routerLink]="nav.routerLink" routerLinkActive="active">{{nav.title}}</a>
     </nav>
   
