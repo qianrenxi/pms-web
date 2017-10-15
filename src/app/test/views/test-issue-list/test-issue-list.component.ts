@@ -6,6 +6,7 @@ import { Column } from 'consoleui';
 import { Issue } from 'app/common/entity';
 import { Pagination } from 'app/common/core';
 import { Component, OnInit } from '@angular/core';
+import { IssueOperateDialogService } from './../../public/issue-operate-dialog/issue-operate-dialog.service';
 
 @Component({
   selector: 'pms-test-issue-list',
@@ -24,20 +25,20 @@ export class TestIssueListComponent implements OnInit {
     { title: 'ID', data: 'id' },
     { title: '级别', data: 'severity' },
     { title: '优先级', data: 'priority' },
-    { title: '问题标题', data: 'name' },
-    { title: '状态', data: 'status' },
+    { title: '问题标题', tpl: 'name' },
+    { title: '状态', tpl: 'status' },
     { title: '创建', data: 'createdByDisplayName' },
-    { title: '创建日期', data: 'createdDate' },
+    { title: '创建日期', tpl: 'createdDate' },
     { title: '指派给', data: 'assignedToDisplayName' },
     { title: '解决', data: 'resolvedByDisplayName' },
-    { title: '方案', data: 'solution' },
-    { title: '解决日期', data: 'resolvedDate' },
-    { title: '操作', tpl: 'actions' },
+    { title: '方案', tpl: 'solution' },
+    { title: '解决日期', tpl: 'resolvedDate' },
+    { title: '操作', tpl: 'actions', styleClass: 'text-right' },
   ];
 
   constructor(private router: Router, private route: ActivatedRoute,
     private message: NzMessageService, private productApi: ProductApiService,
-    private issueApi: IssueApiService) { }
+    private issueApi: IssueApiService, private issueOperate: IssueOperateDialogService) { }
 
   ngOnInit() {
     this.productId = +this.route.snapshot.paramMap.get('productId');
@@ -58,6 +59,11 @@ export class TestIssueListComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+
+  operate(issue: Issue, operate: string) {
+    this.issueOperate.open(issue, operate);
   }
 
 }

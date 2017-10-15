@@ -1,3 +1,8 @@
-<p>
-  task-select works!
-</p>
+<nz-select [(ngModel)]="_value" name="_value" (ngModelChange)="onChange($event)" [nzDisabled]="!projectId"
+  [nzPlaceHolder]="'请选择任务'" [nzAllowClear]="true" >
+    <nz-option 
+        *ngFor="let item of tasks" 
+        [nzLabel]="item.name"
+        [nzValue]="item.id">
+    </nz-option>
+</nz-select>

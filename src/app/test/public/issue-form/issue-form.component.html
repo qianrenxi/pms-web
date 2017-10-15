@@ -12,7 +12,7 @@
       <label>所属模块</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="8">
-      <pms-module-select formControlName="moduleId" [productId]="productId"></pms-module-select>
+      <pms-module-select formControlName="moduleId" [productId]="productId" [productControl]="getFormControl('productId')"></pms-module-select>
     </div>
   </div>
 
@@ -21,14 +21,14 @@
       <label>所属项目</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="8">
-      <pms-project-select formControlName="projectId" [productId]="productId"></pms-project-select>
+      <pms-project-select formControlName="projectId" [productId]="productId" [productControl]="getFormControl('productId')"></pms-project-select>
     </div>
 
     <div nz-form-label nz-col [nzSpan]="4">
       <label>影响版本</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="8">
-      <pms-build-select  formControlName="effectBuildId" [projectId]="projectId"></pms-build-select>
+      <pms-build-select  formControlName="effectBuildId" [projectId]="projectId" [projectControl]="getFormControl('projectId')"></pms-build-select>
     </div>
   </div>
 
@@ -108,14 +108,15 @@
       <label>相关需求</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="8">
-      <pms-requirement-select formControlName="requirementId" [productId]="productId" [projectId]="projectId"></pms-requirement-select>
+      <pms-requirement-select formControlName="requirementId" [productId]="productId" [projectId]="projectId"
+        [productControl]="getFormControl('productId')" [projectControl]="getFormControl('projectId')"></pms-requirement-select>
     </div>
 
     <div nz-form-label nz-col [nzSpan]="4">
       <label>相关任务</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="8">
-        <pms-task-select formControlName="taskId" [projectId]="projectId"></pms-task-select>
+        <pms-task-select formControlName="taskId" [projectId]="projectId" [projectControl]="getFormControl('projectId')"></pms-task-select>
     </div>
   </div>
 

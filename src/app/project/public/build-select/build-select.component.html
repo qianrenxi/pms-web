@@ -1,3 +1,7 @@
-<p>
-  build-select works!
-</p>
+<nz-select [(ngModel)]="_value" name="_value" (ngModelChange)="onChange($event)" [nzDisabled]="!projectId" [nzPlaceHolder]="'请选择一个构建'" [nzAllowClear]="true" >
+    <nz-option 
+        *ngFor="let item of builds" 
+        [nzLabel]="item.name"
+        [nzValue]="item.id">
+    </nz-option>
+</nz-select>

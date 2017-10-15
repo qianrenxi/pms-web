@@ -1,5 +1,6 @@
 import { ProductDetailResolver } from './../product/service/product-detail-resolver.service';
 import { TestCaseDetailResolver } from './service/test-case-detail-resolver.service';
+import { IssueDetailResolver } from './service/issue-detail-resolver.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TestLayoutComponent } from './views/test-layout/test-layout.component';
@@ -41,7 +42,7 @@ const routes: Routes = [
                             { path: '', component: TestIssueListComponent },
                             { path: 'add', component: TestIssueAddComponent },
                             {
-                                path: ':issueId', resolve: {}, children: [
+                                path: ':issueId', resolve: {issue: IssueDetailResolver}, children: [
                                     { path: 'view', component: TestIssueViewComponent },
                                     { path: 'edit', component: TestIssueEditComponent },
                                 ]
@@ -95,8 +96,8 @@ const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
-    providers: [ProductDetailResolver, TestCaseDetailResolver]
+exports: [RouterModule],
+    providers: [ProductDetailResolver, TestCaseDetailResolver, IssueDetailResolver]
 })
 export class TestRoutingModule { }
 

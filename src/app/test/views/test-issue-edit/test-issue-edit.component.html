@@ -1,3 +1,204 @@
-<p>
-  test-issue-edit works!
-</p>
+<div class="my-4 mx-3 bg-white">
+    <div class="card">
+      <div class="card-header d-flex">
+        <div>
+            <span class="badge badge-dark">{{issue.id}}</span>
+            <a [routerLink]="['../', 'view']">{{issue.name}}</a>
+            <span class="mx-2"><i class="fa fa-angle-right"></i></span>
+            <span>编辑</span>
+        </div>
+        <div class="ml-auto">
+          <ng-container [ngTemplateOutlet]="actions"></ng-container>
+        </div>
+      </div>
+      <div class="card-body">
+          <form nz-form [formGroup]="_form" [nzLayout]="'horizontal'">
+        <div class="row">
+          <div class="col order-2" style="width: 360px; flex: none;">
+            <ng-container [ngTemplateOutlet]="baseInfo"></ng-container>
+            <ng-container [ngTemplateOutlet]="workInfo"></ng-container>
+            <ng-container [ngTemplateOutlet]="lifeInfo"></ng-container>
+          </div>
+          <div class="col order-1" style="flex: 1;">
+            <ng-container [ngTemplateOutlet]="detail"></ng-container>
+  
+            <div class="text-center mt-4">
+              <ng-container [ngTemplateOutlet]="actions"></ng-container>
+            </div>
+
+            <div class="mt-4">
+              <pms-change-log targetType="issue" [targetId]="issue.id"></pms-change-log>
+            </div>
+          </div>
+        </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+<ng-template #baseInfo>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="mb-3">基本信息</h5>
+  
+      <dl class="row" [formGroup]="_form">
+        <dt class="col-3">所属产品</dt>
+        <dd class="col-9">{{issue.productName}}</dd>
+        
+        <dt class="col-3">所属模块</dt>
+        <dd class="col-9">
+          <pms-module-select formControlName="moduleId" [productId]="issue.productId"></pms-module-select>
+        </dd>
+        
+        <dt class="col-3">所属计划</dt>
+        <dd class="col-9">
+          <pms-plan-select formControlName="planId" [productId]="issue.productId"></pms-plan-select>
+        </dd>
+        
+        <dt class="col-3">问题类型</dt>
+        <dd class="col-9">
+          <pms-attribute-select formControlName="type" group="issue" code="type"></pms-attribute-select>
+        </dd>
+        
+        <dt class="col-3">严重程度</dt>
+        <dd class="col-9">
+            <pms-attribute-select formControlName="severity" group="issue" code="severity"></pms-attribute-select>
+        </dd>
+        
+        <dt class="col-3">优先级</dt>
+        <dd class="col-9">
+            <pms-attribute-select formControlName="priority" group="issue" code="priority"></pms-attribute-select>
+        </dd>
+        
+        <dt class="col-3">问题状态</dt>
+        <dd class="col-9">
+            <pms-attribute-select formControlName="status" group="issue" code="status"></pms-attribute-select>
+        </dd>
+        
+        <dt class="col-3">是否确认</dt>
+        <dd class="col-9">{{issue.isVerify}}</dd>
+        
+        <dt class="col-3">指派</dt>
+        <dd class="col-9">
+          <pms-user-select formControlName="assignedToId"></pms-user-select>
+        </dd>
+        
+        <dt class="col-3">截止日期</dt>
+        <dd class="col-9">
+          <nz-datepicker formControlName="deadline" [nzPlaceHolder]="'请选择日期'"></nz-datepicker>
+        </dd>
+        
+        <dt class="col-3">操作系统</dt>
+        <dd class="col-9">
+            <pms-attribute-select formControlName="system" group="issue" code="system"></pms-attribute-select>
+        </dd>
+        
+        <dt class="col-3">浏览器</dt>
+        <dd class="col-9">
+            <pms-attribute-select formControlName="browser" group="issue" code="browser"></pms-attribute-select>
+        </dd>
+        
+        <dt class="col-3">关键词</dt>
+        <dd class="col-9">
+          <nz-input formControlName="keyword" [nzPlaceHolder]="''"></nz-input>
+        </dd>
+        
+        <dt class="col-3">跟踪者</dt>
+        <dd class="col-9"></dd>
+      </dl>
+    </div>
+  </div>
+  </ng-template>
+  
+  <ng-template #workInfo>
+    <div class="card mb-4">
+      <div class="card-body" [formGroup]="_form">
+        <h5 class="mb-3">问题相关</h5>
+  
+        <dl class="row">
+          <dt class="col-3">所属项目</dt>
+          <dd class="col-9">
+            <pms-project-select formControlName="projectId" [productId]="issue.productId"></pms-project-select>
+          </dd>
+          
+          <dt class="col-3">相关需求</dt>
+          <dd class="col-9">
+            <pms-requirement-select formControlName="requirementId" [productId]="issue.productId" [projectControl]="getFormControl('projectId')"></pms-requirement-select>
+          </dd>
+          
+          <dt class="col-3">相关任务</dt>
+          <dd class="col-9">
+            <pms-task-select formControlName="taskId" [projectControl]="getFormControl('projectId')"></pms-task-select>
+          </dd>
+  
+          <dt class="col-3">相关问题</dt>
+          <dd class="col-9"></dd>
+        </dl>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #lifeInfo>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-3">问题的一生</h5>
+  
+        <dl class="row">
+          <dt class="col-3">创建者</dt>
+          <dd class="col-9">
+            {{issue.createdDisplayName}}
+            于
+            {{issue.createdDate | date: 'yyyy-MM-dd'}}
+          </dd>
+          
+          <dt class="col-3">影响版本</dt>
+          <dd class="col-9">{{issue.effectBuildName}}</dd>
+          
+          <dt class="col-3">解决者</dt>
+          <dd class="col-9">{{issue.resolvedByDisplayName}}</dd>
+  
+          <dt class="col-3">解决版本</dt>
+          <dd class="col-9"></dd>
+  
+          <dt class="col-3">解决方案</dt>
+          <dd class="col-9">{{issue.solution}}</dd>
+  
+          <dt class="col-3">由谁关闭</dt>
+          <dd class="col-9">{{issue.closedByDisplayName}}</dd>
+  
+          <dt class="col-3">最后修改</dt>
+          <dd class="col-9">
+            {{issue.lastModifiedByDisplayName}}
+            于
+            {{issue.lastModifiedDate | date: 'yyyy-MM-dd'}}
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #detail>
+    <div class="card mb-4">
+      <div class="card-body" [formGroup]="_form">
+        <div nz-form-item nz-row>
+            <input type="text" nz-input formControlName="name" nzSize="large">
+        </div>
+        
+        <h5 class="mb-3">问题描述</h5>
+        <div>
+          <textarea nz-input formControlName="description" cols="30" rows="10"></textarea>
+        </div>
+  
+        <h5 class="mb-3 mt-4">附件</h5>
+
+        <h5 class="mb-3 mt-4">备注</h5>
+        <textarea nz-input formControlName="remark" cols="30" rows="4"></textarea>
+      </div>
+    </div>
+  </ng-template>
+  
+  
+  <ng-template #actions>
+    <button class="btn btn-primary" (click)="save($event)"><i class="fa fa-save"></i> 保存</button>
+    <button class="btn btn-light" (click)="cancel($event)"> 取消</button>
+  </ng-template>

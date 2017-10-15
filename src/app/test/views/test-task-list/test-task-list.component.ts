@@ -21,15 +21,15 @@ export class TestTaskListComponent implements OnInit {
   loading;
 
   columns: Column[] = [
-    { title: 'ID', data: '' },
-    { title: '名称', data: '' },
-    { title: '所属产品', data: '' },
-    { title: '所属项目', data: '' },
-    { title: '版本', data: '' },
-    { title: '负责人', data: '' },
-    { title: '开始日期', data: '' },
-    { title: '结束日期', data: '' },
-    { title: '操作', data: '', styleClass: 'text-right' },
+    { title: 'ID', data: 'id' },
+    { title: '名称', tpl: 'name' },
+    { title: '所属产品', data: 'productName' },
+    { title: '所属项目', data: 'projectName' },
+    { title: '版本', data: 'buildName' },
+    { title: '负责人', data: 'leaderDisplayName' },
+    { title: '开始日期', tpl: 'startDate' },
+    { title: '结束日期', tpl: 'endDate' },
+    { title: '操作', tpl: 'actions', styleClass: 'text-right' },
   ];
 
   constructor(private router: Router, private route: ActivatedRoute,

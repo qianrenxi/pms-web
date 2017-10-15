@@ -1,5 +1,7 @@
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ProductApiService } from 'app/common/api';
+import { Project } from 'app/common/entity';
 
 @Component({
   selector: 'pms-project-select',
@@ -15,18 +17,36 @@ import { Component, OnInit, Input, forwardRef } from '@angular/core';
 })
 export class ProjectSelectComponent implements OnInit, ControlValueAccessor {
 
+  @Input() productControl: FormControl;
   @Input() productId;
 
   @Input() disabled;
+
+  projects: Project[];
 
   _value;
   // ngModel access
   onChange: any = Function.prototype;
   onTouched: any = Function.prototype;
 
-  constructor() { }
+  constructor(private productApi: ProductApiService) { }
 
   ngOnInit() {
+    if (this.productControl) {
+      this.productControl.valueChanges.subscribe(
+        productId => {
+          if (this.productId != productId) {
+            this.productId = productId;
+            this._value = null;
+            this.onChange(this._value);
+
+            this.loadPorjects();
+          }
+        }
+      );
+    }
+
+    this.loadPorjects();
   }
 
   writeValue(value: any): void {
@@ -40,5 +60,13 @@ export class ProjectSelectComponent implements OnInit, ControlValueAccessor {
   }
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  loadPorjects() {
+    if (this.productId) {
+      this.productApi.projects(this.productId).subscribe(
+        projs => this.projects = projs
+      );
+    }
   }
 }

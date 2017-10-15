@@ -14,7 +14,7 @@
       <label>版本</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="8">
-      <pms-build-select formControlName="buildId" [projectId]="projectId"></pms-build-select>
+      <pms-build-select formControlName="buildId" [projectId]="projectId" [projectControl]="getFormControl('projectId')"></pms-build-select>
     </div>
   </div>
 

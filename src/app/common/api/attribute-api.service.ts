@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { browser } from 'protractor';
 
 @Injectable()
 export class AttributeApiService {
@@ -107,6 +108,79 @@ export class AttributeApiService {
                     { id: 1, value: 'bvt', label: '版本验证阶段', disabled: false },
                 ]
             },
+        },
+        issue: {
+            type: {
+                id: 7,
+                name: '问题类型',
+                code: 'type',
+                values: [
+                    { id: 1, value: 'codeerror', label: '代码错误', disabled: false },
+                    { id: 1, value: 'interface', label: '界面优化', disabled: false },
+                    { id: 1, value: 'designdefect', label: '设计缺陷', disabled: false },
+                    { id: 1, value: 'config', label: '配置相关', disabled: false },
+                    { id: 1, value: 'install', label: '安装部署', disabled: false },
+                    { id: 1, value: 'security', label: '安全相关', disabled: false },
+                    { id: 1, value: 'performance', label: '性能问题', disabled: false },
+                    { id: 1, value: 'standard', label: '标准规范', disabled: false },
+                    { id: 1, value: 'automation', label: '测试脚本', disabled: false },
+                    { id: 1, value: 'codeimprovement', label: '代码改进', disabled: false },
+                    { id: 1, value: 'others', label: '其他', disabled: false },
+                ]
+            },
+            system: {
+                id: 8,
+                name: '平台',
+                code: 'system',
+                values: [
+                    { id: 1, value: 'all', label: '全部', disabled: false },
+                    { id: 1, value: 'windows', label: 'Windows', disabled: false },
+                    { id: 1, value: 'android', label: 'Android', disabled: false },
+                    { id: 1, value: 'ios', label: 'IOS', disabled: false },
+                    { id: 1, value: 'osx', label: 'OS X', disabled: false },
+                    { id: 1, value: 'unix', label: 'Unix', disabled: false },
+                    { id: 1, value: 'others', label: '其他', disabled: false },
+                ]
+            },
+            browser: {
+                id: 9,
+                name: '浏览器',
+                code: 'browser',
+                values: [
+                    { id: 1, value: 'all', label: '全部', disabled: false },
+                    { id: 1, value: 'ie', label: 'IE系列', disabled: false },
+                    { id: 1, value: 'ie11', label: 'ie11', disabled: false },
+                    { id: 1, value: 'ie10', label: 'ie10', disabled: false },
+                    { id: 1, value: 'chrome', label: 'chrome', disabled: false },
+                    { id: 1, value: 'firefox', label: 'firefox系列', disabled: false },
+                    { id: 1, value: 'others', label: '其他', disabled: false },
+                ]
+            },
+            severity: {
+                id: 10,
+                name: '严重程度',
+                code: 'severity',
+                values: [
+                    { id: 1, value: 1, label: '1', disabled: false },
+                    { id: 1, value: 2, label: '2', disabled: false },
+                    { id: 1, value: 3, label: '3', disabled: false },
+                    { id: 1, value: 4, label: '4', disabled: false },
+                    { id: 1, value: 5, label: '5', disabled: false },
+                ]
+            },
+        },
+        testTask: {
+            status: {
+                id: 9,
+                name: '状态',
+                code: 'status',
+                values: [
+                    { id: 1, value: 'WAIT', label: '未开始', disabled: false },
+                    { id: 1, value: 'DOING', label: '进行中', disabled: false },
+                    { id: 1, value: 'DONE', label: '已完成', disabled: false },
+                    { id: 1, value: 'BLOCKED', label: '被阻塞', disabled: false },
+                ]
+            }
         }
     };
 

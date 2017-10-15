@@ -23,6 +23,9 @@ export class TestTaskAddComponent implements OnInit {
   onSave(event) {
     let value = event.value;
     value['product'] = { id: this.productId };
+    value['project'] = value['projectId'] ? {id: value['projectId']} : null;
+    value['build'] = value['buildId'] ? {id: value['buildId']} : null;
+    value['leader'] = value['leaderId'] ? {id: value['leaderId']} : null;
 
     this.testTaskApi.create(value).subscribe(
       ok => {

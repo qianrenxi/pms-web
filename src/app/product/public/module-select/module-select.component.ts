@@ -1,6 +1,6 @@
 import { ProductApiService } from 'app/common/api';
 import { Module } from 'app/common/entity';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Component, OnInit, forwardRef, Input, Output } from '@angular/core';
 
 
@@ -29,21 +29,29 @@ export class ModuleSelectComponent implements OnInit, ControlValueAccessor {
   onChange: any = Function.prototype;
   onTouched: any = Function.prototype;
 
+  @Input() productControl: FormControl;
   @Input() productId: number;
   @Input() disabled: boolean;
 
   constructor(private productApi: ProductApiService) { }
 
   ngOnInit() {
-    if (this.productId) {
-      this.productApi.modulesFlat(this.productId).subscribe(
-        mf => {
-          this._modulesFlat = mf;
-          this.parseTree();
-          this.valueToSelection();
+    if (this.productControl) {
+      this.productControl.valueChanges.subscribe(
+        value => {
+          console.log(value)
+          if (this.productId != value) {
+            this.productId = value;
+            this._value = null;
+            this.onChange(this._value);
+
+            this.loadModules();
+          }
         }
       );
     }
+
+    this.loadModules();
   }
 
   writeValue(value: any): void {
@@ -61,6 +69,18 @@ export class ModuleSelectComponent implements OnInit, ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  loadModules() {
+    if (this.productId) {
+      this.productApi.modulesFlat(this.productId).subscribe(
+        mf => {
+          this._modulesFlat = mf;
+          this.parseTree();
+          this.valueToSelection();
+        }
+      );
+    }
   }
 
   parseTree(parent?: Module) {

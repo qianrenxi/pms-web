@@ -11,6 +11,8 @@ import { TestCaseFormComponent } from './test-case-form/test-case-form.component
 import { TestSuiteFormComponent } from './test-suite-form/test-suite-form.component';
 import { TestStepControlComponent } from './test-step-control/test-step-control.component';
 
+import { IssueOperateDialogModule } from './issue-operate-dialog/issue-operate-dialog.module';
+
 const PUBLIC_COMPONENTS = [
   TestToolbarComponent,
 
@@ -23,12 +25,14 @@ const PUBLIC_COMPONENTS = [
 
 @NgModule({
   imports: [
-    SharedModule,
+  SharedModule,
     RouterModule,
     ProductPublicModule,
     ProjectPublicModule,
+
+    IssueOperateDialogModule
   ],
   declarations: [...PUBLIC_COMPONENTS],
-  exports: [...PUBLIC_COMPONENTS]
+  exports: [...PUBLIC_COMPONENTS, IssueOperateDialogModule]
 })
 export class TestPublicModule { }
