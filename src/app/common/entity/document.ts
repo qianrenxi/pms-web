@@ -4,6 +4,7 @@ export class Document {
     keyword?: string;
     format?: string;
     content?: string;
+    originalContent?: string;
 
     docLibId?: number;
     docLibName?: string;

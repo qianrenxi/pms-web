@@ -1,6 +1,7 @@
 export class DocLib {
     id?: number;
     name?: string;
+    code?: string;
 
     // product?: Product;
     productId?: number;

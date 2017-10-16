@@ -12,7 +12,7 @@ export class DocOperateDialogService {
     constructor(private modal: NzModalService) { }
 
     openDocLibAdd(params: any, ok?, cancel?): NzModalSubject {
-        return this.open(params, 'time', ok, cancel);
+        return this.open(params, 'docLibAdd', ok, cancel);
     }
 
     open(params: any, operate: string, ok?, cancel?): NzModalSubject {

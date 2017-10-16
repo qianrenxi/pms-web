@@ -1,3 +1,4 @@
+import { SharedModule } from 'app/common/shared';
 import { DocOperateDialogService } from './doc-operate-dialog.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,7 +10,7 @@ const OPERATE_DIALOGS = [
 
 @NgModule({
   imports: [
-    CommonModule
+    SharedModule
   ],
   declarations: [...OPERATE_DIALOGS],
   exports: [...OPERATE_DIALOGS],

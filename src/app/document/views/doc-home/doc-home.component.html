@@ -1,8 +1,48 @@
-<p>
-  doc-home works!
-</p>
+<div class="py-4 px-3">
+  <div class="d-flex">
+    <div class="ml-auto">
+      <button type="button" class="btn btn-primary" (click)="openAddLib()">
+        <i class="fa fa-plus"></i> 添加文档库</button>
+    </div>
+  </div>
 
+  <div *ngIf="hasLibs">
 
-<div *ngFor="let lib of libs">
-  {{lib.name}}
+    <div class="mb-4">
+      <h5 class="mb-3">产品库</h5>
+
+      <div *ngIf="!productLibs">暂无</div>
+    </div>
+
+    <div class="mb-4">
+      <h5 class="mb-3">项目库</h5>
+
+      <div *ngIf="!projectLibs">暂无</div>
+    </div>
+
+    <div class="mb-4">
+      <h5 class="mb-3">自定义库</h5>
+
+      <ng-container *ngFor="let lib of customLibs" [ngTemplateOutlet]="libItem" [ngTemplateOutletContext]="{lib: lib}"></ng-container>
+
+      <div *ngIf="!customLibs">暂无</div>
+    </div>
+  </div>
+
+  <div *ngIf="!hasLibs">
+    还没有任何文档库，请点击添加按钮添加！
+  </div>
+
 </div>
+
+<ng-template #libItem let-lib="lib">
+  <a class="doc-lib-item text-secondary" [routerLink]="[lib.id]">
+    <div class="d-flex">
+      <i class="fa fa-3x fa-hdd-o"></i>
+      <div class="ml-2">
+        <div>{{lib.name}}</div>
+        <div>332 个文档， 占用 456 MB</div>
+      </div>
+    </div>
+  </a>
+</ng-template>

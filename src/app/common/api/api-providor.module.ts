@@ -1,3 +1,5 @@
+import { DocumentApiService } from './document-api.service';
+import { DocLibApiService } from './doc-lib-api.service';
 import { TestTaskApiService } from './test-task-api.service';
 import { TestSuiteApiService } from './test-suite-api.service';
 import { TestResultApiService } from './test-result-api.service';
@@ -29,6 +31,8 @@ const APIS = [
     TestResultApiService,
     TestSuiteApiService,
     TestTaskApiService,
+    DocLibApiService,
+    DocumentApiService,
 ];
 
 @NgModule({

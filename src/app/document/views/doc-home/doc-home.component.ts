@@ -63,4 +63,10 @@ export class DocHomeComponent implements OnInit {
       }
     });
   }
+
+  openAddLib() {
+    this.docOperate.openDocLibAdd({}, ok => {
+      this.loadData();
+    });
+  }
 }

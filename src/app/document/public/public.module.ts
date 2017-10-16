@@ -4,9 +4,11 @@ import { SharedModule } from 'app/common/shared';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentToolbarComponent } from './document-toolbar/document-toolbar.component';
+import { DocumentFormComponent } from './document-form/document-form.component';
 
 const PUBLIC_COMPONENTS = [
-  DocumentToolbarComponent
+  DocumentToolbarComponent,
+  DocumentFormComponent,
 ];
 
 @NgModule({
