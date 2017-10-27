@@ -1,5 +1,5 @@
 import { DocLib } from 'app/common/entity';
-import { DocumentApiService } from './../../../common/api/document-api.service';
+import { DocumentApiService } from 'app/common/api';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

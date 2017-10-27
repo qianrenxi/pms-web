@@ -26,6 +26,7 @@ import { ProductHomeComponent } from './views/product-home/product-home.componen
 import { ProductListComponent } from './views/product-list/product-list.component';
 import { ProductAddComponent } from './views/product-add/product-add.component';
 import { ProductOverviewComponent } from './views/product-overview/product-overview.component';
+import { ProductDocLibComponent } from './views/product-doc-lib/product-doc-lib.component';
 
 const routes: Routes = [
     {
@@ -73,6 +74,12 @@ const routes: Routes = [
                             { path: '', component: ProductReleaseListComponent, },
                         ]
                     },
+                    {
+                        path: 'docLib', children: [
+                            {path: '', component: ProductDocLibComponent},
+                            { path: ':docLibId', loadChildren: 'app/document/public/doc-lib-detail/doc-lib-detail.module#DocLibDetailModule' },
+                        ]
+                    },
                 ]
             }
         ]
@@ -116,4 +123,5 @@ export const routedComponents = [
     ProductReleaseListComponent,
 
     ProductActivityComponent,
+    ProductDocLibComponent,
 ];

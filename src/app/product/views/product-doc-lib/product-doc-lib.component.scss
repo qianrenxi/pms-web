@@ -1,0 +1,13 @@
+.doc-lib-item {
+    display: inline-block;
+    width: 200px;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0);
+
+    &:hover {
+        background: rgba(75, 157, 250, 0.3);
+        border-color: rgba(75, 157, 250, 0.7);
+        border-style: solid;
+        border-width: 1px;
+    }
+}

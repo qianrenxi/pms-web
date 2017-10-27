@@ -1,4 +1,4 @@
-import { Build } from 'app/common/entity';
+import { Build, DocLib } from 'app/common/entity';
 import { Task, Requirement } from 'app/common/entity';
 import { Pagination } from 'app/common/core';
 import { FormDataUtil } from './../core/utils/form-data-util';
@@ -81,5 +81,9 @@ export class ProjectApiService extends BaseService<Project> {
 
     getBuilds(projectId: number): Observable<Build[]> {
         return this.httpAdaptor.get(`${this.url}/${projectId}/builds`);
+    }
+
+    getDocLibs(projectId: number): Observable<DocLib[]> {
+        return this.httpAdaptor.get(`${this.url}/${projectId}/docLibs`);
     }
 }

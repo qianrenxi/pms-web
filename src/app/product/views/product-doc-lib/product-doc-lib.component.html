@@ -1,0 +1,18 @@
+<div class="my-4 mx-3 bg-white">
+  <div class="py-4 px-3">
+    <ng-container *ngFor="let lib of docLibs" [ngTemplateOutlet]="libItem" [ngTemplateOutletContext]="{lib: lib}"></ng-container>
+  </div>
+
+</div>
+
+<ng-template #libItem let-lib="lib">
+  <a class="doc-lib-item text-secondary" [routerLink]="[lib.id]">
+    <div class="d-flex">
+      <i class="fa fa-3x fa-hdd-o"></i>
+      <div class="ml-2">
+        <div>{{lib.name}}</div>
+        <div>332 个文档， 占用 456 MB</div>
+      </div>
+    </div>
+  </a>
+</ng-template>

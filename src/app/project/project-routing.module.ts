@@ -23,6 +23,7 @@ import { ProjectAddComponent } from './views/project-add/project-add.component';
 import { ProjectListComponent } from './views/project-list/project-list.component';
 import { ProjectHomeComponent } from './views/project-home/project-home.component';
 import { ProjectLayoutComponent } from './views/project-layout/project-layout.component';
+import { ProjectDocLibComponent } from './views/project-doc-lib/project-doc-lib.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -76,7 +77,13 @@ const routes: Routes = [
                                 ]
                             },
                         ]
-                    }
+                    },
+                    {
+                        path: 'docLib', children: [
+                            {path: '', component: ProjectDocLibComponent},
+                            { path: ':docLibId', loadChildren: 'app/document/public/doc-lib-detail/doc-lib-detail.module#DocLibDetailModule' },
+                        ]
+                    },
                 ]
             }
         ]
@@ -119,5 +126,7 @@ export const routedComponents = [
     ProjectBuildRequiementLinkComponent,
     ProjectBuildIssueLinkComponent,
     ProjectBuildIssueLinkedComponent,
-    ProjectBuildIssueBlowComponent
+    ProjectBuildIssueBlowComponent,
+
+    ProjectDocLibComponent,
 ];

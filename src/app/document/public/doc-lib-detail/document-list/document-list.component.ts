@@ -1,6 +1,6 @@
 import { Column } from 'consoleui';
 import { Pagination } from 'app/common/core';
-import { DocumentApiService } from './../../../common/api/document-api.service';
+import { DocumentApiService } from 'app/common/api';
 import { DocLib } from 'app/common/entity';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
