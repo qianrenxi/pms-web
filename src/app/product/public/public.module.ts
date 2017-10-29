@@ -33,7 +33,7 @@ const PUBLIC_COMPONENTS = [
     SharedModule,
     RouterModule
   ],
-  declarations: [...PUBLIC_COMPONENTS,],
+  declarations: [...PUBLIC_COMPONENTS],
   exports: [...PUBLIC_COMPONENTS],
   entryComponents: [
     RequirementSubdivideDialogComponent,

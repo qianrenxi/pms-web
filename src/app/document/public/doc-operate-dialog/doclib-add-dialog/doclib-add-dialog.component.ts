@@ -28,11 +28,16 @@ export class DoclibAddDialogComponent implements OnInit {
 
   initForm() {
     this._form = this.fb.group({
-      type: [],
+      type: ['CUSTOM'],
       productId: [],
       projectId: [],
       name: [],
-      code: []
+      code: [],
+      sourceType: ['SIMPLE'],
+      uri: [],
+      username: [],
+      password: [],
+      branch: [],
     });
   }
 
@@ -55,7 +60,8 @@ export class DoclibAddDialogComponent implements OnInit {
     }
 
     let value = this._form.value;
-    // value['']
+    value['product'] = value['productId'] ? {id: value['productId']} : null;
+    value['project'] = value['projectId'] ? {id: value['projectId']} : null;
     this.docLibApi.create(value).subscribe(
       ok => {
         this.message.success('添加文档库成功');

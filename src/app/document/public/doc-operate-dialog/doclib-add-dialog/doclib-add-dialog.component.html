@@ -1,6 +1,31 @@
 <form nz-form [formGroup]="_form" [nzLayout]="'horizontal'">
   <div nz-form-item nz-row>
     <div nz-form-label nz-col [nzSpan]="4">
+      <label>库类型</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <pms-attribute-select formControlName="type" group="docLib" code="type"></pms-attribute-select>
+    </div>
+  </div>
+  <div nz-form-item nz-row *ngIf="getFormControl('type').value == 'PRODUCT' || getFormControl('type').value == 'PROJECT'">
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>所属产品</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <pms-product-select formControlName="productId"></pms-product-select>
+    </div>
+  </div>
+  <div nz-form-item nz-row *ngIf="getFormControl('type').value == 'PROJECT'">
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>所属项目</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <pms-project-select formControlName="projectId" [productControl]="getFormControl('productId')"></pms-project-select>
+    </div>
+  </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
       <label>名称</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="18">
@@ -15,6 +40,52 @@
       <input type="text" nz-input formControlName="code">
     </div>
   </div>
+
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="4">
+      <label>资源类型</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="18">
+      <pms-attribute-select formControlName="sourceType" group="docLib" code="sourceType"></pms-attribute-select>
+    </div>
+  </div>
+
+  <ng-container *ngIf="getFormControl('sourceType').value && getFormControl('sourceType').value!='SIMPLE'">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="4">
+        <label>地址</label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="18">
+        <input type="text" nz-input formControlName="uri">
+      </div>
+    </div>
+    <ng-container *ngIf="getFormControl('sourceType').value && getFormControl('sourceType').value!='FILE_SYSTEM'">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="4">
+        <label>用户名</label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="18">
+        <input type="text" nz-input formControlName="username">
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="4">
+        <label>密码</label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="18">
+        <input type="text" nz-input formControlName="password">
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="4">
+        <label>分支</label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="18">
+        <input type="text" nz-input formControlName="branch">
+      </div>
+    </div>
+  </ng-container>
+  </ng-container>
   
   <div class="customize-footer">
     <button nz-button [nzType]="'primary'" (click)="onOk($event)">

@@ -181,6 +181,29 @@ export class AttributeApiService {
                     { id: 1, value: 'BLOCKED', label: '被阻塞', disabled: false },
                 ]
             }
+        },
+        docLib: {
+            type: {
+                id: 10,
+                name: '文档库类型',
+                code: 'type',
+                values: [
+                    { id: 1, value: 'PRODUCT', label: '产品库', disabled: false },
+                    { id: 1, value: 'PROJECT', label: '项目库', disabled: false },
+                    { id: 1, value: 'CUSTOM', label: '自定义', disabled: false },
+                ]
+            },
+            sourceType: {
+                id: 11,
+                name: '资源类型',
+                code: 'sourceType',
+                values: [
+                    { id: 1, value: 'SIMPLE', label: '普通库', disabled: false },
+                    { id: 1, value: 'FILE_SYSTEM', label: '文件系统', disabled: false },
+                    { id: 1, value: 'SVN', label: 'SVN 库', disabled: false },
+                    { id: 1, value: 'GIT', label: 'Git 库', disabled: false },
+                ]
+            }
         }
     };
 

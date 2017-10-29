@@ -1,3 +1,5 @@
+import { ProjectPublicModule } from './../../../project/public/project-public.module';
+import { ProductPublicModule } from './../../../product/public/public.module';
 import { SharedModule } from 'app/common/shared';
 import { DocOperateDialogService } from './doc-operate-dialog.service';
 import { NgModule } from '@angular/core';
@@ -10,7 +12,9 @@ const OPERATE_DIALOGS = [
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    ProductPublicModule,
+    ProjectPublicModule,
   ],
   declarations: [...OPERATE_DIALOGS],
   exports: [...OPERATE_DIALOGS],

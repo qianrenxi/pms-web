@@ -1,0 +1,13 @@
+<nz-card [nzBordered]="false" [nzNoHovering]="true">
+    <ng-template #title>
+        <i class="fa fa-check"></i> {{_title}}
+    </ng-template>
+    <ng-template #extra></ng-template>
+    <ng-template #body>
+        <ul>
+          <li *ngFor="let task of tasks">
+            <a class="text-primary"><strong>{{task.name}}</strong></a>
+          </li>
+        </ul>
+    </ng-template>
+</nz-card>

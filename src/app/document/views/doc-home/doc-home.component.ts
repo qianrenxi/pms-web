@@ -39,6 +39,10 @@ export class DocHomeComponent implements OnInit {
       return;
     }
 
+    this.productLibs = [];
+    this.projectLibs = [];
+    this.customLibs = [];
+
     this.customLibs = this.libs.filter(it => !it.productId && !it.projectId);
 
     let prodLibs = this.libs.filter(it => !!it.productId);

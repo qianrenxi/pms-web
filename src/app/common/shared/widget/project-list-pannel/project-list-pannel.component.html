@@ -1,0 +1,13 @@
+<nz-card [nzBordered]="false" [nzNoHovering]="true">
+    <ng-template #title>
+        <i class="fa fa-code"></i> {{_title}}
+    </ng-template>
+    <ng-template #extra></ng-template>
+    <ng-template #body>
+        <ul>
+          <li *ngFor="let proj of projects">
+            <a class="text-primary"><strong>{{proj.name}}</strong></a>
+          </li>
+        </ul>
+    </ng-template>
+</nz-card>

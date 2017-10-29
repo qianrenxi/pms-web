@@ -12,12 +12,32 @@
       <h5 class="mb-3">产品库</h5>
 
       <div *ngIf="!productLibs">暂无</div>
+
+      <div *ngIf="productLibs" class="row">
+        <div *ngFor="let p of productLibs" class="col-6">
+          <div class="py-2 my-3" style="border-bottom: 1px solid #dddddd;">
+            <span class="badge badge-success">产品</span> <strong>{{p.productName}}</strong>
+          </div>
+
+          <ng-container *ngFor="let lib of p.libs" [ngTemplateOutlet]="libItem" [ngTemplateOutletContext]="{lib: lib}"></ng-container>
+        </div>
+      </div>
     </div>
 
     <div class="mb-4">
       <h5 class="mb-3">项目库</h5>
 
       <div *ngIf="!projectLibs">暂无</div>
+
+      <div *ngIf="projectLibs" class="row">
+        <div *ngFor="let p of projectLibs" class="col-6">
+          <div class="py-2 my-3" style="border-bottom: 1px solid #dddddd;">
+            <span class="badge badge-info">项目</span> <strong>{{p.projectName}}</strong>
+          </div>
+
+          <ng-container *ngFor="let lib of p.libs" [ngTemplateOutlet]="libItem" [ngTemplateOutletContext]="{lib: lib}"></ng-container>
+        </div>
+      </div>
     </div>
 
     <div class="mb-4">
