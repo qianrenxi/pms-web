@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GroupLayoutComponent } from './views/group-layout/group-layout.component';
+import { UserListComponent } from './views/user-list/user-list.component';
 
 
 const routes: Routes = [
-    { path: '', component: GroupLayoutComponent },
+    {
+        path: '', component: GroupLayoutComponent, children: [
+            {
+                path: 'user', children: [
+                    { path: '', component: UserListComponent }
+                ]
+            }
+        ]
+    },
 ];
 
 @NgModule({
@@ -14,5 +23,6 @@ const routes: Routes = [
 export class GroupRoutingModule { }
 
 export const routedComponents = [
-    GroupLayoutComponent
+    GroupLayoutComponent,
+    UserListComponent,
 ];

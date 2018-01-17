@@ -13,14 +13,13 @@ export class GroupToolbarComponent implements OnInit {
 
   ngOnInit() {
     this._navs = [
-      // { title: '首页', routerLink: ['my', 'requirement'] },
-      { title: '用户', routerLink: ['my', 'todo'] },
-      { title: '部门', routerLink: ['my', 'effort'] },
-      { title: '待办', routerLink: ['my', 'task'] },
-      { title: '日志', routerLink: ['my', 'issue'] },
-      { title: '权限', routerLink: ['my', 'testTask'] },
-      { title: '公司', routerLink: ['my', 'requirement'] },
-      { title: '动态', routerLink: ['my', 'project'] },
+      { title: '用户', routerLink: ['user'] },
+      { title: '部门', routerLink: ['dept'] },
+      { title: '待办', routerLink: ['todo'] },
+      { title: '日志', routerLink: ['log'] },
+      { title: '权限', routerLink: ['permission'] },
+      { title: '公司', routerLink: ['company'] },
+      { title: '动态', routerLink: ['activity'] },
     ];
   }
 

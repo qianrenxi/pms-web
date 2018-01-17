@@ -1,0 +1,12 @@
+<div class="my-4 mx-3 py-4 px-3 bg-white">
+  <cui-data-table [columns]="columns" [data]="users?.content" [pagination]="users"
+    selectType="checkbox" [selection]="selection" [loading]="loading" (reload)="loadData($event)">
+
+    <ng-template cuiColTpl="actions" let-row="row">
+      <a class="text-primary mr-2"><i class="fa fa-edit fa-lg"></i></a>
+      <a class="text-danger"><i class="fa fa-trash fa-lg"></i></a>
+
+    </ng-template>
+
+  </cui-data-table>
+</div>

@@ -3,7 +3,10 @@ export class User {
     id: number;
     username: string;
     password: string;
-    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
     displayName: string;
-    photo: string;
+    phoneNumber: string;
+    avatar: string;
 }
